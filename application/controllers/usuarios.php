@@ -2,9 +2,8 @@
 
 class Usuarios extends CI_Controller {
   
-  function __construct() {
-    CI_Controller::__construct();
-    
+  function _comprobar() {
+   
     if (!$this->session->userdata('usuario')) {
       $this->session->set_flashdata('mensaje', 'Se requiere autorización');
       redirect('usuarios/login');
@@ -12,7 +11,7 @@ class Usuarios extends CI_Controller {
   }
   	
   function index() {
-  	
+      _comprobar();
   }	
 
   function login() {
