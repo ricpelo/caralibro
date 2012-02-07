@@ -9,7 +9,7 @@
         <td><?= $fila['nombre_amigo'] ?></td>
             <?= form_open('contactos/borrar') ?>
         <td>
-            <?= form_submit('borrar', 'Borrar') ?>
+            <?= form_submit('borrar', '  Borrar  ') ?>
         </td>
             <?= form_close() ?>
       </tr>
