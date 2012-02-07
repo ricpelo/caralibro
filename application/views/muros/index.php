@@ -1,7 +1,10 @@
+<?php session_start(); ?>
+<!DOCTYPE html>
 <html>
-<title>Caralibro for the peña</title>
-<head> 
-<style type="text/css">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>Muro</title>
+    <style type="text/css">
       #nombre {
 #        padding-left: 10px;
         font-family: sans;
@@ -11,8 +14,8 @@
       .contactos {
         float: right;
         width: 220px;
-        background: red;
-        font-size: large;
+        background: #DDDDDD;
+        font-size: medium;
       }      
       .solicitudes {
         float: left;
@@ -74,7 +77,8 @@
         color: gray;
       }
     </style>
-</head>
-<body>
-</body>
+  </head>
+  <body>
+    
+  </body>
 </html>
