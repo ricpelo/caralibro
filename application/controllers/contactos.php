@@ -23,21 +23,7 @@ class Contactos extends CI_Controller {
                                      from contactos c, usuarios u1, usuarios u2
                                     where 1 in (id_amigo1, id_amigo2) and
                                           c.id_amigo1 = u1.id and c.id_amigo2 = u2.id");
-    echo $res;
-//    $data['filas'] = $res->result_array();
-//    $config['base_url'] = 'http://localhost/web/codeigniter/empleados/index/';
-//    $config['total_rows'] = $res->num_rows();
-//    $config['per_page'] = 5;
-
-//    $this->pagination->initialize($config);
- 
-//    if ($this->session->flashdata('mensaje')) {
-//      $data['mensaje'] = $this->session->flashdata('mensaje');
-//    } else {
-//      $data['mensaje'] = '';
-//    }
-//    $data['usuario'] = $this->session -> userdata('usuario');
-//    $this->load->view('empleados/index', $data);
-//    $this->pagination->create_links();
+    $data['filas'] = $res->result_array();
+    $this->load->view('contactos/index', $data);
 	}
-
+}
