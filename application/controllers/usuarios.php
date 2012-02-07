@@ -39,7 +39,7 @@ class Usuarios extends CI_Controller {
   }
   
   function crear() {
-  	if ($this->input->post('crear')) {
+  	if ($this->input->post('enviar')) {
   		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 		$nombre = $this->input->post('nombre');
@@ -49,9 +49,12 @@ class Usuarios extends CI_Controller {
 		                                   values (?,md5(?),?,?)",array($email, $password, $nombre, $apellidos));
 		if(!$res) {
 			$this->session->set_flashdata('mensaje', 'Se ha producido un error..');
+		} else {
+			$this->session->set_flashdata('mensaje', 'El usuario se creo correctamente.');
+			redirect('usuarios/login');			
 		}
   	} else {
-  	  $this->load->view('usuarios/crear');
+  	  $this->load->view('usuarios/login');
     }
   }
 }
