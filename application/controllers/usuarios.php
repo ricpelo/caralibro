@@ -11,7 +11,7 @@ class Usuarios extends CI_Controller {
   }
   	
   function index() {
-      _comprobar();
+      $this->_comprobar();
   }	
 
   function login() {
