@@ -4,6 +4,7 @@ class Contactos extends CI_Controller {
 
   function __construct() {
     CI_Controller::__construct();
+<<<<<<< HEAD
     /**
  if (!$this->session->userdata('usuario')) {
       $this->session->set_flashdata('mensaje', 'Se requiere autorización');
@@ -16,10 +17,26 @@ function index() {
                                                else c.id_amigo1
                                            end as id_amigo,
                                           case when 1  = c.id_amigo1
+=======
+    
+    //if (!$this->session->userdata('usuario')) {
+    //  $this->session->set_flashdata('mensaje', 'Se requiere autorización');
+    //  redirect('usuarios/login');
+    //} 
+  }
+
+  function index() {
+    $res = $this->db->query("select case when 1 = c.id_amigo1
+                                               then c.id_amigo2
+                                               else c.id_amigo1
+                                           end as id_amigo,
+                                          case when 1 = c.id_amigo1
+>>>>>>> 81e0e2ad171a94c44ea4064c9cf3151eed4598ab
                                                then u2.nombre || ' ' || u2.apellidos
                                                else u1.nombre || ' ' || u1.apellidos
                                            end as nombre_amigo
                                      from contactos c, usuarios u1, usuarios u2
+<<<<<<< HEAD
                                     where 1  in (id_amigo1, id_amigo2) and
                                       c.id_amigo1 = u1.id and c.id_amigo2 = u2.id");
 $data['filas'] = $res->result_array();
@@ -28,3 +45,11 @@ $data['filas'] = $res->result_array();
 }
 }
 
+=======
+                                    where 1 in (id_amigo1, id_amigo2) and
+                                          c.id_amigo1 = u1.id and c.id_amigo2 = u2.id");
+    $data['filas'] = $res->result_array();
+    $this->load->view('contactos/index', $data);
+	}
+}
+>>>>>>> 81e0e2ad171a94c44ea4064c9cf3151eed4598ab
