@@ -14,25 +14,32 @@ class Solicitudes extends CI_Controller {
 
 	function index() {
 #		$data['usuario'] = $this->session->userdata('usuario');
-		$this->Solicitud->crear_solicitud(1,2);
 		$data['usuario'] = 1;
 		$data['solicitudes'] = $this->Solicitud->obtener_solicitudes($data['usuario']);
 		$this->load->view('solicitudes/index', $data);
 	}
 
 	function aceptar() {
-		if ($this->input->post('aceptar')) {
-			$id_solicitado = $this->input->post('usuario');
-			$id_solicitante = $this->input->post('id_solicitante');
-			$res = $this->Solicitud->borrar_solicitud($id_solicitado, $id_solicitante);
-		}
+		$this->_finalizar_solicitud('a');
 	}
 
 	function rechazar() {
-		if ($this->input->post('rechazar')) {
+		$this->_finalizar_solicitud('r');
+	}
+
+	function _finalizar_solicitud($opcion) {
+		$usuario = $this->input->post('usuario');
+		if (!empty($usuario)) {
 			$id_solicitado = $this->input->post('usuario');
 			$id_solicitante = $this->input->post('id_solicitante');
 			$res = $this->Solicitud->borrar_solicitud($id_solicitado, $id_solicitante);
+			if ($opcion == 'a') {
+				
+			}
+			$this->load->view('solicitudes/index');
+		} else {
+			$this->session->set_flashdata('mensaje', 'No existen solicitudes pendientes');
+			redirect("/solicitudes/index");
 		}
 	}
 }

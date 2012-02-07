@@ -25,7 +25,7 @@ class Solicitud extends CI_Model  {
 
 	function crear_solicitud($id_solicitado, $id_solicitante) {
 		if ($this->existe_solicitud($id_solicitado, $id_solicitante)->num_rows() == 0) {
-			return $this->db->query("intert into solicitudes (id_solicitante, id_solicitado)
+			return $this->db->query("insert into solicitudes (id_solicitante, id_solicitado)
 															 values (?, ?)", array($id_solicitado, $id_solicitante));
 		}
 	}
