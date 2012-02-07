@@ -9,7 +9,7 @@ class Usuarios extends CI_Controller {
       redirect('usuarios/login');
     }
   }
-  	
+  
   function index() {
       $this->_comprobar();
   }	
