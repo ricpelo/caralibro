@@ -1,4 +1,4 @@
-<?= validation_errors() ?>
+<?= $mensaje ?>
 
 <?= form_open('usuarios/crear') ?>
   <p>
