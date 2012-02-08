@@ -15,4 +15,21 @@ class Usuario extends CI_Model {
 		return FALSE;
 	}
   }
+  
+  function obtener($id) {
+     return $this->db->query("select * from usuarios where id = ?", array($id))->row_array();
+  }
+  
+  function actualizar($datos) {
+    return $this->db->query("update usuarios
+	                              set email     = ?,
+	                                  password  = ?,
+	                                  nombre    = ?,
+	                                  apellidos = ?,
+                              where id = ?", array($datos['email'],
+                                                   $datos['password']
+                                                   $datos['nombre'],
+                                                   $datos['apellidos'],
+                                                   $datos['id']));
+  }
 }
