@@ -9,6 +9,7 @@ class Contactos extends CI_Controller {
     //  $this->session->set_flashdata('mensaje', 'Se requiere autorización');
     //  redirect('usuarios/login');
     //} 
+    $this->load->model('Contacto');
   }
 
   function index() {
@@ -17,13 +18,18 @@ class Contactos extends CI_Controller {
                                                else c.id_amigo1
                                            end as id_amigo,
                                           case when 1 = c.id_amigo1
+
                                                then u2.nombre || ' ' || u2.apellidos
                                                else u1.nombre || ' ' || u1.apellidos
                                            end as nombre_amigo
                                      from contactos c, usuarios u1, usuarios u2
-                                    where 1 in (id_amigo1, id_amigo2) and
-                                          c.id_amigo1 = u1.id and c.id_amigo2 = u2.id");
-    $data['filas'] = $res->result_array();
-    $this->load->view('contactos/index', $data);
-	}
+
+                                    where 1  in (id_amigo1, id_amigo2) and
+                                      c.id_amigo1 = u1.id and c.id_amigo2 = u2.id");
+   $data['filas'] = $res->result_array();
+   $this->load->view('contactos/index', $data);
+
+  }
 }
+
+
