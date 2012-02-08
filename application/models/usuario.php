@@ -27,7 +27,7 @@ class Usuario extends CI_Model {
 	                                  nombre    = ?,
 	                                  apellidos = ?,
                               where id = ?", array($datos['email'],
-                                                   $datos['password']
+                                                   $datos['password'],
                                                    $datos['nombre'],
                                                    $datos['apellidos'],
                                                    $datos['id']));
