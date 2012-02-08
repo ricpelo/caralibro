@@ -37,6 +37,24 @@ class Usuarios extends CI_Controller {
     $this->session->unset_userdata('usuario');
     redirect('usuarios/login');
   }
-
+  
+  function crear() {
+  	if ($this->input->post('enviar')) {
+  		$email = $this->input->post('email');
+		$password = $this->input->post('password');
+		$nombre = $this->input->post('nombre');
+		$apellidos = $this->input->post('apellidos');
+		
+		$res=$this->db->query("insert into usuarios (email, password, nombre, apellidos) 
+		                                   values (?,md5(?),?,?)",array($email, $password, $nombre, $apellidos));
+		if(!$res) {
+			$this->session->set_flashdata('mensaje', 'Se ha producido un error..');
+		} else {
+			$this->session->set_flashdata('mensaje', 'El usuario se creo correctamente.');
+			redirect('usuarios/login');			
+		}
+  	} else {
+  	  $this->load->view('usuarios/login');
+    }
+  }
 }
-
