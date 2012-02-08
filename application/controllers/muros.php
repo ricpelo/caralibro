@@ -14,6 +14,7 @@ class Muros extends CI_Controller {
 
   function index() {
      
+     $this->load->model('Usuario');
 
     if ($this->session->flashdata('mensaje')) {
       $data['mensaje'] = $this->session->flashdata('mensaje');
@@ -21,6 +22,8 @@ class Muros extends CI_Controller {
       $data['mensaje'] = '';
     }
      $data['usuario'] = $this->session->userdata('usuario');
+     $data['fila'] = $this->Usuario->obtenerDatos($data['usuario']);
+    
      $this->load->view('muros/index', $data);
      
   }
