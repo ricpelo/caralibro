@@ -6,12 +6,12 @@
   <tbody>
     <?php foreach ($filas as $fila): ?>
        <tr>
-	 <td> <?= $fila['nombre_amigo'] ?> </td>
-	   <?= form_open ('contactos/borrar') ?> </td>
- 	 <td>
-	   <?= form_submit ('borrar', '         Borrar       ') ?> </td>
-	   <?= form_close() ?>
-      </tr>
+	      <td> <?= $fila['nombre_amigo'] ?> </td>
+	           <?= form_open ('contactos/borrar') ?> </td>
+ 	      <td>
+	           <?= form_submit ('borrar', '         Borrar       ') ?> </td>
+	           <?= form_close() ?>
+       </tr>
     <?php endforeach; ?>
   </tbody>
 </table>

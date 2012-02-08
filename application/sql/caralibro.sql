@@ -12,6 +12,10 @@ insert into usuarios (email, password, nombre, apellidos)
 values ('ricpelo@gmail.com', md5('hola'), 'Ricardo', 'Pérez');
 insert into usuarios (email, password, nombre, apellidos)
 values ('richard@stallman.org', md5('adios'), 'Richard', 'Stallman');
+insert into usuarios (email, password, nombre, apellidos)
+values ('billgates@gmail.com', md5('hola'), 'Bill', 'Gates');
+insert into usuarios (email, password, nombre, apellidos)
+values ('markzack@gmail.com', md5('hola'), 'Mark', 'Zuckerberg');
 
 
 drop table envios cascade;
@@ -32,6 +36,7 @@ insert into envios (id_propietario, id_receptor, fechahora, texto)
 values (2, 1, current_timestamp, 'adiós blancaflor');
 
 
+
 drop table solicitudes cascade;
 
 create table solicitudes (
@@ -42,6 +47,13 @@ create table solicitudes (
   constraint ck_usuarios_distintos check (id_solicitante != id_solicitado),
   constraint pk_solicitudes primary key (id_solicitante, id_solicitado)
 );
+
+insert into solicitudes (id_solicitante, id_solicitado)
+values (2,1);
+insert into solicitudes (id_solicitante, id_solicitado)
+values (3,1);
+insert into solicitudes (id_solicitante, id_solicitado)
+values (4,1);
 
 drop table contactos cascade;
 
