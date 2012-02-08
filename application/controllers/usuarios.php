@@ -77,7 +77,7 @@ class Usuarios extends CI_Controller {
 	       # NO se ha podido hacer la edición por alguna razón
 	       $this->load->view('usuarios/editar', $data);
 	    } else {
-	      $res = $this->Empleado->actualizar($data);
+	      $res = $this->Usuario->actualizar($data);
 	      if ($res && $this->db->affected_rows() == 1) {
 	       # OK
          $this->session->set_flashdata('mensaje', 'Usuario editado con éxito');
