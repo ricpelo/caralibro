@@ -4,12 +4,12 @@ class Contactos extends CI_Controller {
 
   function __construct() {
     CI_Controller::__construct();
-
     
     //if (!$this->session->userdata('usuario')) {
     //  $this->session->set_flashdata('mensaje', 'Se requiere autorización');
     //  redirect('usuarios/login');
     //} 
+    $this->load->model('Contacto');
   }
 
   function index() {
@@ -26,10 +26,10 @@ class Contactos extends CI_Controller {
 
                                     where 1  in (id_amigo1, id_amigo2) and
                                       c.id_amigo1 = u1.id and c.id_amigo2 = u2.id");
-$data['filas'] = $res->result_array();
-  $this->load->view('contactos/index', $data);
+   $data['filas'] = $res->result_array();
+   $this->load->view('contactos/index', $data);
 
-}
+  }
 }
 
 
