@@ -1,3 +1,6 @@
+<div>
+  <p><?= isset($mensaje) ? $mensaje : ''?></p>
+</div>
 <div class="solicitudes">
 	<table>
 		<tbody>
