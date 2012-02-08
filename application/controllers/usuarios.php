@@ -48,7 +48,8 @@ class Usuarios extends CI_Controller {
 		$apellidos = $this->input->post('apellidos');
 		
 		if(!$this->Usuario->crear($email, $password, $nombre, $apellidos)) {
-			$this->session->set_flashdata('mensaje', 'Se ha producido un error..');
+			$data['mensaje'] = 'Se ha producido un error..';
+			$this->load->view('usuarios/crear', $data);
 		} else {
 			$this->session->set_flashdata('mensaje', 'El usuario se creo correctamente.');
 			redirect('usuarios/login');			
