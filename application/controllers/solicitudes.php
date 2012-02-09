@@ -42,7 +42,7 @@ class Solicitudes extends CI_Controller {
 			$res = $this->Solicitud->borrar_solicitud($id_solicitado, $id_solicitante);
 			if ($opcion == 'a') {
 #       $this->Contacto->agregar_contacto($id_solitado, $id_solicitante);
-				 $this->session->set_flashdata('mensaje','El usuario ha sido agregado a amigos');
+				$this->session->set_flashdata('mensaje','El usuario ha sido agregado a amigos');
 			}else {
          $this->session->set_flashdata('mensaje','El usuario ha sido rechazado');
       }
