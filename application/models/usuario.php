@@ -23,9 +23,9 @@ class Usuario extends CI_Model {
   function actualizar($datos) {
     return $this->db->query("update usuarios
 	                              set email     = ?,
-	                                  password  = ?,
+	                                  password  = md5(?),
 	                                  nombre    = ?,
-	                                  apellidos = ?,
+	                                  apellidos = ?
                               where id = ?", array($datos['email'],
                                                    $datos['password'],
                                                    $datos['nombre'],
