@@ -12,13 +12,27 @@ class Contactos extends CI_Controller {
     $this->load->model('Contacto');
   }
 
-  function index() {
-   $id = $this->Contacto->obtener_id();
-   $id = (int) $id['id'];
+  function index() { // muestra la lista con todos mis amigos
+    if ($this->session->flashdata('mensaje')) {
+      $data['mensaje'] = $this->session->flashdata('mensaje');
+    } else {
+      $data['mensaje'] = '';
+    }
+    $data['usuario'] = $this->session->userdata('usuario');
+    $id = $this->Contacto->obtener_id();
+    $id = (int) $id['id'];
 //   $data['id'] = $id;
-   $data['filas'] = $this->Contacto->obtener_mis_amigos($id);
-   $this->load->view('contactos/index', $data);
-   
+    $data['filas'] = $this->Contacto->obtener_mis_amigos($id);
+    $this->load->view('contactos/index', $data);
+  }
+
+  // borra el amigo seleccionado
+  function borrar_amigo() {
+    $id = $this->Contacto->obtener_id();
+    $id = (int) $id['id'];
+    $min = min($id, $id_amigo);
+    $max = max($id, $id_amigo);
+    $this->Contacto->borrar($min, $max);
   }
 }
 
