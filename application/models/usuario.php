@@ -32,4 +32,16 @@ class Usuario extends CI_Model {
                                                    $datos['apellidos'],
                                                    $datos['id']));
   }
+  
+  function obtenerDatos($email) {
+  	if ($email != '') { # Comprueba que el email no este vacio.
+  		return $this->db->query("Select * from usuarios where email = ?", array($email))->row_array() ;
+  	} else {
+  		return false;	
+  	}
+  }
+
+
+
+
 }

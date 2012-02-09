@@ -5,30 +5,34 @@ class Contactos extends CI_Controller {
   function __construct() {
     CI_Controller::__construct();
     
-    //if (!$this->session->userdata('usuario')) {
-    //  $this->session->set_flashdata('mensaje', 'Se requiere autorización');
-    //  redirect('usuarios/login');
-    //} 
+    if (!$this->session->userdata('usuario')) {
+      $this->session->set_flashdata('mensaje', 'Se requiere autorización');
+      redirect('usuarios/login');
+    } 
     $this->load->model('Contacto');
   }
 
-  function index() {
-    $res = $this->db->query("select case when 1 = c.id_amigo1
-                                               then c.id_amigo2
-                                               else c.id_amigo1
-                                           end as id_amigo,
-                                          case when 1 = c.id_amigo1
+  function index() { // muestra la lista con todos mis amigos
+    if ($this->session->flashdata('mensaje')) {
+      $data['mensaje'] = $this->session->flashdata('mensaje');
+    } else {
+      $data['mensaje'] = '';
+    }
+    $data['usuario'] = $this->session->userdata('usuario');
+    $id = $this->Contacto->obtener_id();
+    $id = (int) $id['id'];
+//   $data['id'] = $id;
+    $data['filas'] = $this->Contacto->obtener_mis_amigos($id);
+    $this->load->view('contactos/index', $data);
+  }
 
-                                               then u2.nombre || ' ' || u2.apellidos
-                                               else u1.nombre || ' ' || u1.apellidos
-                                           end as nombre_amigo
-                                     from contactos c, usuarios u1, usuarios u2
-
-                                    where 1  in (id_amigo1, id_amigo2) and
-                                      c.id_amigo1 = u1.id and c.id_amigo2 = u2.id");
-   $data['filas'] = $res->result_array();
-   $this->load->view('contactos/index', $data);
-
+  // borra el amigo seleccionado
+  function borrar_amigo() {
+    $id = $this->Contacto->obtener_id();
+    $id = (int) $id['id'];
+    $min = min($id, $id_amigo);
+    $max = max($id, $id_amigo);
+    $this->Contacto->borrar($min, $max);
   }
 }
 
