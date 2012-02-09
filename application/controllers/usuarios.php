@@ -25,7 +25,10 @@ class Usuarios extends CI_Controller {
   	if ($this->input->post('login')) {
       $email = $this->input->post('email');
       $password = $this->input->post('password');
-      if ($this->Usuario->comprobarUsuario($email, $password)->num_rows() == 1) {
+      $res = $this->Usuario->comprobarUsuario($email, $password);
+      if ($res->num_rows() == 1) {
+        $datos = $res->result_array();
+        $this->session->set_userdata('id', $datos['id']);
         $this->session->set_userdata('usuario', $email);
         redirect('muros/index');
       } else {

@@ -1,0 +1,50 @@
+body {
+	background: #e1e5e9;
+	font-family: "Georgia", Tahoma, Sans-Serif;
+	font-size: 12px;
+	line-height: 18px;
+	color: #888;
+}
+
+#header {
+	width: 874px;
+	text-align: center;
+	background: #CCC;
+	font-size: xx-large;
+	border-style: solid;
+	border-size: 1px;
+	height: 80px;
+	position: absolute;
+	left: 17%;
+}
+
+#contents {
+	width: 874px; 
+	margin: 0 auto;
+	margin-top: 80px;
+	padding-top: 20px;
+	padding-bottom: 40px;
+	background: white;
+	border-style: solid;
+	border-size: 1px;
+	position: absolute;
+	left: 17%;
+}
+
+.texto {
+	color: blue;
+}
+
+#footer {
+	text-align: center;
+	border-style: solid;
+	border-size: 1px;
+	width: 874px;
+	background: #CCC;
+	margin: 0 auto;
+	position: absolute;
+	left: 17%;
+	bottom: 0;
+	bottom: -1px;
+	height: 40px;
+}			
