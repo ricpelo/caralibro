@@ -1,5 +1,8 @@
 <p><?= validation_errors() ?></p>
 <div>
+  <p><?= isset($mensaje) ? $mensaje : '' ?></p> 
+</div>
+<div>
 <?= form_open('usuarios/editar') ?>
   <p>
     <?= form_hidden('id', $id) ?>

@@ -66,7 +66,24 @@ class Usuarios extends CI_Controller {
   function editar() {
 	 $this->_comprobar();
 	  if ($this->input->post('editar')) {
-	  	
+	  	$password = $this->input->post('password');
+		$email = $this->input->post('email');
+		$confirmPassword = $this->input->post('confirmpassword');
+		$nombre = $this->input->post('nombre');
+		$apellidos = $this->input->post('apellidos');
+		if ($password == $confirmPassword){
+			if(!$this->Usuario->actualizar(array($email, $password, $nombre, $apellidos))){
+			    $data['mensaje'] = "No se a podido realizar la actualización, vuelva a intentarlo.";	
+			    $this->load->view('usuarios/editar', $data); 
+			} else {
+				$this->session->set_flashdata('mensaje', 'El usuario se modifico correctamente.');
+		 	    redirect('muros/index');	
+			}
+			
+		} else {
+			$data['mensaje'] = "La confirmación de la clave es erronea.";	
+			$this->load->view('usuarios/editar', $data); 
+		}
 	  } else {
 	  	$data = $this->Usuario->obtenerDatos($this->session->userdata('usuario'));
 		$data['password'] = '';
