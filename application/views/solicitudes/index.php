@@ -1,10 +1,13 @@
-<div class="solicitudes">
+<div>
+  <p><?= isset($mensaje) ? $mensaje : ''?></p>
+</div>
+<div>
 	<table>
 		<tbody>
 			<?php foreach ($solicitudes as $fila): ?>
 				<?php extract($fila); ?>
 				<tr>				
-					<td><?= $nombre_solicitante . " " . $apellidos_solicitante ?></td>
+					<td class="texto"><?= $nombre_solicitante . " " . $apellidos_solicitante ?></td>
 					<?= form_open('solicitudes/aceptar') ?>
 						<td>
 							<?= form_hidden('usuario', $usuario) ?>
