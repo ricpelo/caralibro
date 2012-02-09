@@ -13,23 +13,22 @@ class Contactos extends CI_Controller {
   }
 
   function index() {
-    $res = $this->db->query("select case when 1 = c.id_amigo1
-                                               then c.id_amigo2
-                                               else c.id_amigo1
-                                           end as id_amigo,
-                                          case when 1 = c.id_amigo1
-
-                                               then u2.nombre || ' ' || u2.apellidos
-                                               else u1.nombre || ' ' || u1.apellidos
-                                           end as nombre_amigo
-                                     from contactos c, usuarios u1, usuarios u2
-
-                                    where 1  in (id_amigo1, id_amigo2) and
-                                      c.id_amigo1 = u1.id and c.id_amigo2 = u2.id");
-   $data['filas'] = $res->result_array();
+    
+   $data['filas'] = $this->Contacto->obtener_mis_amigos();
    $this->load->view('contactos/index', $data);
 
   }
+
+  function borrar_amigo() {
+	  $id = $this->input->post('id');
+	  $res = $this->Contacto->borrar_amigo($id);
+	  if ($res && $this->db->affected_rows() == 1) {
+      $this->session->set_flashdata('mensaje', 'Eliminado un amigo de la lista con éxito');
+	  } else {
+      $this->session->set_flashdata('mensaje', 'No se ha podido borrar al amigo');
+	  }
+    redirect('contactos/index');
+	}
 }
 
 

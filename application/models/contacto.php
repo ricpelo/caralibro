@@ -15,4 +15,6 @@ class Contacto extends CI_Model {
                               where 1 in (id_amigo1, id_amigo2) and
                     c.id_amigo1 = u1.id and c.id_amigo2 = u2.id")->result_array();
   }
+
+  
 }
