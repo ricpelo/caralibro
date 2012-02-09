@@ -7,6 +7,8 @@
     <?= form_input('email', $email) ?> <br/>
     <?= form_label('Constraseña:', 'password') ?>
     <?= form_input('password', $password) ?> <br/>
+    <?= form_label('Confirmar contraseña:', 'confirmpassword') ?>
+    <?= form_input('confirmpassword', $confirmpassword) ?> <br/>
     <?= form_label('Nombre:', 'nombre') ?>
     <?= form_input('nombre', $nombre) ?>
     <?= form_label('Apellido:', 'apellido') ?>
