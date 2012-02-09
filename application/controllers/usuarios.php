@@ -18,6 +18,7 @@ class Usuarios extends CI_Controller {
   
   function index() {
       $this->_comprobar();
+	  var_dump($this->session->userdata('id'));
   }	
 
   function login() {
@@ -27,7 +28,7 @@ class Usuarios extends CI_Controller {
       $password = $this->input->post('password');
       $res = $this->Usuario->comprobarUsuario($email, $password);
       if ($res->num_rows() == 1) {
-        $datos = $res->result_array();
+        $datos = $res->row_array();
         $this->session->set_userdata('id', $datos['id']);
         $this->session->set_userdata('usuario', $email);
         redirect('muros/index');
@@ -62,7 +63,8 @@ class Usuarios extends CI_Controller {
 			redirect('usuarios/login');			
 		}
   	} else {
-  	  $this->template->load('template','usuarios/crear', $data); 
+  	  $data['mensaje'] = 'Introduce los datos para el registro.';
+  	  $this->template->load('template','usuarios/crear',$data); 
     }
   }
   
