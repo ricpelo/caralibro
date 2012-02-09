@@ -117,7 +117,7 @@
 <div class="contenedor">
               <span class="propietario">
                 <a href="index.php" value= "Juanito">
-                  Pepe Pepito</a> escribió:
+                  Pepe</a> escribió:
               </span>
               <div class="borrar">
                 <form action="index.php" method="post">
