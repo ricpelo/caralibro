@@ -16,6 +16,18 @@ insert into usuarios (email, password, nombre, apellidos)
 values ('billgates@gmail.com', md5('hola'), 'Bill', 'Gates');
 insert into usuarios (email, password, nombre, apellidos)
 values ('markzack@gmail.com', md5('hola'), 'Mark', 'Zuckerberg');
+insert into usuarios (email, password, nombre, apellidos)
+values ('paco@gmail.com', md5('hola'), 'Paco', 'Alcalá');
+insert into usuarios (email, password, nombre, apellidos)
+values ('facebookcaca@gmail.com', md5('hola'), 'Face', 'bookcaca');
+insert into usuarios (email, password, nombre, apellidos)
+values ('pedropicapiedra@gmail.com', md5('hola'), 'Pedro', 'Picapiedra');
+insert into usuarios (email, password, nombre, apellidos)
+values ('pabloMarmol@gmail.com', md5('hola'), 'Pablo', 'Marmol');
+insert into usuarios (email, password, nombre, apellidos)
+values ('nomeseninguno@gmail.com', md5('hola'), 'Nosemeocurre', 'ná');
+
+
 
 
 drop table envios cascade;
@@ -54,7 +66,16 @@ insert into solicitudes (id_solicitante, id_solicitado)
 values (3,1);
 insert into solicitudes (id_solicitante, id_solicitado)
 values (4,1);
-
+insert into solicitudes (id_solicitante, id_solicitado)
+values (5,1);
+insert into solicitudes (id_solicitante, id_solicitado)
+values (6,1);
+insert into solicitudes (id_solicitante, id_solicitado)
+values (7,1);
+insert into solicitudes (id_solicitante, id_solicitado)
+values (8,1);
+insert into solicitudes (id_solicitante, id_solicitado)
+values (9,1);
 drop table contactos cascade;
 
 create table contactos (
