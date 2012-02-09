@@ -40,21 +40,10 @@ class Muros extends CI_Controller {
 
   
   function obtener_datos_envio() {
-    $res = $this->db->query("select texto, id_propietario as id_prop, e.id as id_envio,
-                                        to_char(fechahora, 'DD-MM-YYYY\" a las \"HH24:MI:SS')
-                                        as fechahora,
-                                        nombre as nombre_prop, apellidos as apellidos_prop
-                                   from envios e join usuarios u
-                                     on e.id_propietario = u.id
-                                  where id_receptor = $id");
-    $data['filas'] = $res->result_array();
     
-if ($this->session->flashdata('mensaje')) {
-      $data['mensaje'] = $this->session->flashdata('mensaje');
-    } else {
-      $data['mensaje'] = '';
-    }
-    $data[''] = $this->session->userdata('usuario');
+    $data['filas'] = $this->Muro->obtener_datos($id);
+    
+
     $this->load->view('muros/index', $data);
 	}
 
