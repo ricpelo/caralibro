@@ -56,13 +56,13 @@ class Usuarios extends CI_Controller {
 		
 		if(!$this->Usuario->crear($email, $password, $nombre, $apellidos)) {
 			$data['mensaje'] = 'Se ha producido un error..';
-			$this->load->view('usuarios/crear', $data);
+			$this->template->load('template','usuarios/crear', $data); 
 		} else {
 			$this->session->set_flashdata('mensaje', 'El usuario se creo correctamente.');
 			redirect('usuarios/login');			
 		}
   	} else {
-  	  $this->load->view('usuarios/crear');
+  	  $this->template->load('template','usuarios/crear', $data); 
     }
   }
   
@@ -75,6 +75,7 @@ class Usuarios extends CI_Controller {
 		$nombre = $this->input->post('nombre');
 		$apellidos = $this->input->post('apellidos');
 		$id = $this->input->post('id');
+		$data = compact('id','email','password', 'nombre', 'apellidos', 'confirmpassword');
 		if ($password == $confirmPassword){
 			if(!$this->Usuario->actualizar(array('id' => $id,
 			                                     'email' =>$email, 
@@ -82,22 +83,26 @@ class Usuarios extends CI_Controller {
 			                                     'nombre'=> $nombre, 
 			                                     'apellidos' => $apellidos))){
 			                                     	
-			    $data['mensaje'] = "No se a podido realizar la actualización, vuelva a intentarlo.";	
-			    $this->load->view('usuarios/editar', $data); 
+			    $data['mensaje'] = "No se a podido realizar la actualización, vuelva a intentarlo.";
+				$data['confirmpassword'] = '';
+				$data['password'] = '';
+			    $this->template->load('template','usuarios/editar', $data); 
 			} else {
 				$this->session->set_flashdata('mensaje', 'El usuario se modifico correctamente.');
 		 	    redirect('muros/index');	
 			}
 			
 		} else {
-			$data['mensaje'] = "La confirmación de la clave es erronea.";	
-			$this->load->view('usuarios/editar', $data); 
+			$data['mensaje'] = "La confirmación de la clave es erronea.";
+			$data['confirmpassword'] = '';
+			$data['password'] = '';
+			$this->template->load('template','usuarios/editar', $data); 
 		}
 	  } else {
 	  	$data = $this->Usuario->obtenerDatos($this->session->userdata('usuario'));
 		$data['confirmpassword'] = '';
 		$data['password'] = '';
-		$this->load->view('usuarios/editar', $data); 
+		$this->template->load('template','usuarios/editar', $data); 
 	  }
     }
 }
