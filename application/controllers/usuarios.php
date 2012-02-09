@@ -25,7 +25,10 @@ class Usuarios extends CI_Controller {
   	if ($this->input->post('login')) {
       $email = $this->input->post('email');
       $password = $this->input->post('password');
-      if ($this->Usuario->comprobarUsuario($email, $password)->num_rows() == 1) {
+      $res = $this->Usuario->comprobarUsuario($email, $password);
+      if ($res->num_rows() == 1) {
+        $datos = $res->result_array();
+        $this->session->set_userdata('id', $datos['id']);
         $this->session->set_userdata('usuario', $email);
         redirect('muros/index');
       } else {
@@ -71,8 +74,14 @@ class Usuarios extends CI_Controller {
 		$confirmPassword = $this->input->post('confirmpassword');
 		$nombre = $this->input->post('nombre');
 		$apellidos = $this->input->post('apellidos');
+		$id = $this->input->post('id');
 		if ($password == $confirmPassword){
-			if(!$this->Usuario->actualizar(array($email, $password, $nombre, $apellidos))){
+			if(!$this->Usuario->actualizar(array('id' => $id,
+			                                     'email' =>$email, 
+			                                     'password'=> $password, 
+			                                     'nombre'=> $nombre, 
+			                                     'apellidos' => $apellidos))){
+			                                     	
 			    $data['mensaje'] = "No se a podido realizar la actualización, vuelva a intentarlo.";	
 			    $this->load->view('usuarios/editar', $data); 
 			} else {
@@ -86,6 +95,7 @@ class Usuarios extends CI_Controller {
 		}
 	  } else {
 	  	$data = $this->Usuario->obtenerDatos($this->session->userdata('usuario'));
+		$data['confirmpassword'] = '';
 		$data['password'] = '';
 		$this->load->view('usuarios/editar', $data); 
 	  }

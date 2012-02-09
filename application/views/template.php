@@ -1,7 +1,7 @@
 <html>
   <head>
     <title></title>
-    <link rel="stylesheet" href="../estilos/estilo.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="estilos/estilo.css" type="text/css" media="all" />
   </head>
 <body>
 
