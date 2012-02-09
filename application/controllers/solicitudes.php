@@ -23,7 +23,7 @@ class Solicitudes extends CI_Controller {
     }else if (empty($data['solicitudes'])){
       $data['mensaje'] = 'No existen solicitudes pendientes';
     }
-		$this->load->view('solicitudes/index', $data);
+		$this->template->load('template', 'solicitudes/index', $data);
 	}
 
 	function aceptar() {
