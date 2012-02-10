@@ -18,9 +18,17 @@ class Usuarios extends CI_Controller {
   	
   function index() {
       $this->_comprobar();
-	  var_dump($this->session->userdata('id'));
-	  var_dump($this->session->userdata('nombre'));
-	  var_dump($this->session->userdata('apellidos'));
+	  if ($this->input->post('editar')) {
+	  		redirect('usuarios/editar');
+	
+	  } elseif ($this->input->post('borrar')) {
+		  	redirect('usuarios/borrar');
+	  } elseif ($this->input->post('muro')) {
+		  	redirect('muros/index');
+	  } else {
+	  		$datos= $this->Usuario->obtener($this->session->userdata('id'));
+	  		$this->template->load('template','usuarios/index', $datos);
+	  }
   }		
 
   function login() {
@@ -104,6 +112,8 @@ class Usuarios extends CI_Controller {
 			$data['password'] = '';
 			$this->template->load('template','usuarios/editar', $data); 
 		}
+	  } elseif ($this->input->post('cancelar')) {
+		  redirect('usuarios/index');
 	  } else {
 	  	$data = $this->Usuario->obtenerDatos($this->session->userdata('usuario'));
 		$data['confirmpassword'] = '';
