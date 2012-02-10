@@ -1,7 +1,6 @@
 <div>
   <p>
       <?= form_open('/usuarios/logout') ?>
-      Usuario: <?= $filas['nombre'] ?> <?= $filas['apellidos'] ?>       
       <?= form_submit('salir', 'Salir') ?>
       <?= form_close() ?> 
   </p>

@@ -53,6 +53,22 @@
 	border-color: #CCC;
 }
 
+a:hover {
+	color: #888;
+	font-weight: bold;
+	text-decoration:none;
+}
+
+a:link {
+	color: #888;
+	text-decoration:none;
+}
+
+a:visited {
+  color: #888;
+	text-decoration:none;
+}
+
 
 /* Bloques de estilos para las vistas */
 
@@ -72,4 +88,8 @@ body {
 	border-style: solid;
 	border-width: 4px;
 	background: #CCC;
+}
+
+#boton_salir {
+	
 }

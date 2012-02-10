@@ -16,7 +16,7 @@
 				<tr>
 					<td id="usuario">
 						<a href='muros/index'>Muro de <?= $nombre_completo ?></a>
-					</td>					
+					</td>
 				</tr>				
 			</tbody>
 		</table>
