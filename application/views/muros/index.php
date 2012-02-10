@@ -44,7 +44,7 @@
 <div class="contenedor">
               <span class="propietario">
                 <a href="index.php" value= "Juanito">
-                  Pepe Pepito</a> escribió:
+                  <?= $filas['nombre'] ?> <?= $filas['apellidos'] ?> </a> escribió:
               </span>
               <div class="borrar">
                 <form action="index.php" method="post">

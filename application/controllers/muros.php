@@ -41,5 +41,3 @@ class Muros extends CI_Controller {
 }
 
 
-
->>>>>>> 81e0e2ad171a94c44ea4064c9cf3151eed4598ab
