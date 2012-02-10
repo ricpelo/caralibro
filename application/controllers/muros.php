@@ -24,7 +24,7 @@ class Muros extends CI_Controller {
      $data['usuario'] = $this->session->userdata('usuario');
      $data['fila'] = $this->Usuario->obtenerDatos($data['usuario']);
     
-     $this->load->view('muros/index', $data);
+     $this->template->load('template','muros/index', $data);
      
   }
   
