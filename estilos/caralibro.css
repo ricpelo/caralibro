@@ -34,6 +34,16 @@ body {
 	color: blue;
 }
 
+#menubotones {
+  border-style: solid;
+  border-width: 4px;
+  text-align: left;
+  width: 874px; 
+  margin: 0 auto;
+  background: white;
+  
+}
+
 #footer {
 	text-align: center;
 	border-style: solid;
@@ -42,4 +52,10 @@ body {
 	margin: 0 auto;
 	border-width: 4px;
 	font-weight: bold;
-}			
+}
+
+#comentario {
+	border-style: solid;
+	border-width: 4px;
+	background: #CCC;
+}

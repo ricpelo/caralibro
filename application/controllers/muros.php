@@ -21,16 +21,23 @@ class Muros extends CI_Controller {
     } else {
       $data['mensaje'] = '';
     }
+     $data['usuario'] = $this->session->userdata('usuario');
+     $data['fila'] = $this->Usuario->obtenerDatos($data['usuario']);
+     $this->template->set('usuario', $data['usuario']);
      $data['usuario'] = $this->session->userdata('usuario');     
      $data['filas'] = $this->Usuario->obtenerDatos($data['usuario']);
-     
-     
-
+     $nombre = $this->session->userdata('nombre');
+     $apellidos = $this->session->userdata('apellidos');
+     $data['nombre_completo'] = $nombre . " " . $apellidos;
+     $this->template->set('nombre_completo', $data['nombre_completo']);
      $this->template->load('template','muros/index', $data);
      
   }
   
 
+  function insertar_comentario() {
+
+  }
   
   function obtener_datos_envio() {
 
@@ -39,6 +46,5 @@ class Muros extends CI_Controller {
 	}
 
 }
-
 
 

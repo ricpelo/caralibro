@@ -15,11 +15,21 @@ class Usuarios extends CI_Controller {
       redirect('usuarios/login');
     }
   }
-  	
+  
   function index() {
       $this->_comprobar();
-	  var_dump($this->session->userdata('id'));
-  }	
+	  if ($this->input->post('editar')) {
+	  		redirect('usuarios/editar');
+	
+	  } elseif ($this->input->post('borrar')) {
+		  	redirect('usuarios/borrar');
+	  } elseif ($this->input->post('muro')) {
+		  	redirect('muros/index');
+	  } else {
+	  		$datos= $this->Usuario->obtener($this->session->userdata('id'));
+	  		$this->template->load('template','usuarios/index', $datos);
+	  }
+  }		
 
   function login() {
   	
@@ -31,6 +41,8 @@ class Usuarios extends CI_Controller {
         $datos = $res->row_array();
         $this->session->set_userdata('id', $datos['id']);
         $this->session->set_userdata('usuario', $email);
+		$this->session->set_userdata('nombre', $datos['nombre']);
+		$this->session->set_userdata('apellidos', $datos['apellidos']);
         redirect('muros/index');
       } else {
         $mensaje = 'Error: usuario o contraseña incorrectos';
@@ -63,8 +75,8 @@ class Usuarios extends CI_Controller {
 			redirect('usuarios/login');			
 		}
   	} else {
-  	  $data['mensaje'] = 'Introduce los datos para el registro.';
-  	  $this->template->load('template','usuarios/crear',$data); 
+  	    $data['mensaje'] = 'Introduce los datos para el registro.';
+  	    $this->template->load('template','usuarios/crear',$data); 
     }
   }
   
@@ -100,6 +112,8 @@ class Usuarios extends CI_Controller {
 			$data['password'] = '';
 			$this->template->load('template','usuarios/editar', $data); 
 		}
+	  } elseif ($this->input->post('cancelar')) {
+		  redirect('usuarios/index');
 	  } else {
 	  	$data = $this->Usuario->obtenerDatos($this->session->userdata('usuario'));
 		$data['confirmpassword'] = '';
@@ -109,18 +123,23 @@ class Usuarios extends CI_Controller {
     }
     
     function borrar() {
-      $id = $this->input->post('id');
-      $this->template->load('Template', 'usuarios/borrar', 'mensaje');
+      
       if ($this->input->post('si')) {
-        $res = $this->Usuario->borrar($id);
-	      if ($res && $this->db->affected_rows() == 1) {
-          $this->session->set_flashdata('mensaje', 'Usuario borrado con éxito');
-	      } else {
-          $this->session->set_flashdata('mensaje', 'No se ha podido borrar el usuario');
-	      }
-        redirect('usuarios/login');
+      		$id = $this->session->userdata('id');
+            $res = $this->Usuario->borrar($id);
+	        if ($res && $this->db->affected_rows() == 1) {
+                $this->session->set_flashdata('mensaje', 'Usuario borrado con éxito');
+				redirect('usuarios/login');
+	        } else {
+              $this->session->set_flashdata('mensaje', 'No se ha podido borrar el usuario');
+			  redirect('muros/index');
+	        }
+      } elseif ($this->input->post('no')) {
+          $this->session->set_flashdata('mensaje', 'La operación fue cancelada.');
+			  redirect('muros/index');
       } else {
-        redirect('muros/index');
+        #redirect('usuarios/borrar');
+		$this->template->load('template', 'usuarios/borrar');
       }
     }
 }
