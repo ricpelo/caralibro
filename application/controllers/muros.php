@@ -21,9 +21,12 @@ class Muros extends CI_Controller {
     } else {
       $data['mensaje'] = '';
     }
-     $data['usuario'] = $this->session->userdata('usuario');
-     $data['filas'] = $this->Usuario->obtenerDatos('usuario');     
-     $this->load->view('muros/index', $data);
+     $data['usuario'] = $this->session->userdata('usuario');     
+     $data['filas'] = $this->Usuario->obtenerDatos($data['usuario']);
+     
+     
+
+     $this->template->load('template','muros/index', $data);
      
   }
   
