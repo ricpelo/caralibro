@@ -1,10 +1,4 @@
-body {
-	background: #e1e5e9;
-	font-family: "Georgia", Tahoma, Sans-Serif;
-	font-size: 12px;
-	line-height: 18px;
-	color: #888;
-}
+/* Bloques de estilo para el template */
 
 #header {
 	width: 874px;
@@ -16,6 +10,16 @@ body {
 	border-style: solid;
 	height: 80px;
 	border-width: 4px;
+}
+
+#footer {
+	text-align: center;
+	border-style: solid;
+	width: 874px;
+	background: #CCC;
+	margin: 0 auto;
+	border-width: 4px;
+	font-weight: bold;
 }
 
 #contents {
@@ -30,28 +34,38 @@ body {
 	border-width: 4px;
 }
 
-.texto {
-	color: blue;
-}
-
 #menubotones {
   border-style: solid;
   border-width: 4px;
   text-align: left;
   width: 874px; 
   margin: 0 auto;
-  background: white;
-  
+  background: #888; 
 }
 
-#footer {
-	text-align: center;
-	border-style: solid;
-	width: 874px;
+#tabla_menu_botones {
 	background: #CCC;
-	margin: 0 auto;
-	border-width: 4px;
-	font-weight: bold;
+	border-color: #CCC;
+}
+
+#usuario {
+	background: #CCC;
+	border-color: #CCC;
+}
+
+
+/* Bloques de estilos para las vistas */
+
+body {
+	background: #e1e5e9;
+	font-family: "Georgia", Tahoma, Sans-Serif;
+	font-size: 12px;
+	line-height: 18px;
+	color: #888;
+}
+
+.texto {
+	color: blue;
 }
 
 #comentario {

@@ -1,7 +1,7 @@
 <div>
 <?= form_open('usuarios/index') ?>
   <p>
-    <?= form_label('Usuario:')  ?> 
+    <?= form_label('Usuario/email:')  ?> 
     <?= $email ?> <br/>
     <?= form_label('Nombre:') ?>
     <?= $nombre ?><br>
