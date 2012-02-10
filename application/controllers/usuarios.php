@@ -107,4 +107,20 @@ class Usuarios extends CI_Controller {
 		$this->template->load('template','usuarios/editar', $data); 
 	  }
     }
+    
+    function borrar() {
+      $id = $this->input->post('id');
+      $this->template->load('Template', 'usuarios/borrar', 'mensaje');
+      if ($this->input->post('si')) {
+        $res = $this->Usuario->borrar($id);
+	      if ($res && $this->db->affected_rows() == 1) {
+          $this->session->set_flashdata('mensaje', 'Usuario borrado con éxito');
+	      } else {
+          $this->session->set_flashdata('mensaje', 'No se ha podido borrar el usuario');
+	      }
+        redirect('usuarios/login');
+      } else {
+        redirect('muros/index');
+      }
+    }
 }
