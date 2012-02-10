@@ -4,12 +4,11 @@ class Usuarios extends CI_Controller {
   
   function __construct() {		
 		CI_Controller::__construct();
-		
 		$this->load->model('Usuario');
   }
   
   function _comprobar() {
-   
+    
     if (!$this->session->userdata('usuario')) {
       $this->session->set_flashdata('mensaje', 'Se requiere autorización');
       redirect('usuarios/login');
@@ -20,7 +19,6 @@ class Usuarios extends CI_Controller {
       $this->_comprobar();
 	  if ($this->input->post('editar')) {
 	  		redirect('usuarios/editar');
-	
 	  } elseif ($this->input->post('borrar')) {
 		  	redirect('usuarios/borrar');
 	  } elseif ($this->input->post('muro')) {
@@ -48,6 +46,8 @@ class Usuarios extends CI_Controller {
         $mensaje = 'Error: usuario o contraseña incorrectos';
       }
 
+    } elseif ($this->input->post('crear')) {
+        redirect('usuarios/crear');
     } else {
       $mensaje = $this->session->flashdata('mensaje');
     }
@@ -63,17 +63,21 @@ class Usuarios extends CI_Controller {
   function crear() {
   	if ($this->input->post('enviar')) {
   		$email = $this->input->post('email');
-		$password = $this->input->post('password');
-		$nombre = $this->input->post('nombre');
-		$apellidos = $this->input->post('apellidos');
+		  $password = $this->input->post('password');
+		  $nombre = $this->input->post('nombre');
+		  $apellidos = $this->input->post('apellidos');
 		
-		if(!$this->Usuario->crear($email, $password, $nombre, $apellidos)) {
-			$data['mensaje'] = 'Se ha producido un error..';
-			$this->template->load('template','usuarios/crear', $data); 
-		} else {
-			$this->session->set_flashdata('mensaje', 'El usuario se creo correctamente.');
-			redirect('usuarios/login');			
-		}
+		  if(!$this->Usuario->crear($email, $password, $nombre, $apellidos)) {
+			  $data['mensaje'] = 'Se ha producido un error..';
+			  $this->template->load('template','usuarios/crear', $data); 
+		  } else {
+			  $this->session->set_flashdata('mensaje', 'El usuario se creo correctamente.');
+			  redirect('usuarios/login');			
+		  }
+		  
+  	} elseif($this->input->post('cancelar')) {
+  	  redirect('usuarios/login');
+  	  
   	} else {
   	    $data['mensaje'] = 'Introduce los datos para el registro.';
   	    $this->template->load('template','usuarios/crear',$data); 
@@ -123,7 +127,6 @@ class Usuarios extends CI_Controller {
     }
     
     function borrar() {
-      
       if ($this->input->post('si')) {
       		$id = $this->session->userdata('id');
             $res = $this->Usuario->borrar($id);
@@ -138,7 +141,6 @@ class Usuarios extends CI_Controller {
           $this->session->set_flashdata('mensaje', 'La operación fue cancelada.');
 			  redirect('muros/index');
       } else {
-        #redirect('usuarios/borrar');
 		$this->template->load('template', 'usuarios/borrar');
       }
     }

@@ -6,5 +6,6 @@
     <?= form_input('email') ?><br/>
     <?= form_label('Constraseña:', 'password') ?>
     <?= form_password('password') ?><br/>
- <p><?= form_submit('login', 'Login') ?></p>
+ <p><?= form_submit('login', 'Login') ?>
+    <?= form_submit('crear', 'Crear usuario')?></p>
 <?= form_close() ?>
