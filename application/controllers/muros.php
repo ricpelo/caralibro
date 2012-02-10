@@ -24,7 +24,7 @@ class Muros extends CI_Controller {
      $data['usuario'] = $this->session->userdata('usuario');
      $data['fila'] = $this->Usuario->obtenerDatos($data['usuario']);
     
-     $this->load->view('muros/index', $data);
+     $this->template->load('template','muros/index', $data);
      
   }
   
@@ -38,9 +38,14 @@ class Muros extends CI_Controller {
 
   }
 
+  
+  function obtener_datos_envio() {
+    
+    $data['filas'] = $this->Muro->obtener_datos($id);
+    
 
-
-
+    $this->load->view('muros/index', $data);
+	}
 
 }
 

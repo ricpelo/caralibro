@@ -16,6 +16,7 @@ class Contacto extends CI_Model {
                               where $id in (id_amigo1, id_amigo2) and
                     c.id_amigo1 = u1.id and c.id_amigo2 = u2.id")->result_array();
   }
+
   // Obtiene el id del usuario que ha iniciado sesion
   function obtener_id() {
     $email = $this->session->userdata('usuario');

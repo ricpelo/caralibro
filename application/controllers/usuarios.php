@@ -2,6 +2,11 @@
 
 class Usuarios extends CI_Controller {
   
+  function __construct() {		
+		CI_Controller::__construct();
+		
+		$this->load->model('Usuario');
+  }
   
   function _comprobar() {
    
@@ -13,14 +18,18 @@ class Usuarios extends CI_Controller {
   	
   function index() {
       $this->_comprobar();
+	  var_dump($this->session->userdata('id'));
   }	
 
   function login() {
-  	$this->load->model('Usuario');
+  	
   	if ($this->input->post('login')) {
       $email = $this->input->post('email');
       $password = $this->input->post('password');
-      if ($this->Usuario->comprobarUsuario($email, $password)->num_rows() == 1) {
+      $res = $this->Usuario->comprobarUsuario($email, $password);
+      if ($res->num_rows() == 1) {
+        $datos = $res->row_array();
+        $this->session->set_userdata('id', $datos['id']);
         $this->session->set_userdata('usuario', $email);
         redirect('muros/index');
       } else {
@@ -40,7 +49,6 @@ class Usuarios extends CI_Controller {
   }
   
   function crear() {
-  	$this->load->model('Usuario');
   	if ($this->input->post('enviar')) {
   		$email = $this->input->post('email');
 		$password = $this->input->post('password');
@@ -49,53 +57,54 @@ class Usuarios extends CI_Controller {
 		
 		if(!$this->Usuario->crear($email, $password, $nombre, $apellidos)) {
 			$data['mensaje'] = 'Se ha producido un error..';
-			$this->load->view('usuarios/crear', $data);
+			$this->template->load('template','usuarios/crear', $data); 
 		} else {
 			$this->session->set_flashdata('mensaje', 'El usuario se creo correctamente.');
 			redirect('usuarios/login');			
 		}
   	} else {
-  	  $this->load->view('usuarios/crear');
+  	  $data['mensaje'] = 'Introduce los datos para el registro.';
+  	  $this->template->load('template','usuarios/crear',$data); 
     }
   }
   
-  function editar()
-	{
-	  if ($this->input->post('cancelar')) {      
-	  # Si has pulsado el botón Cancelar
-	    redirect('usuarios/index');
-	  } else if ($this->input->post('editar_index')) { 
-	  # Primera vez que entramos en el método
-	      $id   = $this->input->post('id');
-	      $data = $this->Usuario->obtener($id);
-	      $this->load->view('usuarios/editar', $data);
-	  } else if ($this->input->post('editar')) {
-	      $id   = $this->input->post('id');
-	      $data = $this->_datos_formulario();  
-	      #$this->_reglas_editar($id);    
-	      
-	    if ($this->form_validation->run() == FALSE) {
-	       # NO se ha podido hacer la edición por alguna razón
-	       $this->load->view('usuarios/editar', $data);
-	    } else {
-	      $res = $this->Usuario->actualizar($data);
-	      if ($res && $this->db->affected_rows() == 1) {
-	       # OK
-         $this->session->set_flashdata('mensaje', 'Usuario editado con éxito');
-   	     redirect('usuarios/index');
-	      } else {
-	       # NO se ha podido hacer la edición por alguna razón
-	       $this->load->view('usuarios/editar', $data);
-	      }
-	    }
-	  } 
-	}
-	
-	function _datos_formulario() {
-    return array('email'     => $this->input->post('email'),
-                 'password'  => $this->input->post('password'),
-                 'nombre'    => $this->input->post('nombre'),
-                 'apellidos' => $this->input->post('apellidos'),
-                 'id'        => $this->input->post('id'));
-  }
+  function editar() {
+	 $this->_comprobar();
+	  if ($this->input->post('editar')) {
+	  	$password = $this->input->post('password');
+		$email = $this->input->post('email');
+		$confirmPassword = $this->input->post('confirmpassword');
+		$nombre = $this->input->post('nombre');
+		$apellidos = $this->input->post('apellidos');
+		$id = $this->input->post('id');
+		$data = compact('id','email','password', 'nombre', 'apellidos', 'confirmpassword');
+		if ($password == $confirmPassword){
+			if(!$this->Usuario->actualizar(array('id' => $id,
+			                                     'email' =>$email, 
+			                                     'password'=> $password, 
+			                                     'nombre'=> $nombre, 
+			                                     'apellidos' => $apellidos))){
+			                                     	
+			    $data['mensaje'] = "No se a podido realizar la actualización, vuelva a intentarlo.";
+				$data['confirmpassword'] = '';
+				$data['password'] = '';
+			    $this->template->load('template','usuarios/editar', $data); 
+			} else {
+				$this->session->set_flashdata('mensaje', 'El usuario se modifico correctamente.');
+		 	    redirect('muros/index');	
+			}
+			
+		} else {
+			$data['mensaje'] = "La confirmación de la clave es erronea.";
+			$data['confirmpassword'] = '';
+			$data['password'] = '';
+			$this->template->load('template','usuarios/editar', $data); 
+		}
+	  } else {
+	  	$data = $this->Usuario->obtenerDatos($this->session->userdata('usuario'));
+		$data['confirmpassword'] = '';
+		$data['password'] = '';
+		$this->template->load('template','usuarios/editar', $data); 
+	  }
+    }
 }

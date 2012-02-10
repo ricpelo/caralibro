@@ -11,9 +11,9 @@ class Usuario extends CI_Model {
   	if($email != '' && $password != '' && $nombre != '' && $apellidos != '') {
 	  return $this->db->query("insert into usuarios (email, password, nombre, apellidos) 
 		                                   values (?,md5(?),?,?)",array($email, $password, $nombre, $apellidos));
-	} else {
-		return FALSE;
-	}
+	  } else {
+		  return FALSE;
+	  }
   }
   
   function obtener($id) {
@@ -23,9 +23,9 @@ class Usuario extends CI_Model {
   function actualizar($datos) {
     return $this->db->query("update usuarios
 	                              set email     = ?,
-	                                  password  = ?,
+	                                  password  = md5(?),
 	                                  nombre    = ?,
-	                                  apellidos = ?,
+	                                  apellidos = ?
                               where id = ?", array($datos['email'],
                                                    $datos['password'],
                                                    $datos['nombre'],
