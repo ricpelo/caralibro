@@ -66,7 +66,11 @@ class Usuarios extends CI_Controller {
 		  $password = $this->input->post('password');
 		  $nombre = $this->input->post('nombre');
 		  $apellidos = $this->input->post('apellidos');
-		
+		  $this->_reglas_crear();
+		  if ($this->form_validation->run()==FALSE){
+		  	$data['mensaje'] = 'Ese email ya ha sido registrado..';
+			$this->template->load('template','usuarios/crear', $data); 
+		  }
 		  if(!$this->Usuario->crear($email, $password, $nombre, $apellidos)) {
 			  $data['mensaje'] = 'Se ha producido un error..';
 			  $this->template->load('template','usuarios/crear', $data); 
@@ -144,4 +148,8 @@ class Usuarios extends CI_Controller {
 		$this->template->load('template', 'usuarios/borrar');
       }
     }
+	
+	function _reglas_crear() {
+		$this->form_validation->set_rules('email', 'usuario','required|is_unique[usuarios.email]');
+	}
 }

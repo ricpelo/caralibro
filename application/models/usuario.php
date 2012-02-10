@@ -44,6 +44,6 @@ class Usuario extends CI_Model {
   function borrar($id) {
     return $this->db->query("delete from usuarios where id = ?", array($id));
   }
-
+  
 
 }
