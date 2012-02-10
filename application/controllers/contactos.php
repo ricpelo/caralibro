@@ -50,5 +50,13 @@ class Contactos extends CI_Controller {
     $data['filas'] = $this->Contacto->obtener_todos($id);
     $this->template->load('template', 'contactos/buscar', $data);
   }
+
+  function agregar_amigo () {
+    $this->load->model('Solicitud');
+    $id = $this->Contacto->obtener_id();
+    $id_solicitante = (int) $id['id'];
+    $id_solicitado = $this->input->post('id_solicitado');
+    $this->Solicitud->crear_solicitud($id_solicitado, $id_solicitante);
+  }
 // modelo solicitud agregar solicitud
 }
