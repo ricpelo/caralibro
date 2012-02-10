@@ -11,12 +11,15 @@
 
 	<?php if (isset($usuario)): ?>
   <div id="menubotones">
-		<table border="1">
+		<table id="tabla_menu_botones" border=1>
 			<tbody>				
 				<tr>
 					<td id="usuario">
-						<a href='muros/index'><?= $nombre_completo ?></a>
-					</td>					
+						<a href='muros/index'>Muro de <?= $nombre_completo ?></a>
+					</td>
+          <td id="usuario">
+            <a href="usuarios/logout">Cerrar sesion</a>
+          </td>					
 				</tr>				
 			</tbody>
 		</table>
