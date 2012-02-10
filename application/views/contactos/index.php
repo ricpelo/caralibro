@@ -11,10 +11,10 @@
   <p><?= $mensaje ?></p>
 </div>
 
-<table style="margin: auto" border="1">
+<table style="margin: auto">
   <thead>
     <th>Amigos</th>
-    <th> Operaciones</th>
+    <th></th>
   </thead>
   <tbody>
     <?php foreach ($filas as $fila): ?>
@@ -29,3 +29,5 @@
     <?php endforeach; ?>
   </tbody>
 </table>
+
+<p><?= anchor('/contactos/buscar', 'Buscar nuevos amigos') ?></p>
