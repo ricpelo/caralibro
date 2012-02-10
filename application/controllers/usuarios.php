@@ -63,8 +63,8 @@ class Usuarios extends CI_Controller {
 			redirect('usuarios/login');			
 		}
   	} else {
-  	  $data['mensaje'] = 'Introduce los datos para el registro.';
-  	  $this->template->load('template','usuarios/crear',$data); 
+  	    $data['mensaje'] = 'Introduce los datos para el registro.';
+  	    $this->template->load('template','usuarios/crear',$data); 
     }
   }
   
