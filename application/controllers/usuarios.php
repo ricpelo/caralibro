@@ -4,12 +4,11 @@ class Usuarios extends CI_Controller {
   
   function __construct() {		
 		CI_Controller::__construct();
-		
 		$this->load->model('Usuario');
   }
   
   function _comprobar() {
-   
+    
     if (!$this->session->userdata('usuario')) {
       $this->session->set_flashdata('mensaje', 'Se requiere autorización');
       redirect('usuarios/login');
@@ -20,7 +19,6 @@ class Usuarios extends CI_Controller {
       $this->_comprobar();
 	  if ($this->input->post('editar')) {
 	  		redirect('usuarios/editar');
-	
 	  } elseif ($this->input->post('borrar')) {
 		  	redirect('usuarios/borrar');
 	  } elseif ($this->input->post('muro')) {
