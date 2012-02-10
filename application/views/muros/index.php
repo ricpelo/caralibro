@@ -7,12 +7,15 @@
 
   <div>
   <p>
-     <?= form_open('/usuarios/logout') ?>
-      Usuario: <?= $usuario ?>
+      <?= form_open('/usuarios/logout') ?>
+      Usuario: <?= $filas['nombre'] ?> <?= $filas['apellidos'] ?>       
       <?= form_submit('salir', 'Salir') ?>
-    <?= form_close() ?>
+      <?= form_close() ?>
+ 
   </p>
 </div>
+
+
 
 <div>
   <p><?= $mensaje ?></p>
@@ -26,7 +29,6 @@
 
 <body>
       
-
 
     <div class="post">
             <form action="index.php" method="post">
@@ -42,7 +44,7 @@
 <div class="contenedor">
               <span class="propietario">
                 <a href="index.php" value= "Juanito">
-                  Pepe</a> escribió:
+                  Pepe Pepito</a> escribió:
               </span>
               <div class="borrar">
                 <form action="index.php" method="post">

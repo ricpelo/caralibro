@@ -19,6 +19,9 @@ return $this->db->query("select texto, id_propietario as id_prop, e.id as id_env
                                   where id_receptor = $id");
 
 }
+
+
+  
 }
 
 
