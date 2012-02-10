@@ -11,11 +11,13 @@
 
 	<?php if (isset($usuario)): ?>
   <div id="menubotones">
-		<table border="0">
-			<tbody>
+		<table border="1">
+			<tbody>				
 				<tr>
-					<td id="usuario"><?= $usuario ?></td>
-				</tr>
+					<td id="usuario">
+						<a href='muros/index'><?= $nombre_completo ?></a>
+					</td>					
+				</tr>				
 			</tbody>
 		</table>
   </div>
