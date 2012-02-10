@@ -40,7 +40,7 @@ class Usuarios extends CI_Controller {
       $mensaje = $this->session->flashdata('mensaje');
     }
 
-    $this->load->view('usuarios/login', array('mensaje' => $mensaje));
+    $this->template->load('template','usuarios/login', array('mensaje' => $mensaje));
   }
   
   function logout() {
