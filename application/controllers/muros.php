@@ -23,7 +23,7 @@ class Muros extends CI_Controller {
     }
      $data['usuario'] = $this->session->userdata('usuario');
      $data['fila'] = $this->Usuario->obtenerDatos($data['usuario']);
-    
+     $this->template->set('usuario', $data['usuario']);
      $this->template->load('template','muros/index', $data);
      
   }
@@ -31,10 +31,6 @@ class Muros extends CI_Controller {
 
 
   function insertar_comentario() {
-
-
-
-
 
   }
 

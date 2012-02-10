@@ -10,6 +10,15 @@
 			<p>Caralibro</p>
 
 		</div>
+    <div id="menubotones">
+    <table border="0">
+    <tbody>
+    <tr>
+    <td id="usuario"><?= $usuario ?></td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
 
     <div id="contents"><?= $contents ?></div>
 
