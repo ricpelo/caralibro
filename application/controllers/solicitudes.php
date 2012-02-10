@@ -5,17 +5,16 @@ class Solicitudes extends CI_Controller {
 	function __construct() {		
 		CI_Controller::__construct();
 
-#		if (!$this->session->userdata('usuario') {
-#			$this->session->set_flashdata('mensaje', 'Se requiere login');			
-#			redirect("usuarios/login");
-#		} 
+		if (!$this->session->userdata('usuario') {
+			$this->session->set_flashdata('mensaje', 'Se requiere login');			
+			redirect("usuarios/login");
+		} 
 		$this->load->model('Solicitud');
-#   $this->load->model('Contacto');
+    $this->load->model('Contacto');
 	}
  
 	function index() {
-#		$data['usuario'] = $this->session->userdata('usuario');
-		$data['usuario'] = 1;
+ 		$data['usuario'] = $this->session->userdata('usuario');
 		$data['solicitudes'] = $this->Solicitud->obtener_solicitudes($data['usuario']);
     $mensaje = $this->session->flashdata('mensaje');
     if ($this->utilidades->comprobar_vacio($mensaje)){    
@@ -41,7 +40,7 @@ class Solicitudes extends CI_Controller {
 			$id_solicitante = $this->input->post('id_solicitante');
 			$res = $this->Solicitud->borrar_solicitud($id_solicitado, $id_solicitante);
 			if ($opcion == 'a') {
-#       $this->Contacto->agregar_contacto($id_solitado, $id_solicitante);
+#       $this->Contacto->agregar_contacto($id_solicitado, $id_solicitante);
 				$this->session->set_flashdata('mensaje','El usuario ha sido agregado a amigos');
 			}else {
          $this->session->set_flashdata('mensaje','El usuario ha sido rechazado');
