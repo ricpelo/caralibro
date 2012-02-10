@@ -19,10 +19,10 @@
   <tbody>
     <?php foreach ($filas as $fila): ?>
       <tr>
-             <?= form_hidden('id_solicitado', $fila['id']) ?>
+             
         <td> <?= $fila['nombre'] ?> </td>
-	           <?= form_open ('solicitudes/index') ?> </td>
- 	      <td>
+	           <?= form_open ('contactos/agregar_amigo') ?> </td>
+ 	      <td> <?= form_hidden('id_solicitado', $fila['id']) ?>
 	           <?= form_submit ('agregar', 'Agregar Amigo') ?> </td>
 	           <?= form_close() ?>
       </tr>
