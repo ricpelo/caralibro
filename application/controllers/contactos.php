@@ -30,10 +30,28 @@ class Contactos extends CI_Controller {
   function borrar_amigo() {
     $id = $this->Contacto->obtener_id();
     $id = (int) $id['id'];
+    $id_amigo = $this->input->post('id_amigo');
     $min = min($id, $id_amigo);
     $max = max($id, $id_amigo);
     $this->Contacto->borrar($min, $max);
+    if ($this->db->affected_rows()) {
+      $this->session->set_flashdata('mensaje', 'Se ha borrado un amigo con exito');
+    } else {
+      $this->session->set_flashdata('mensaje', 'Se ha producido un error al borrar');
+    }
+    redirect('contactos/index');
   }
+
+  function buscar() {
+    $id = $this->Contacto->obtener_id();
+    $id = (int) $id['id'];
+    $data['usuario'] = $this->session->userdata('usuario');
+    $data['mensaje'] = '';
+    $data['filas'] = $this->Contacto->obtener_todos($id);
+    $this->load->view('contactos/buscar', $data);
+  }
+// modelo solicitud agregar solicitud
 }
 
-
+// $this->template->load('template', 'controlador/accion', $data
+// $this->load->view('controlador/accion', $data)
