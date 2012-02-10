@@ -3,13 +3,9 @@
 class Solicitudes extends CI_Controller {
 
 	function __construct() {		
-		CI_Controller::__construct();
+		CI_Controller::__
 
-<<<<<<< HEAD
-		if (!$this->session->userdata('usuario')){
-=======
 		if (!$this->session->userdata('id')) {
->>>>>>> 614224ca5390c67964d23bd7bb6ffc8094262e2b
 			$this->session->set_flashdata('mensaje', 'Se requiere login');			
 			redirect("usuarios/login");
 		} 
