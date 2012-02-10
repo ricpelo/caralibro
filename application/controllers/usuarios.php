@@ -110,7 +110,7 @@ class Usuarios extends CI_Controller {
     
     function borrar() {
       $id = $this->input->post('id');
-      $this->template->load('Template', 'usuarios/borrar', 'mensaje');
+      $this->template->load('template', 'usuarios/borrar', 'mensaje');
       if ($this->input->post('si')) {
         $res = $this->Usuario->borrar($id);
 	      if ($res && $this->db->affected_rows() == 1) {
