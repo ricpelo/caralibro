@@ -3,7 +3,7 @@
 class Solicitudes extends CI_Controller {
 
 	function __construct() {		
-		CI_Controller::__
+		CI_Controller::__construct();
 
 		if (!$this->session->userdata('id')) {
 			$this->session->set_flashdata('mensaje', 'Se requiere login');			
@@ -15,6 +15,9 @@ class Solicitudes extends CI_Controller {
  
 	function index() {
  		$data['usuario'] = $this->session->userdata('id');
+		$nombre = $this->session->userdata('nombre');
+		$apellidos = $this->session->userdata('apellidos');
+		$data['nombre_completo'] = $nombre . " " . $apellidos;
 		$data['solicitudes'] = $this->Solicitud->obtener_solicitudes($data['usuario']);
     $mensaje = $this->session->flashdata('mensaje');
     if ($this->utilidades->comprobar_vacio($mensaje)){    
