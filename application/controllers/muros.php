@@ -21,29 +21,20 @@ class Muros extends CI_Controller {
     } else {
       $data['mensaje'] = '';
     }
-     $data['usuario'] = $this->session->userdata('usuario');
-     $data['fila'] = $this->Usuario->obtenerDatos($data['usuario']);
-    
+     $data['usuario'] = $this->session->userdata('usuario');     
+     $data['filas'] = $this->Usuario->obtenerDatos($data['usuario']);
+     
+     
+
      $this->template->load('template','muros/index', $data);
      
   }
   
 
-
-  function insertar_comentario() {
-
-
-
-
-
-  }
-
   
   function obtener_datos_envio() {
-    
-    $data['filas'] = $this->Muro->obtener_datos($id);
-    
 
+    $data['filas'] = $this->Muro->obtener_datos($id);
     $this->load->view('muros/index', $data);
 	}
 
