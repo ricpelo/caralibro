@@ -30,21 +30,28 @@ class Contactos extends CI_Controller {
   function borrar_amigo() {
     $id = $this->Contacto->obtener_id();
     $id = (int) $id['id'];
+    $id_amigo = $this->input->post('id_amigo');
     $min = min($id, $id_amigo);
     $max = max($id, $id_amigo);
     $this->Contacto->borrar($min, $max);
+    if ($this->db->affected_rows()) {
+      $this->session->set_flashdata('mensaje', 'Se ha borrado un amigo con exito');
+    } else {
+      $this->session->set_flashdata('mensaje', 'Se ha producido un error al borrar');
+    }
+    redirect('contactos/index');
   }
 
-  function borrar_amigo() {
-	  $id = $this->input->post('id');
-	  $res = $this->Contacto->borrar_amigo($id);
-	  if ($res && $this->db->affected_rows() == 1) {
-      $this->session->set_flashdata('mensaje', 'Eliminado un amigo de la lista con éxito');
-	  } else {
-      $this->session->set_flashdata('mensaje', 'No se ha podido borrar al amigo');
-	  }
-    redirect('contactos/index');
-	}
+  function buscar() {
+    $id = $this->Contacto->obtener_id();
+    $id = (int) $id['id'];
+    $data['usuario'] = $this->session->userdata('usuario');
+    $data['mensaje'] = '';
+    $data['filas'] = $this->Contacto->obtener_todos($id);
+    $this->load->view('contactos/buscar', $data);
+  }
+// modelo solicitud agregar solicitud
 }
 
-
+// $this->template->load('template', 'controlador/accion', $data
+// $this->load->view('controlador/accion', $data)
