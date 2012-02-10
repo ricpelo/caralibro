@@ -16,7 +16,10 @@
 				<tr>
 					<td id="usuario">
 						<a href='muros/index'>Muro de <?= $nombre_completo ?></a>
-					</td>					
+					</td>
+          <td id="usuario">
+            <a href="usuarios/logout">Cerrar sesion</a>
+          </td>					
 				</tr>				
 			</tbody>
 		</table>
