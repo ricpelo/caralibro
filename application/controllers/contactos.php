@@ -23,7 +23,7 @@ class Contactos extends CI_Controller {
     $id = (int) $id['id'];
 //   $data['id'] = $id;
     $data['filas'] = $this->Contacto->obtener_mis_amigos($id);
-    $this->load->view('contactos/index', $data);
+    $this->template->load('template', 'contactos/index', $data);
   }
 
   // borra el amigo seleccionado
@@ -48,10 +48,15 @@ class Contactos extends CI_Controller {
     $data['usuario'] = $this->session->userdata('usuario');
     $data['mensaje'] = '';
     $data['filas'] = $this->Contacto->obtener_todos($id);
-    $this->load->view('contactos/buscar', $data);
+    $this->template->load('template', 'contactos/buscar', $data);
+  }
+
+  function agregar_amigo () {
+    $this->load->model('Solicitud');
+    $id = $this->Contacto->obtener_id();
+    $id_solicitante = (int) $id['id'];
+    $id_solicitado = $this->input->post('id_solicitado');
+    $this->Solicitud->crear_solicitud($id_solicitado, $id_solicitante);
   }
 // modelo solicitud agregar solicitud
 }
-
-// $this->template->load('template', 'controlador/accion', $data
-// $this->load->view('controlador/accion', $data)
