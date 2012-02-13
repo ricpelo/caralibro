@@ -14,9 +14,12 @@
 		<table id="tabla_menu_botones" border=1>
 			<tbody>				
 				<tr>
-					<td id="usuario">
+					<td class="boton">
 						<a href='muros/index'>Muro de <?= $nombre_completo ?></a>
 					</td>
+          <td class="boton">
+            <a href="usuarios/logout">Cerrar sesion</a>
+          </td>
 				</tr>				
 			</tbody>
 		</table>

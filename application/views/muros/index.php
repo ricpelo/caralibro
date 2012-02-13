@@ -1,4 +1,4 @@
-<div>
+<div id=boton_salir>
   <p>
       <?= form_open('/usuarios/logout') ?>
       <?= form_submit('salir', 'Salir') ?>

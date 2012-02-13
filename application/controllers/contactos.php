@@ -53,20 +53,16 @@ class Contactos extends CI_Controller {
     $this->template->load('template', 'contactos/buscar', $data);
   }
 
-  function agregar_amigo () {
+  function agregar_amigo() {
     $id = $this->Contacto->obtener_id();
     $id_solicitante = (int) $id['id'];
     $id_solicitado = (int) $this->input->post('id_solicitado');
-    var_dump($id_solicitante);
-    var_dump($id_solicitado);
     $this->Solicitud->crear_solicitud($id_solicitado, $id_solicitante);
-
     if ($this->db->affected_rows()) {
       $this->session->set_flashdata('mensaje', 'Se envió la solicitud');
     } else {
       $this->session->set_flashdata('mensaje', 'Se ha producido un error');
     }
     redirect('contactos/index');
-    
   }
 }

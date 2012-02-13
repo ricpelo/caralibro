@@ -48,7 +48,7 @@
 	border-color: #CCC;
 }
 
-#usuario {
+.boton {
 	background: #CCC;
 	border-color: #CCC;
 }
@@ -88,8 +88,4 @@ body {
 	border-style: solid;
 	border-width: 4px;
 	background: #CCC;
-}
-
-#boton_salir {
-	
 }
