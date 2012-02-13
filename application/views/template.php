@@ -15,7 +15,7 @@
 			<tbody>				
 				<tr>
 					<td id="usuario">
-						<a href='muros/index'><?= $nombre_completo ?></a>
+						<?= anchor("muros/index", $nombre_completo) ?></a>
 					</td>					
 				</tr>				
 			</tbody>

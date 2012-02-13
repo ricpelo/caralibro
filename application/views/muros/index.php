@@ -12,13 +12,13 @@
 </div>
 
 <div>
-  <form action="index.php" method="post">
+  <?= form_open("muros/index") ?>
     <input type="hidden" name="id_propietario"/>
     <input type="hidden" name="id_receptor"/>
     <textarea name="texto" cols="50" rows="6" style="font-size: x-large"></textarea>
     <br/><br/>
     <input type="submit" value="Enviar"/>
-  </form>
+  <?= form_close() ?>
 </div>     
 
 <div>
@@ -27,10 +27,10 @@
       Pepe Pepito</a> escribió:
   </span>
   <div>
-    <form action="index.php" method="post">
+  <?= form_open("muros/index") ?>
       <input type="hidden" name="id_envio"/>
       <input type="submit" value="X"/>
-    </form>
+  <?= form_close() ?>
   </div>
 </div>
 
