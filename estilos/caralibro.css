@@ -1,36 +1,16 @@
-body {
-	background: #e1e5e9;
-	font-family: "Georgia", Tahoma, Sans-Serif;
-	font-size: 12px;
-	line-height: 18px;
-	color: #888;
-}
+/* Bloques de estilo para el template */
 
 #header {
 	width: 874px;
 	text-align: center;
 	margin: 0 auto;
 	background: #CCC;
-	font-size: xx-large;
+	font-size: 40px;
+	font-family: "comic sans";
 	font-weight: bold;
 	border-style: solid;
 	height: 80px;
 	border-width: 4px;
-}
-
-#contents {
-	text-align: center;
-	width: 874px; 
-	margin: 0 auto;
-	padding-top: 20px;
-	padding-bottom: 40px;
-	background: white;
-	border-style: solid;
-	border-width: 4px;
-}
-
-.texto {
-	color: blue;
 }
 
 #footer {
@@ -41,4 +21,62 @@ body {
 	margin: 0 auto;
 	border-width: 4px;
 	font-weight: bold;
-}			
+}
+
+#contents {
+	text-align: center;	
+	width: 874px; 
+	margin: 0 auto;
+	padding-top: 20px;
+	padding-bottom: 40px;
+	background: white;
+	border-style: solid;
+	border-width: 4px;
+}
+
+#menubotones {
+  border-style: solid;
+  border-width: 4px;
+  text-align: left;
+  width: 874px; 
+  margin: 0 auto;
+  background: black; 
+}
+
+
+
+a:hover {
+	color: orange;
+	font-weight: bold;
+	text-decoration:none;
+}
+
+a:link {
+	color: orange;
+	text-decoration:none;
+}
+
+a:visited {
+  color: orange;
+	text-decoration:none;
+}
+
+
+/* Bloques de estilos para las vistas */
+
+body {
+	background: #e1e5e9;
+	font-family: "Georgia", Tahoma, Sans-Serif;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+.texto {
+	color: blue;
+}
+
+#comentario {
+	border-style: solid;
+	border-width: 4px;
+	background: #CCC;
+}
