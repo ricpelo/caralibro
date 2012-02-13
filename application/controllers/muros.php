@@ -12,7 +12,7 @@ class Muros extends CI_Controller {
     } 
   }
 
-  function index() {
+  function index($id = null) {
      
      $this->load->model('Usuario');
      $this->load->model('Muro');
@@ -24,9 +24,12 @@ class Muros extends CI_Controller {
     }
      $data['usuario'] = $this->session->userdata('usuario');     
      $data['filas'] = $this->Usuario->obtenerDatos($data['usuario']);
-     $id = (int) $this->Muro->obtener_id();       
+     if ($id == null) {
+       $id = (int) $this->Muro->obtener_id();
+     }
  
      $data['contactos'] = $this->Muro->obtener_datos_contenedor($id);
+     $data['id'] = $id;
      
      $this->template->load('template','muros/index', $data);
      	  
