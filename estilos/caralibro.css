@@ -5,7 +5,8 @@
 	text-align: center;
 	margin: 0 auto;
 	background: #CCC;
-	font-size: xx-large;
+	font-size: 40px;
+	font-family: "comic sans";
 	font-weight: bold;
 	border-style: solid;
 	height: 80px;
@@ -23,8 +24,7 @@
 }
 
 #contents {
-	text-align: center;
-	
+	text-align: center;	
 	width: 874px; 
 	margin: 0 auto;
 	padding-top: 20px;
@@ -40,32 +40,24 @@
   text-align: left;
   width: 874px; 
   margin: 0 auto;
-  background: #888; 
+  background: black; 
 }
 
-#tabla_menu_botones {
-	background: #CCC;
-	border-color: #CCC;
-}
 
-.boton {
-	background: #CCC;
-	border-color: #CCC;
-}
 
 a:hover {
-	color: #888;
+	color: orange;
 	font-weight: bold;
 	text-decoration:none;
 }
 
 a:link {
-	color: #888;
+	color: orange;
 	text-decoration:none;
 }
 
 a:visited {
-  color: #888;
+  color: orange;
 	text-decoration:none;
 }
 
@@ -77,7 +69,6 @@ body {
 	font-family: "Georgia", Tahoma, Sans-Serif;
 	font-size: 12px;
 	line-height: 18px;
-	color: #888;
 }
 
 .texto {

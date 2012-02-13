@@ -1,16 +1,9 @@
-<div id=boton_salir>
-  <p>
-      <?= form_open('/usuarios/logout') ?>
-      <?= form_submit('salir', 'Salir') ?>
-      <?= form_close() ?> 
-  </p>
-</div>
-
 <div>
   <p><?= $mensaje ?></p>
 </div>
 
 <div>
+	Escribe tu comentario:
   <form action="index.php" method="post">
     <input type="hidden" name="id_propietario"/>
     <input type="hidden" name="id_receptor"/>

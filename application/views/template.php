@@ -6,7 +6,7 @@
 <body>
 
 	<div id="header">
-		<p>Caralibro</p>
+		<p>CaraLibro</p>
 	</div>
 
 	<?php if (isset($usuario)): ?>
@@ -15,10 +15,10 @@
 			<tbody>				
 				<tr>
 					<td class="boton">
-						<a href='muros/index'>Muro de <?= $nombre_completo ?></a>
+						<?= anchor("muros/index", "Muro de $nombre_completo") ?>
 					</td>
           <td class="boton">
-            <a href="usuarios/logout">Cerrar sesion</a>
+            <?= anchor("usuarios/logout", "Cerrar sesión") ?>
           </td>
 				</tr>				
 			</tbody>
