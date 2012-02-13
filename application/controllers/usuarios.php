@@ -4,12 +4,11 @@ class Usuarios extends CI_Controller {
   
   function __construct() {		
 		CI_Controller::__construct();
-		
 		$this->load->model('Usuario');
   }
   
   function _comprobar() {
-   
+    
     if (!$this->session->userdata('usuario')) {
       $this->session->set_flashdata('mensaje', 'Se requiere autorización');
       redirect('usuarios/login');
@@ -20,7 +19,6 @@ class Usuarios extends CI_Controller {
       $this->_comprobar();
 	  if ($this->input->post('editar')) {
 	  		redirect('usuarios/editar');
-	
 	  } elseif ($this->input->post('borrar')) {
 		  	redirect('usuarios/borrar');
 	  } elseif ($this->input->post('muro')) {
@@ -68,7 +66,11 @@ class Usuarios extends CI_Controller {
 		  $password = $this->input->post('password');
 		  $nombre = $this->input->post('nombre');
 		  $apellidos = $this->input->post('apellidos');
-		
+		  $this->_reglas_crear();
+		  if ($this->form_validation->run()==FALSE){
+		  	$data['mensaje'] = 'Ese email ya ha sido registrado..';
+			$this->template->load('template','usuarios/crear', $data); 
+		  }
 		  if(!$this->Usuario->crear($email, $password, $nombre, $apellidos)) {
 			  $data['mensaje'] = 'Se ha producido un error. Es posible que el usuario ya este siendo usado';
 			  $this->template->load('template','usuarios/crear', $data); 
@@ -147,4 +149,8 @@ class Usuarios extends CI_Controller {
 		$this->template->load('template', 'usuarios/borrar');
       }
     }
+	
+	function _reglas_crear() {
+		$this->form_validation->set_rules('email', 'usuario','required|is_unique[usuarios.email]');
+	}
 }

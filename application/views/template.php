@@ -6,17 +6,20 @@
 <body>
 
 	<div id="header">
-		<p>Caralibro</p>
+		<p>CaraLibro</p>
 	</div>
 
 	<?php if (isset($usuario)): ?>
   <div id="menubotones">
-		<table border="1">
+		<table id="tabla_menu_botones" border=1>
 			<tbody>				
 				<tr>
-					<td id="usuario">
-						<?= anchor("muros/index", $nombre_completo) ?></a>
-					</td>					
+					<td class="boton">
+						<?= anchor("muros/index", "Muro de $nombre_completo") ?>
+					</td>
+          <td class="boton">
+            <?= anchor("usuarios/logout", "Cerrar sesión") ?>
+          </td>
 				</tr>				
 			</tbody>
 		</table>

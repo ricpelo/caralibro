@@ -20,7 +20,9 @@ class Contacto extends CI_Model {
   // Obtiene el id del usuario que ha iniciado sesion
   function obtener_id() {
     $email = $this->session->userdata('usuario');
-    return $this->db->query("select id from usuarios where email = '$email'")->row_array();
+    return $this->db->query("select id 
+                               from usuarios 
+                              where email = '$email'")->row_array();
   }
   
   // Borramos un amigo
@@ -31,17 +33,29 @@ class Contacto extends CI_Model {
 
   // Muestra todos los contactos existentes
   function obtener_todos($id) {
-    return $this->db->query("select id, nombre || ' ' || apellidos as nombre from usuarios where id != $id
-except
-select case when $id = c.id_amigo1 then c.id_amigo2 else c.id_amigo1
-                                           end as id_amigo,
-                                          case when $id = c.id_amigo1
-                                               then u2.nombre || ' ' || u2.apellidos
-                                               else u1.nombre || ' ' || u1.apellidos
-                                           end as nombre_amigo
+    return $this->db->query("select id, nombre || ' ' || apellidos as nombre 
+                               from usuarios where id != $id
+                             except
+                             select case 
+                                      when $id = c.id_amigo1 
+                                      then c.id_amigo2 
+                                      else c.id_amigo1
+                                       end as id_amigo,
+                                    case 
+                                      when $id = c.id_amigo1
+                                      then u2.nombre || ' ' || u2.apellidos
+                                      else u1.nombre || ' ' || u1.apellidos
+                                       end as nombre_amigo
                                from contactos c, usuarios u1, usuarios u2
-                              where $id in (id_amigo1, id_amigo2) and
-                    c.id_amigo1 = u1.id and c.id_amigo2 = u2.id;
-")->result_array();
+                              where $id in (id_amigo1, id_amigo2) 
+                                and c.id_amigo1 = u1.id 
+                                and c.id_amigo2 = u2.id;")->result_array();
+  }
+
+  function agregar_contacto($id_solicitado, $id_solicitante) {
+    $id_amigo1 = min($id_solicitado, $id_solicitante);
+    $id_amigo2 = max($id_solicitado, $id_solicitante);
+    return $this->db->query("insert into contactos(id_amigo1, id_amigo2)
+                                            values($id_amigo1, $id_amigo2)");
   }
 } 
