@@ -6,8 +6,9 @@
 <body>
 
 	<div id="header">
-		<p>CaraLibro</p>
-		<span id="cerrar_sesion" style="float: right; position: relative; top: -40px">
+		<img src= "http://localhost/web/caralibro/images/logo.jpg" border= "4" align="left"/>
+		<p id="titulo">araLibro</p>
+		<span id="cerrar_sesion">
 			<?= anchor("usuarios/logout","Cerrar sesión") ?>
 		</span>
 	</div>

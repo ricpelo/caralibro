@@ -9,7 +9,7 @@
 	font-family: "comic sans";
 	font-weight: bold;
 	border-style: solid;
-	height: 80px;
+	height: 90px;
 	border-width: 4px;
 }
 
@@ -48,28 +48,39 @@
 }
 
 a:hover {
-	color: white;
+	color: #819FF7;
 	font-weight: bold;
 	text-decoration:none;
 }
 
 a:link {
-	color: white;
+	color: #819FF7;
 	text-decoration:none;
 }
 
 a:visited {
-  color: white;
+  color: #819FF7;
 	text-decoration:none;
 }
 
 #cerrar_sesion {
+	float: right;
+	position: relative;
 	font-size: 15px;
 	border-style: solid;
 	border-width: 4px;
-	border-color: black;
-	background: black; 
+	border-color: midnightblue;
+	background: midnightblue;
+	color: white;
 }
+
+#titulo {
+	float: left;
+	position: relative;
+	bottom: -15px;
+}
+
+
 
 
 /* Bloques de estilos para las vistas */
