@@ -72,7 +72,7 @@ class Usuarios extends CI_Controller {
 			$this->template->load('template','usuarios/crear', $data); 
 		  }
 		  if(!$this->Usuario->crear($email, $password, $nombre, $apellidos)) {
-			  $data['mensaje'] = 'Se ha producido un error..';
+			  $data['mensaje'] = 'Se ha producido un error. Es posible que el usuario ya este siendo usado';
 			  $this->template->load('template','usuarios/crear', $data); 
 		  } else {
 			  $this->session->set_flashdata('mensaje', 'El usuario se creo correctamente.');
@@ -105,7 +105,8 @@ class Usuarios extends CI_Controller {
 			                                     'nombre'=> $nombre, 
 			                                     'apellidos' => $apellidos))){
 			                                     	
-			    $data['mensaje'] = "No se a podido realizar la actualización, vuelva a intentarlo.";
+			  $data['mensaje'] = "No se ha podido realizar la actualización, es posible que el usuario ya este en uso, 
+			                      vuelva a intentarlo con otro nombre.";
 				$data['confirmpassword'] = '';
 				$data['password'] = '';
 			    $this->template->load('template','usuarios/editar', $data); 
