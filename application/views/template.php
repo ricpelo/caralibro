@@ -6,7 +6,7 @@
 <body>
 
 	<div id="header">
-		<p>CaraLibro</p>
+		<img src= "http://localhost/web/caralibro/images/logo.jpg" border= "1" align="left"/><p>Caralibro</p>
 	</div>
 
 	<?php if (isset($usuario)): ?>
