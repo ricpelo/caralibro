@@ -13,21 +13,21 @@
   </form>
 </div>     
 
-<div>
-  <span>
+<div class = "contenedor">
+  <span class = "propietario">
     <a href="index.php" value= "Juanito">
       Pepe Pepito</a> escribió:
   </span>
-  <div>
+  <div class = "borrar">
     <form action="index.php" method="post">
       <input type="hidden" name="id_envio"/>
       <input type="submit" value="X"/>
     </form>
   </div>
 </div>
-
-<div>
-  <div>Noseque</div>
-  <div>17/11/1988</div>
+<div class="envio">
+   <br>
+   <div class="cuerpo">Hola Caracola</div>
+   <div class="fechahora">24/01/1989</div>
 </div>
 
