@@ -3,32 +3,28 @@
   <head>
     <meta charset="UTF-8"/>
     <title>Muro</title>
-    
-
-  <div>
-  <p>
+      <div>
+        <p>
       <?= form_open('/usuarios/logout') ?>
       Usuario: <?= $filas['nombre'] ?> <?= $filas['apellidos'] ?>       
       <?= form_submit('salir', 'Salir') ?>
-      <?= form_close() ?>
- 
-  </p>
-</div>
+      <?= form_close() ?> 
+        </p>
+      </div>
 
-
-
-<div>
-  <p><?= $mensaje ?></p>
-</div>
-
-
+      <div>
+        <p><?= $mensaje ?></p>
+      </div>
   </head>
 
-
-
-
 <body>
-      
+      <p>
+        <?php extract($filas); ?>
+        <tr>
+          <td><?= $nombre ?></td>
+          <td><?= $apellidos ?></td>
+   
+      </p>
 
     <div class="post">
             <form action="index.php" method="post">
@@ -41,22 +37,36 @@
     </div>
 
 
-<div class="contenedor">
-              <span class="propietario">
-                <a href="index.php" value= "Juanito">
-                  Pepe Pepito</a> escribió:
+
+  
+          
+        
+        <?php foreach ($contactos as $contacto): ?>
+        <?php extract($contacto); ?>
+
+          <div>
+              <span>
+                <?= anchor("Muros/index" , $nombre_prop . ' ' .  $apellidos_prop) ?>
+                   escribió:
               </span>
-              <div class="borrar">
-                <form action="index.php" method="post">
-                  <input type="hidden" name="id_envio"/>
+              <div>
+                <form>
+                  <input type="hidden" name="id_envio" value="<?= $id_envio ?>"/>
                   <input type="submit" value="X"/>
                 </form>
               </div>
             </div>
-            <div class="envio">
-              <div class="cuerpo">Noseque</div>
-              <div class="fechahora">17/11/1988</div>
+            <div>
+              <div><?= $texto ?></div>
+              <div><?= $fechahora ?></div>
             </div>
+          
+      
+      
+      <?php endforeach; ?>
+
+
+
 
 </body>
 
