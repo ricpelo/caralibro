@@ -42,6 +42,7 @@ class Usuarios extends CI_Controller {
 				$this->session->set_userdata('nombre', $datos['nombre']);
 				$this->session->set_userdata('apellidos', $datos['apellidos']);
 				$this->session->set_userdata('nombre_completo', $datos['nombre'] . " " . $datos['apellidos']);
+				$this->session->set_userdata('id_muro', $datos['id']);
         redirect('muros/index');
       } else {
         $mensaje = 'Error: usuario o contraseña incorrectos';

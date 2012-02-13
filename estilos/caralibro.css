@@ -72,6 +72,14 @@ a:visited {
 	color: white;
 }
 
+#usuario {
+	float: right;
+	position: relative;
+	font-size: 15px;
+	top: 4px;
+	right: 5px;
+}
+
 #titulo {
 	float: left;
 	position: relative;

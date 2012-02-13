@@ -7,10 +7,15 @@
 
 	<div id="header">
 		<img src= "http://localhost/web/caralibro/images/logo.jpg" border= "4" align="left"/>
-		<p id="titulo">araLibro</p>
-		<span id="cerrar_sesion">
-			<?= anchor("usuarios/logout","Cerrar sesión") ?>
-		</span>
+		<p id="titulo">araLibro</p>		
+		<?php if (isset($usuario)): ?>
+			<span id="cerrar_sesion">
+				<?= anchor("usuarios/logout","Cerrar sesión") ?>
+			</span>
+			<span id="usuario">
+				<?= "Usuario: $nombre_completo" ?>
+			</span>
+		<?php endif; ?>
 	</div>
 
 	<?php if (isset($usuario)): ?>
@@ -19,7 +24,7 @@
 			<tbody>				
 				<tr>
 					<td class="boton">
-						<?= anchor("muros/index", "Muro de {$this->session->userdata('nombre_completo')}") ?>
+						<?= anchor("muros/index", "Muro de $nombre_completo") ?>
 					</td>
 					<td>&nbsp --&nbsp</td>
 					<td class="boton">
