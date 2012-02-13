@@ -23,6 +23,10 @@
 	font-weight: bold;
 }
 
+.boton {
+	border-style: solid;
+}
+
 #contents {
 	text-align: center;	
 	width: 874px; 
@@ -43,22 +47,28 @@
   background: black; 
 }
 
-
-
 a:hover {
-	color: orange;
+	color: white;
 	font-weight: bold;
 	text-decoration:none;
 }
 
 a:link {
-	color: orange;
+	color: white;
 	text-decoration:none;
 }
 
 a:visited {
-  color: orange;
+  color: white;
 	text-decoration:none;
+}
+
+#cerrar_sesion {
+	font-size: 15px;
+	border-style: solid;
+	border-width: 4px;
+	border-color: black;
+	background: black; 
 }
 
 

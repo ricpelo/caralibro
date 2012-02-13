@@ -7,19 +7,31 @@
 
 	<div id="header">
 		<p>CaraLibro</p>
+		<span id="cerrar_sesion" style="float: right; position: relative; top: -40px">
+			<?= anchor("usuarios/logout","Cerrar sesión") ?>
+		</span>
 	</div>
 
 	<?php if (isset($usuario)): ?>
   <div id="menubotones">
-		<table id="tabla_menu_botones" border=1>
+		<table id="tabla_menu_botones">
 			<tbody>				
 				<tr>
 					<td class="boton">
-						<?= anchor("muros/index", "Muro de $nombre_completo") ?>
+						<?= anchor("muros/index", "Muro de {$this->session->userdata('nombre_completo')}") ?>
 					</td>
-          <td class="boton">
-            <?= anchor("usuarios/logout", "Cerrar sesión") ?>
-          </td>
+					<td>&nbsp</td>
+					<td class="boton">
+						<?= anchor("usuarios/index", "Perfil") ?>
+					</td>
+					<td>&nbsp</td>
+					<td class="boton">
+						<?= anchor("contactos/index", "Contactos") ?>
+					</td>
+					<td>&nbsp</td>
+					<td class="boton">
+						<?= anchor("solicitudes/index", "Solicitudes") ?>
+					</td>
 				</tr>				
 			</tbody>
 		</table>

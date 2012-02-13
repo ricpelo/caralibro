@@ -15,9 +15,6 @@ class Solicitudes extends CI_Controller {
  
 	function index() {
  		$data['usuario'] = $this->session->userdata('id');
-		$nombre = $this->session->userdata('nombre');
-		$apellidos = $this->session->userdata('apellidos');
-		$data['nombre_completo'] = $nombre . " " . $apellidos;
 		$data['solicitudes'] = $this->Solicitud->obtener_solicitudes($data['usuario']);
     $mensaje = $this->session->flashdata('mensaje');
     if ($this->utilidades->comprobar_vacio($mensaje)){    
