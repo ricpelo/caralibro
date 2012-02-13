@@ -15,21 +15,21 @@
 
 	<?php if (isset($usuario)): ?>
   <div id="menubotones">
-		<table id="tabla_menu_botones">
+		<table>
 			<tbody>				
 				<tr>
 					<td class="boton">
 						<?= anchor("muros/index", "Muro de {$this->session->userdata('nombre_completo')}") ?>
 					</td>
-					<td>&nbsp</td>
+					<td>&nbsp --&nbsp</td>
 					<td class="boton">
 						<?= anchor("usuarios/index", "Perfil") ?>
 					</td>
-					<td>&nbsp</td>
+					<td>&nbsp --&nbsp</td>
 					<td class="boton">
 						<?= anchor("contactos/index", "Contactos") ?>
 					</td>
-					<td>&nbsp</td>
+					<td>&nbsp --&nbsp</td>
 					<td class="boton">
 						<?= anchor("solicitudes/index", "Solicitudes") ?>
 					</td>
