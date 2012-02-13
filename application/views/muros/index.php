@@ -13,21 +13,25 @@
   </form>
 </div>     
 
+   <?php foreach ($contactos as $contacto): ?>
+   <?php extract($contacto); ?>
+
 <div class = "contenedor">
   <span class = "propietario">
-    <a href="index.php" value= "Juanito">
-      Pepe Pepito</a> escribió:
+    <?= anchor("Muros/index" , $nombre_prop . ' ' .  $apellidos_prop) ?>
+                   escribió:
   </span>
   <div class = "borrar">
     <form action="index.php" method="post">
-      <input type="hidden" name="id_envio"/>
+      <input type="hidden" name="id_envio" value="<?= $id_envio ?>"/>
       <input type="submit" value="X"/>
     </form>
   </div>
 </div>
 <div class="envio">
    <br>
-   <div class="cuerpo">Hola Caracola</div>
-   <div class="fechahora">24/01/1989</div>
+   <div class="cuerpo"><?= $texto ?></div>
+   <div class="fechahora"><?= $fechahora ?></div>
 </div>
+    <?php endforeach; ?>
 
