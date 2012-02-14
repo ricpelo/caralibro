@@ -58,7 +58,7 @@ class Usuarios extends CI_Controller {
   }
   
   function logout() {
-    $this->session->unset_userdata('usuario');
+    $this->session->sess_destroy();
     redirect('usuarios/login');
   }
   

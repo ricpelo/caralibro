@@ -28,15 +28,15 @@
 					</td>
 					<td>&nbsp --&nbsp</td>
 					<td class="boton">
-						<?= anchor("usuarios/index", "Perfil") ?>
-					</td>
-					<td>&nbsp --&nbsp</td>
-					<td class="boton">
 						<?= anchor("contactos/index", "Contactos") ?>
 					</td>
 					<td>&nbsp --&nbsp</td>
 					<td class="boton">
 						<?= anchor("solicitudes/index", "Solicitudes") ?>
+					</td>
+					<td>&nbsp --&nbsp</td>
+					<td class="boton">
+						<?= anchor("usuarios/index", "Perfil") ?>
 					</td>
 				</tr>				
 			</tbody>
