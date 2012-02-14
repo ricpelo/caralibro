@@ -14,13 +14,12 @@ class Contactos extends CI_Controller {
   }
 
   function index() { // muestra la lista con todos mis amigos
-    if ($this->session->flashdata('mensaje')) {
+    $data = $this->utilidades->obtener_datos_plantilla();
+		if ($this->session->flashdata('mensaje')) {
       $data['mensaje'] = $this->session->flashdata('mensaje');
     } else {
       $data['mensaje'] = '';
-    }
-
-    $data['usuario'] = $this->session->userdata('usuario');
+    }		
     $id = $this->Contacto->obtener_id();
     $id = (int) $id['id'];
     $data['filas'] = $this->Contacto->obtener_mis_amigos($id);
@@ -47,7 +46,7 @@ class Contactos extends CI_Controller {
   function buscar() {
     $id = $this->Contacto->obtener_id();
     $id = (int) $id['id'];
-    $data['usuario'] = $this->session->userdata('usuario');
+    $data = $this->utilidades->obtener_datos_plantilla();
     $data['mensaje'] = '';
     $data['filas'] = $this->Contacto->obtener_todos($id);
     $this->template->load('template', 'contactos/buscar', $data);

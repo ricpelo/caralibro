@@ -7,10 +7,15 @@
 
 	<div id="header">
 		<img src= "http://localhost/web/caralibro/images/logo.jpg" border= "4" align="left"/>
-		<p id="titulo">araLibro</p>
-		<span id="cerrar_sesion">
-			<?= anchor("usuarios/logout","Cerrar sesión") ?>
-		</span>
+		<p id="titulo">araLibro</p>		
+		<?php if (isset($usuario)): ?>
+			<span id="cerrar_sesion">
+				<?= anchor("usuarios/logout","Cerrar sesión") ?>
+			</span>
+			<span id="usuario">
+				<?= "Usuario: $nombre_completo" ?>
+			</span>
+		<?php endif; ?>
 	</div>
 
 	<?php if (isset($usuario)): ?>
@@ -19,11 +24,7 @@
 			<tbody>				
 				<tr>
 					<td class="boton">
-						<?= anchor("muros/index", "Muro de {$this->session->userdata('nombre_completo')}") ?>
-					</td>
-					<td>&nbsp --&nbsp</td>
-					<td class="boton">
-						<?= anchor("usuarios/index", "Perfil") ?>
+						<?= anchor("muros/index", "Ir a tu muro") ?>
 					</td>
 					<td>&nbsp --&nbsp</td>
 					<td class="boton">
@@ -33,12 +34,15 @@
 					<td class="boton">
 						<?= anchor("solicitudes/index", "Solicitudes") ?>
 					</td>
+					<td>&nbsp --&nbsp</td>
+					<td class="boton">
+						<?= anchor("usuarios/index", "Perfil") ?>
+					</td>
 				</tr>				
 			</tbody>
 		</table>
   </div>
 	<?php endif; ?>
-
   <div id="contents"><?= $contents ?></div>
 
   <div id="footer">

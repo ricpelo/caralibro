@@ -14,30 +14,26 @@ class Muros extends CI_Controller {
 
   function index($id = null) {
      
-     $this->load->model('Usuario');
-     $this->load->model('Muro');
-
+    $this->load->model('Usuario');
+    $this->load->model('Muro');
+		$data = $this->utilidades->obtener_datos_plantilla();
     if ($this->session->flashdata('mensaje')) {
       $data['mensaje'] = $this->session->flashdata('mensaje');
     } else {
       $data['mensaje'] = '';
     }
-     $data['usuario'] = $this->session->userdata('usuario');     
-     $data['filas'] = $this->Usuario->obtenerDatos($data['usuario']);
-     if ($id == null) {
-       $id = (int) $this->Muro->obtener_id();
-     }
+    $data['usuario'] = $this->session->userdata('usuario');     
+    $data['filas'] = $this->Usuario->obtenerDatos($data['usuario']);
+    if ($id == null) {
+      $id = (int) $this->Muro->obtener_id();
+    }
  
-     $data['contactos'] = $this->Muro->obtener_datos_contenedor($id);
-     $data['id'] = $id;
+    $data['contactos'] = $this->Muro->obtener_datos_contenedor($id);
+    $data['id'] = $id;
      
-     $this->template->load('template','muros/index', $data);
-     	  
+    $this->template->load('template','muros/index', $data);    	  
 	
   }
- 
-
-  
  
 
 }

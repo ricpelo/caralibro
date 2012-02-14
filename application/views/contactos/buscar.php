@@ -1,13 +1,4 @@
 <div>
-  <p>
-    <?= form_open('/usuarios/logout') ?>
-      Usuario: <?= $usuario ?>
-      <?= form_submit('salir', 'Salir') ?>
-    <?= form_close() ?>
-  </p>
-</div>
-
-<div>
   <p><?= $mensaje ?></p>
 </div>
 
