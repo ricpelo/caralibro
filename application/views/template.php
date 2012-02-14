@@ -24,7 +24,7 @@
 			<tbody>				
 				<tr>
 					<td class="boton">
-						<?= anchor("muros/index", "Muro de $nombre_completo") ?>
+						<?= anchor("muros/index", "Ir a tu muro") ?>
 					</td>
 					<td>&nbsp --&nbsp</td>
 					<td class="boton">
@@ -43,7 +43,6 @@
 		</table>
   </div>
 	<?php endif; ?>
-
   <div id="contents"><?= $contents ?></div>
 
   <div id="footer">
