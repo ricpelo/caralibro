@@ -111,45 +111,51 @@ body {
 /*Vista Provisional Muro*/
 
 .borrar {
-        float: right;
-        padding: 1px;
-        border-style: solid;
-        border-width: 2px;
-        margin: auto;
-        margin-right: 10px;
-        position: relative;
-        background: #dddddd;
-        color: red;
-        font-weight: bold;
+  float: right;
+  padding: 1px;
+  border-style: solid;
+  border-width: 2px;
+  margin: auto;
+  margin-right: 10px;
+  position: relative;
+  background: #dddddd;
+  color: red;
+  font-weight: bold;
 }
 
 .propietario {
-        text-align: left;
-        padding: 10px;
-        border-style: solid;
-        border-width: 2px;
-        width: 700px;
-        margin: auto;
-        margin-left: -180px;
-        position: relative;
-        top: 2px;
-        background: #cccccc;
+	text-align: left;
+  padding: 10px;
+  border-style: solid;
+  border-width: 2px;
+  width: 700px;
+  margin: auto;
+  margin-left: -180px;
+  position: relative;
+  top: 2px;
+  background: #cccccc;
 }
 
 .contenedor {
-        width: 440px;
-        margin: auto;
+  width: 440px;
+  margin: auto;
+}
+
+.cuerpo {
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .envio {
-        width: 400px;
-        border-style: solid;
-        border-width: 2px;
-        margin: auto;
-        margin-bottom: 20px;
-        padding-top: 10px;
+	width: 400px;
+	border-style: solid;
+	border-width: 2px;
+	margin: auto;
+	margin-bottom: 20px;
+	padding-top: 10px;
 }
 
 .fechahora{
-        text-align: right;
+	font-size: x-small;
+  text-align: right;
 }
