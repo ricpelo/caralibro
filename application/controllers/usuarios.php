@@ -100,13 +100,22 @@ class Usuarios extends CI_Controller {
 		$id = $this->input->post('id');
 		$data = compact('id','email','password', 'nombre', 'apellidos', 'confirmpassword');
 		if ($password == $confirmPassword){
-			if(!$this->Usuario->actualizar(array('id' => $id,
+			if ($password != '' && $confirmPassword != '') {
+				$res = $this->Usuario->actualizar(array('id' => $id,
 			                                     'email' =>$email, 
 			                                     'password'=> $password, 
 			                                     'nombre'=> $nombre, 
-			                                     'apellidos' => $apellidos))){
+			                                     'apellidos' => $apellidos));
+			} elseif ($password == '' && $confirmPassword == '') {
+				$res = $this->Usuario->actualizar(array('id' => $id,
+			                                     'email' =>$email,
+			                                     'nombre'=> $nombre, 
+			                                     'apellidos' => $apellidos));
+			} 
+			
+			if(!$res) {
 			                                     	
-			  $data['mensaje'] = "No se ha podido realizar la actualización, es posible que el usuario ya este en uso, 
+			    $data['mensaje'] = "No se ha podido realizar la actualización, es posible que el usuario ya este en uso, 
 			                      vuelva a intentarlo con otro nombre.";
 				$data['confirmpassword'] = '';
 				$data['password'] = '';
@@ -122,6 +131,7 @@ class Usuarios extends CI_Controller {
 			$data['password'] = '';
 			$this->template->load('template','usuarios/editar', $data); 
 		}
+		
 	  } elseif ($this->input->post('cancelar')) {
 		  redirect('usuarios/index');
 	  } else {
