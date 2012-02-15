@@ -23,17 +23,6 @@
 	font-weight: bold;
 }
 
-#contents {
-	text-align: center;	
-	width: 874px; 
-	margin: 0 auto;
-	padding-top: 20px;
-	padding-bottom: 40px;
-	background: white;
-	border-style: solid;
-	border-width: 4px;
-}
-
 #menubotones {
   border-style: solid;
   border-width: 4px;
@@ -43,6 +32,17 @@
   margin: 0 auto;
   background: black;
  	color: white;
+}
+
+#contents {
+	text-align: center;	
+	width: 874px; 
+	margin: 0 auto;
+	padding-top: 20px;
+	padding-bottom: 40px;
+	background: white;
+	border-style: solid;
+	border-width: 4px;
 }
 
 a:hover {
@@ -83,7 +83,7 @@ a:visited {
 #titulo {
 	float: left;
 	position: relative;
-	bottom: -15px;
+	bottom: -18px;
 }
 
 

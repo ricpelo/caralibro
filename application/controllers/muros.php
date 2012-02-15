@@ -24,17 +24,17 @@ class Muros extends CI_Controller {
     $data['usuario'] = $this->session->userdata('usuario');     
     $data['filas'] = $this->Usuario->obtenerDatos($data['usuario']);
     if ($id == null) {
-      $id = (int) $this->Muro->obtener_id();
-    } 
+      $id = $this->session->userdata('id');
+    }
     $data['contactos'] = $this->Muro->obtener_datos_contenedor($id);
     $data['id'] = $id;
 		/* Se recogen nombre y apellidos del propietario del muro */
-		$nombre = 
-		$apellidos = 
-		$data['propietario_muro'] = $nombre . ' ' . $apellidos
+		$propietario_muro = $this->Usuario->obtener($id);
+		$nombre = $propietario_muro['nombre'];
+		$apellidos = $propietario_muro['apellidos'];
+		$data['propietario_muro'] = $nombre . ' ' . $apellidos;
     $this->template->load('template','muros/index', $data);
- }
- 
+ 	}
 
 }
 
