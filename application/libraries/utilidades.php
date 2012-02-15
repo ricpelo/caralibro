@@ -8,10 +8,10 @@ class Utilidades {
 
 	function obtener_datos_plantilla() {
 	  $this->CI =& get_instance();
-		$data['nombre_completo'] = $this->CI->session->userdata('nombre_completo');
+		$nombre = $this->CI->session->userdata('nombre');
+		$apellidos = $this->CI->session->userdata('apellidos');
+		$data['nombre_completo'] = $nombre . ' ' . $apellidos;
 		$data['usuario'] = $this->CI->session->userdata('id');
-		$id_muro = $this->CI->session->userdata('id_muro');
-		$data['usuario_muro'] = $this->_obtener_nombre_usuario($id_muro);
 		return $data;
 	}
 
