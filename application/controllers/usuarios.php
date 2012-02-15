@@ -123,6 +123,7 @@ class Usuarios extends CI_Controller {
 			    $this->template->load('template','usuarios/editar', $data); 
 			} else {
 				$this->session->set_flashdata('mensaje', 'El usuario se modifico correctamente.');
+				$this->_actualizarVariableSession($nombre, $apellido, $email);
 		 	    redirect('muros/index');	
 			}
 			
@@ -165,4 +166,10 @@ class Usuarios extends CI_Controller {
 	function _reglas_crear() {
 		$this->form_validation->set_rules('email', 'usuario','required|is_unique[usuarios.email]');
 	}
+
+  function _actualizarVariableSession($nombre, $apellido, $email) {
+     $this->session->set_userdata('usuario', $email);
+	 $this->session->set_userdata('nombre', $datos['nombre']);
+	 $this->session->set_userdata('apellidos', $datos['apellidos']);
+  }
 }
