@@ -21,13 +21,12 @@ class Muros extends CI_Controller {
     } else {
       $data['mensaje'] = '';
     }
-    $data['usuario'] = $this->session->userdata('usuario');     
-    $data['filas'] = $this->Usuario->obtenerDatos($data['usuario']);
+    $email = $this->session->userdata('usuario');     
+    $data['filas'] = $this->Usuario->obtenerDatos($email);
     if ($id == null) {
       $id = $this->session->userdata('id');
     }
     $data['contactos'] = $this->Muro->obtener_datos_contenedor($id);
-    $data['id'] = $id;
 
 		/* Se recogen nombre y apellidos del propietario del muro */
 		$propietario_muro = $this->Usuario->obtener($id);
