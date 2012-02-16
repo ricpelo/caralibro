@@ -27,11 +27,11 @@
   border-style: solid;
   border-width: 4px;
 	border-color: black;
+	background: black;	
   text-align: left;
   width: 874px; 
   margin: 0 auto;
-  background: black;
- 	color: white;
+  
 }
 
 #contents {
@@ -81,9 +81,9 @@ a:visited {
 }
 
 #titulo {
-	float: left;
-	position: relative;
-	bottom: -18px;
+	position: absolute;
+	padding-left: 95px;
+	padding-top: 18px;
 }
 
 
