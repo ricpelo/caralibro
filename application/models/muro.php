@@ -15,8 +15,9 @@ class Muro extends CI_Model  {
 	}
 
 
-  function hacer_envio(){
-
+  function hacer_envio($id_emisor, $id_receptor, $texto){
+    return $this->db->query("insert into envios (id_propietario, id_receptor, texto)
+                              values (?,?,?)", array($id_emisor, $_receptor, $texto));
     
 
   }

@@ -10,13 +10,13 @@
 
 <div id="cuadro_texto">
 	Escribe tu comentario:
-  <form action="index.php" method="post">
-    <input type="hidden" name="id_propietario"/>
-    <input type="hidden" name="id_receptor"/>
-    <textarea name="texto" cols="50" rows="6" style="font-size: x-large"></textarea>
+  <?= form_open('muros/enviar') ?>
+    <?= form_hidden('id_propietario', $id_propietario_muro); ?>
+    <?= form_hidden('id_emisor_mensaje', $emisor_mensaje); ?>
+    <?= form_textarea(array('name' =>'texto', 'rows'=>'10', 'cols'=>'80'));?>   
     <br/><br/>
-    <input type="submit" value="Enviar"/>
-  </form>
+    <?= form_submit('enviar', 'Enviar') ?>    
+  <?= form_close() ?>
 </div>
 
 <br/><br/>

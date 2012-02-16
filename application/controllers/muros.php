@@ -25,6 +25,7 @@ class Muros extends CI_Controller {
     $data['filas'] = $this->Usuario->obtenerDatos($email);
     if ($id == null) {
       $id = $this->session->userdata('id');
+      
     }
     $data['contactos'] = $this->Muro->obtener_datos_contenedor($id);
 
@@ -33,14 +34,21 @@ class Muros extends CI_Controller {
 		$nombre = $propietario_muro['nombre'];
 		$apellidos = $propietario_muro['apellidos'];
 		$data['propietario_muro'] = $nombre . ' ' . $apellidos;
-
+    $data['id_propietario_muro'] = $id;    
+    $data['emisor_mensaje'] = $this->session->userdata('id');
     $this->template->load('template','muros/index', $data);    
  	}
 
   
-  function enviar() {
-
-        
+  function enviar($id_receptor, $id_emisor, $texto) {
+    $this->load->model('Usuario');
+    $this->load->model('Muro');
+    if ($id_receptor == $id_emisor){
+         $this->session->set_flashdata('mensaje', 'No puedes enviarte mensajes a ti mismo');
+         redirect('muros/index'); 
+    } else {
+        $this->Muro->hacer_envio($id_receptor, $id_emisor, $texto);
+    }       
 
   }  
 
