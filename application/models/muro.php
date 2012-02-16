@@ -13,6 +13,13 @@ class Muro extends CI_Model  {
 		                                where id_receptor = $id")->result_array();
 
 	}
+
+
+  function hacer_envio(){
+
+    
+
+  }
   
 }
 

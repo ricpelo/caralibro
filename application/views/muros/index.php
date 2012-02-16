@@ -23,7 +23,7 @@
 	<?php extract($contacto); ?>
 		<div class = "contenedor">
 			<span class = "propietario">
-				<?= anchor("Muros/index" , $nombre_prop . ' ' .  $apellidos_prop) ?> escribió:				               
+				<?= anchor("muros/index" , $nombre_prop . ' ' .  $apellidos_prop) ?> escribió:				               
 			</span>
 			<form action="index.php" method="post">
 				<div class = "borrar">				

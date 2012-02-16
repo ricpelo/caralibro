@@ -13,7 +13,7 @@
 				<?= anchor("usuarios/logout","Cerrar sesión") ?>
 			</span>
 			<span id="usuario">
-				<?= "Usuario: $nombre_completo" ?>
+				<?= "Usuario: $propietario_muro" ?>
 			</span>
 		<?php endif; ?>
 	</div>
