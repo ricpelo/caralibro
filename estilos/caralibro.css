@@ -158,3 +158,13 @@ body {
 	font-size: x-small;
   text-align: right;
 }
+
+#menu_muro{
+  font-size: xx-large;
+  padding-left: 20px;
+  position: relative;
+  text-align: left;
+  padding-bottom: 1px;
+  height: 70px;
+}
+
