@@ -19,22 +19,22 @@
 	</div>
 
 	<?php if (isset($usuario)): ?>
-  <div id="menubotones">
+  <div class="menubotones">
 		<table>
 			<tbody>				
 				<tr>
 					<td class="boton">
 						<?= anchor("muros/index", "Ir a tu muro") ?>
 					</td>
-					<td>&nbsp --&nbsp</td>
+					<td style="color: white;">&nbsp --&nbsp</td>
 					<td class="boton">
 						<?= anchor("contactos/index", "Contactos") ?>
 					</td>
-					<td>&nbsp --&nbsp</td>
+					<td style="color: white;">&nbsp --&nbsp</td>
 					<td class="boton">
 						<?= anchor("solicitudes/index", "Solicitudes") ?>
 					</td>
-					<td>&nbsp --&nbsp</td>
+					<td style="color: white;">&nbsp --&nbsp</td>
 					<td class="boton">
 						<?= anchor("usuarios/index", "Perfil") ?>
 					</td>
