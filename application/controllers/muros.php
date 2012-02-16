@@ -12,8 +12,7 @@ class Muros extends CI_Controller {
     } 
   }
 
-  function index($id = null) {
-     
+  function index($id = null) {     
     $this->load->model('Usuario');
     $this->load->model('Muro');
 		$data = $this->utilidades->obtener_datos_plantilla();
@@ -22,19 +21,29 @@ class Muros extends CI_Controller {
     } else {
       $data['mensaje'] = '';
     }
-    $data['usuario'] = $this->session->userdata('usuario');     
-    $data['filas'] = $this->Usuario->obtenerDatos($data['usuario']);
+    $email = $this->session->userdata('usuario');     
+    $data['filas'] = $this->Usuario->obtenerDatos($email);
     if ($id == null) {
-      $id = (int) $this->Muro->obtener_id();
+      $id = $this->session->userdata('id');
     }
- 
     $data['contactos'] = $this->Muro->obtener_datos_contenedor($id);
-    $data['id'] = $id;
-     
-    $this->template->load('template','muros/index', $data);    	  
-	
-  }
- 
+
+		/* Se recogen nombre y apellidos del propietario del muro */
+		$propietario_muro = $this->Usuario->obtener($id);
+		$nombre = $propietario_muro['nombre'];
+		$apellidos = $propietario_muro['apellidos'];
+		$data['propietario_muro'] = $nombre . ' ' . $apellidos;
+
+    $this->template->load('template','muros/index', $data);    
+ 	}
+
+  
+  function enviar() {
+
+        
+
+  }  
+
 
 }
 

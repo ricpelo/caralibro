@@ -9,8 +9,8 @@
 		<img src= "http://localhost/web/caralibro/images/logo.jpg" border= "4" align="left"/>
 		<p id="titulo">araLibro</p>		
 		<?php if (isset($usuario)): ?>
-			<span id="cerrar_sesion">
-				<?= anchor("usuarios/logout","Cerrar sesión") ?>
+			<span id="capa_cerrar_sesion">
+				<?= anchor("usuarios/logout", "Cerrar sesión", array('id' => 'cerrar_sesion')) ?>
 			</span>
 			<span id="usuario">
 				<?= "Usuario: $nombre_completo" ?>
@@ -19,22 +19,22 @@
 	</div>
 
 	<?php if (isset($usuario)): ?>
-  <div id="menubotones">
-		<table>
+  <div class="menubotones">
+		<table style="padding-left: 10px;">
 			<tbody>				
 				<tr>
 					<td class="boton">
-						<?= anchor("muros/index", "Muro de $nombre_completo") ?>
+						<?= anchor("muros/index", "Ir a tu muro") ?>
 					</td>
-					<td>&nbsp --&nbsp</td>
+					<td style="color: white;">&nbsp --&nbsp</td>
 					<td class="boton">
 						<?= anchor("contactos/index", "Contactos") ?>
 					</td>
-					<td>&nbsp --&nbsp</td>
+					<td style="color: white;">&nbsp --&nbsp</td>
 					<td class="boton">
 						<?= anchor("solicitudes/index", "Solicitudes") ?>
 					</td>
-					<td>&nbsp --&nbsp</td>
+					<td style="color: white;">&nbsp --&nbsp</td>
 					<td class="boton">
 						<?= anchor("usuarios/index", "Perfil") ?>
 					</td>
@@ -43,7 +43,6 @@
 		</table>
   </div>
 	<?php endif; ?>
-
   <div id="contents"><?= $contents ?></div>
 
   <div id="footer">

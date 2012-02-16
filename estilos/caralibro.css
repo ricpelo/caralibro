@@ -23,6 +23,16 @@
 	font-weight: bold;
 }
 
+.menubotones {
+  border-style: solid;
+  border-width: 4px;
+	border-color: black;
+	background: black;	
+  text-align: left;
+  width: 874px; 
+  margin: 0 auto;;
+}
+
 #contents {
 	text-align: center;	
 	width: 874px; 
@@ -34,34 +44,40 @@
 	border-width: 4px;
 }
 
-#menubotones {
-  border-style: solid;
-  border-width: 4px;
-	border-color: black;
-  text-align: left;
-  width: 874px; 
-  margin: 0 auto;
-  background: black;
- 	color: white;
-}
-
 a:hover {
-	color: #819FF7;
+	color: #045FB4;
 	font-weight: bold;
 	text-decoration:none;
 }
 
 a:link {
-	color: #819FF7;
+	color: #045FB4;
 	text-decoration:none;
 }
 
 a:visited {
-  color: #819FF7;
+  color: #045FB4;
 	text-decoration:none;
 }
 
-#cerrar_sesion {
+/*Se aplica solo al link de cerrar sesión */
+
+		a:hover[id=cerrar_sesion] {
+			color: white;
+			text-decoration:none;
+		}
+
+		a:link[id=cerrar_sesion] {
+			color: white;
+			text-decoration:none;
+		}
+
+		a:visited[id=cerrar_sesion] {
+			color: white;
+			text-decoration:none;
+		}
+
+#capa_cerrar_sesion {
 	float: right;
 	position: relative;
 	font-size: 15px;
@@ -69,21 +85,22 @@ a:visited {
 	border-width: 4px;
 	border-color: midnightblue;
 	background: midnightblue;
-	color: white;
+	font-family: "arial";
 }
 
 #usuario {
 	float: right;
 	position: relative;
 	font-size: 15px;
+	font-family: "arial";
 	top: 4px;
 	right: 5px;
 }
 
 #titulo {
-	float: left;
-	position: relative;
-	bottom: -15px;
+	position: absolute;
+	padding-left: 95px;
+	padding-top: 18px;
 }
 
 
@@ -111,45 +128,62 @@ body {
 /*Vista Provisional Muro*/
 
 .borrar {
-        float: right;
-        padding: 1px;
-        border-style: solid;
-        border-width: 2px;
-        margin: auto;
-        margin-right: 10px;
-        position: relative;
-        background: #dddddd;
-        color: red;
-        font-weight: bold;
+  float: right;
+  padding: 1px;
+  border-style: solid;
+  border-width: 2px;
+  margin: auto;
+  margin-right: 10px;
+  position: relative;
+  background: #dddddd;
+  color: red;
+  font-weight: bold;
 }
 
 .propietario {
-        text-align: left;
-        padding: 10px;
-        border-style: solid;
-        border-width: 2px;
-        width: 700px;
-        margin: auto;
-        margin-left: -180px;
-        position: relative;
-        top: 2px;
-        background: #cccccc;
+	text-align: left;
+  padding: 10px;
+  border-style: solid;
+  border-width: 2px;
+  width: 700px;
+  margin: auto;
+  margin-left: -180px;
+  position: relative;
+  top: 2px;
+  background: #ccc;
 }
 
 .contenedor {
-        width: 440px;
-        margin: auto;
+  width: 440px;
+  margin: auto;
+}
+
+.cuerpo {
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .envio {
-        width: 400px;
-        border-style: solid;
-        border-width: 2px;
-        margin: auto;
-        margin-bottom: 20px;
-        padding-top: 10px;
+	width: 400px;
+	border-style: solid;
+	border-width: 2px;
+	margin: auto;
+	margin-bottom: 20px;
+	padding-top: 10px;
 }
 
 .fechahora{
-        text-align: right;
+	font-size: x-small;
+  text-align: right;
+	padding-right: 5px;
 }
+
+#menu_muro{
+  font-size: xx-large;
+  padding-left: 20px;
+  position: relative;
+  text-align: left;
+  padding-bottom: 1px;
+  height: 70px;
+}
+
