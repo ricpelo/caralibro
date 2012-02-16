@@ -32,9 +32,19 @@ class Muros extends CI_Controller {
 		$propietario_muro = $this->Usuario->obtener($id);
 		$nombre = $propietario_muro['nombre'];
 		$apellidos = $propietario_muro['apellidos'];
+
 		$data['propietario_muro'] = $nombre . ' ' . $apellidos;
     $this->template->load('template','muros/index', $data);
+    
  	}
+
+  
+  function enviar() {
+
+        
+
+  }  
+
 
 }
 

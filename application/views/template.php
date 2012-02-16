@@ -13,14 +13,14 @@
 				<?= anchor("usuarios/logout","Cerrar sesión") ?>
 			</span>
 			<span id="usuario">
-				<?= "Usuario: $nombre_completo" ?>
+				<?= "Usuario: $propietario_muro" ?>
 			</span>
 		<?php endif; ?>
 	</div>
 
 	<?php if (isset($usuario)): ?>
   <div class="menubotones">
-		<table>
+		<table style="padding-left: 10px;">
 			<tbody>				
 				<tr>
 					<td class="boton">
