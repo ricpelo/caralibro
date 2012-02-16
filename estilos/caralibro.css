@@ -45,22 +45,39 @@
 }
 
 a:hover {
-	color: #819FF7;
+	color: #045FB4;
 	font-weight: bold;
 	text-decoration:none;
 }
 
 a:link {
-	color: #819FF7;
+	color: #045FB4;
 	text-decoration:none;
 }
 
 a:visited {
-  color: #819FF7;
+  color: #045FB4;
 	text-decoration:none;
 }
 
-#cerrar_sesion {
+/*Se aplica solo al link de cerrar sesión */
+
+		a:hover[id=cerrar_sesion] {
+			color: white;
+			text-decoration:none;
+		}
+
+		a:link[id=cerrar_sesion] {
+			color: white;
+			text-decoration:none;
+		}
+
+		a:visited[id=cerrar_sesion] {
+			color: white;
+			text-decoration:none;
+		}
+
+#capa_cerrar_sesion {
 	float: right;
 	position: relative;
 	font-size: 15px;
@@ -68,13 +85,14 @@ a:visited {
 	border-width: 4px;
 	border-color: midnightblue;
 	background: midnightblue;
-	color: white;
+	font-family: "arial";
 }
 
 #usuario {
 	float: right;
 	position: relative;
 	font-size: 15px;
+	font-family: "arial";
 	top: 4px;
 	right: 5px;
 }
@@ -132,7 +150,7 @@ body {
   margin-left: -180px;
   position: relative;
   top: 2px;
-  background: #cccccc;
+  background: #ccc;
 }
 
 .contenedor {
@@ -157,6 +175,7 @@ body {
 .fechahora{
 	font-size: x-small;
   text-align: right;
+	padding-right: 5px;
 }
 
 #menu_muro{
