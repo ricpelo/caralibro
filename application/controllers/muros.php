@@ -32,21 +32,39 @@ class Muros extends CI_Controller {
 		$propietario_muro = $this->Usuario->obtener($id);
 		$nombre = $propietario_muro['nombre'];
 		$apellidos = $propietario_muro['apellidos'];
-
-		$data['propietario_muro'] = $nombre . ' ' . $apellidos;
-    $this->template->load('template','muros/index', $data);
     
+		$data['propietario_muro'] = $nombre . ' ' . $apellidos;
+    
+    $this->template->load('template','muros/index', $data);
+  
+
  	}
 
-  
   function enviar() {
-
-        
+   
 
   }  
 
 
-}
+
+  function borrar_envio(){
+
+      
+      
+
+
+     $res = $this->Muro->borrar_envio($id_envio);
+     
+     if ($res && $this->db->affected_rows() == 1){
+        
+        $id_envio = $_POST['id_envio'];
+        redirect('muros/index');
+
+    } else { 
+          $this->session->set_flashdata('mensaje', 'No se ha podido borrar el envío');
+        }
+
+    }
 
 
 

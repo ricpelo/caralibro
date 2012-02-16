@@ -16,11 +16,18 @@ class Muro extends CI_Model  {
 
 
   function hacer_envio(){
-
-    
+ 
+       
 
   }
   
+  function borrar_envio($id_envio){
+
+    return $this->db->query("delete from envios where id = $id_envio");
+
+  }
+
+
 }
 
 
