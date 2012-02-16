@@ -1,5 +1,8 @@
 <div id="menu_muro">
-	
+
+	<p>Muro de: <?= $propietario_muro ?></p><br/>
+  <hr/>
+  
 </div>
 
 <div>
