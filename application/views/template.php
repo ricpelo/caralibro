@@ -19,8 +19,8 @@
 	</div>
 
 	<?php if (isset($usuario)): ?>
-  <div id="menubotones">
-		<table>
+  <div class="menubotones">
+		<table class="menubotones">
 			<tbody>				
 				<tr>
 					<td class="boton">
