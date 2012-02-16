@@ -28,14 +28,14 @@ class Muros extends CI_Controller {
     }
     $data['contactos'] = $this->Muro->obtener_datos_contenedor($id);
     $data['id'] = $id;
+
 		/* Se recogen nombre y apellidos del propietario del muro */
 		$propietario_muro = $this->Usuario->obtener($id);
 		$nombre = $propietario_muro['nombre'];
 		$apellidos = $propietario_muro['apellidos'];
-
 		$data['propietario_muro'] = $nombre . ' ' . $apellidos;
-    $this->template->load('template','muros/index', $data);
-    
+
+    $this->template->load('template','muros/index', $data);    
  	}
 
   
