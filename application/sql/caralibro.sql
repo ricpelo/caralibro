@@ -44,10 +44,6 @@ insert into usuarios (email, password, nombre, apellidos)
 values ('Gonzalo@gmail.com', md5('hola'), 'Gonzalo', 'Elena');
 insert into usuarios (email, password, nombre, apellidos)
 values ('jose@gmail.com', md5('hola'), 'Jose', 'Mora');
-insert into usuarios (email, password, nombre, apellidos)
-
-
-
 
 drop table envios cascade;
 
@@ -57,7 +53,7 @@ create table envios (
                            on delete cascade on update cascade,
   id_receptor    bigint    constraint fk_envios_receptor    references usuarios (id)
                            on delete cascade on update cascade,
-  fechahora      timestamptz,
+  fechahora      timestamptz default current_timestamp,
   texto          text
 );
 

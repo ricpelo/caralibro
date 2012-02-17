@@ -9,14 +9,15 @@ class Muro extends CI_Model  {
 		                                      nombre as nombre_prop, apellidos as apellidos_prop
 		                                 from envios e join usuarios u
 		                                   on e.id_propietario = u.id
-		                                where id_receptor = $id")->result_array();
+		                                where id_receptor = $id
+		                                order by fechahora desc")->result_array();
 
 	}
 
 
   function hacer_envio($id_emisor, $id_receptor, $texto) {
     return $this->db->query("insert into envios (id_propietario, id_receptor, texto)
-                              values (?,?,?)", array($id_emisor, $_receptor, $texto));
+                              values (?,?,?)", array($id_emisor, $id_receptor, $texto));
   }
 
   function recoger_envio($id) {
@@ -27,7 +28,6 @@ class Muro extends CI_Model  {
   function borrar_envio($id_envio) {
     return $this->db->query("delete from envios where id = $id_envio");
   }
-
 
 }
 

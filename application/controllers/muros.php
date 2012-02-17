@@ -27,36 +27,30 @@ class Muros extends CI_Controller {
     $this->template->load('template','muros/index', $data);
   }
 
-  function enviar($id_receptor, $id_emisor, $texto) {
+  function enviar() {
     $this->load->model('Usuario');
     $this->load->model('Muro');
-    if ($id_receptor == $id_emisor) {
-      $this->session->set_flashdata('mensaje', 'No puedes enviarte mensajes a ti mismo');
-      redirect('muros/index'); 
-    } else {
-      $this->Muro->hacer_envio($id_receptor, $id_emisor, $texto);
-    }       
-    $this->template->load('template','muros/index', $data);
+    $id_propietario = $this->input->post('id_propietario');
+    $id_emisor_mensaje = $this->input->post('id_emisor_mensaje');
+    $texto = $this->input->post('texto');
+    $this->Muro->hacer_envio($id_emisor_mensaje, $id_propietario, $texto);
+    redirect("muros/index/$id_propietario");
   }
 
   function borrar_envio() {
-    $res = $this->Muro->recoger_envio($id);
-    if ($res && $this->db->affected_rows() == 1) { 
+    $this->load->model('Muro');
+    $id_envio = $this->input->post('id_envio');
+    $envio = $this->Muro->recoger_envio($id_envio);
+    if (!empty($envio)) {
       $res = $this->Muro->borrar_envio($id_envio);  
       if ($res && $this->db->affected_rows() == 1) {
-          redirect('muros/index');
+        redirect('muros/index');
       } else { 
-          $this->session->set_flashdata('mensaje', 'No se ha podido borrar el envío');
+        $this->session->set_flashdata('mensaje', 'No se ha podido borrar el envío');
       }
     } else {
       $this->session->set_flashdata('mensaje', 'No se ha encontrado ningún envio');
     }
   }
-
 }
-
-
-
-
-
 
