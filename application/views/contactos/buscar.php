@@ -11,7 +11,7 @@
     <?php foreach ($filas as $fila): ?>
       <tr>
              
-        <td> <?= $fila['nombre'] ?> </td>
+        <td> <?= anchor("/muros/index/{$fila['id']}", $fila['nombre']) ?> </td>
 	           <?= form_open ('contactos/agregar_amigo') ?> </td>
  	      <td> <?= form_hidden('id_solicitado', $fila['id']) ?>
 	           <?= form_submit ('agregar', 'Agregar Amigo') ?> </td>

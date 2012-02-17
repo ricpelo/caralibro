@@ -10,7 +10,7 @@
   <tbody>
     <?php foreach ($filas as $fila): ?>
        <tr>
-	      <td> <?= $fila['nombre_amigo'] ?> </td>
+	      <td> <?= anchor("/muros/index/{$fila['id_amigo']}", $fila['nombre_amigo']) ?> </td>
 	           <?= form_open ('contactos/borrar_amigo') ?> </td>
  	      <td>
              <?= form_hidden('id_amigo', $fila['id_amigo']) ?>

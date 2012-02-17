@@ -25,15 +25,13 @@ class Muros extends CI_Controller {
     $data['filas'] = $this->Usuario->obtenerDatos($email);
     if ($id == null) {
       $id = $this->session->userdata('id');
-      
     }
     $data['contactos'] = $this->Muro->obtener_datos_contenedor($id);
-
 		/* Se recogen nombre y apellidos del propietario del muro */
 		$propietario_muro = $this->Usuario->obtener($id);
 		$nombre = $propietario_muro['nombre'];
 		$apellidos = $propietario_muro['apellidos'];
-		$data['propietario_muro'] = $nombre . ' ' . $apellidos;
+		$data['propietario_muro'] = $nombre . ' ' . $
     $data['id_propietario_muro'] = $id;    
     $data['emisor_mensaje'] = $this->session->userdata('id');
     $this->template->load('template','muros/index', $data);    
@@ -49,11 +47,29 @@ class Muros extends CI_Controller {
     } else {
         $this->Muro->hacer_envio($id_receptor, $id_emisor, $texto);
     }       
+    $this->template->load('template','muros/index', $data);
+    }
+ 	}
 
-  }  
+  function borrar_envio(){
+    $res = $this->Muro->recoger_envio($id);
+    if ($res && $this->db->affected_rows() == 1){ 
+      $res = $this->Muro->borrar_envio($id_envio);  
+        if ($res && $this->db->affected_rows() == 1){
+            redirect('muros/index');
+        } else { 
+            $this->session->set_flashdata('mensaje', 'No se ha podido borrar el envío');
+        }
+     } else {
+            $this->session->set_flashdata('mensaje', 'No se ha encontrado ningún envio');
+     }
+  }
 
 
-}
+
+
+
+
 
 
 
