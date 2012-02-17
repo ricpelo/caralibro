@@ -33,19 +33,24 @@ class Contacto extends CI_Model {
 
   // Muestra todos los contactos existentes
   function obtener_todos($id) {
-    return $this->db->query("select id, nombre || ' ' || apellidos as nombre 
-                               from usuarios where id != $id
+    return $this->db->query("select id, nombre || ' ' || apellidos as nombre
+                               from usuarios
+                              where id != $id
                              except
+                             select id_solicitado, nombre || ' ' || apellidos as nombre
+                               from solicitudes, usuarios
+                              where id_solicitante = $id and id = id_solicitado
+                             except 
                              select case 
-                                      when $id = c.id_amigo1 
-                                      then c.id_amigo2 
-                                      else c.id_amigo1
-                                       end as id_amigo,
-                                    case 
-                                      when $id = c.id_amigo1
-                                      then u2.nombre || ' ' || u2.apellidos
-                                      else u1.nombre || ' ' || u1.apellidos
-                                       end as nombre_amigo
+                                    when $id = c.id_amigo1 
+                                    then c.id_amigo2 
+                                    else c.id_amigo1
+                                     end as id_amigo,
+                                    case                   
+                                    when $id = c.id_amigo1
+                                    then u2.nombre || ' ' || u2.apellidos
+                                    else u1.nombre || ' ' || u1.apellidos
+                                     end as nombre_amigo
                                from contactos c, usuarios u1, usuarios u2
                               where $id in (id_amigo1, id_amigo2) 
                                 and c.id_amigo1 = u1.id 
@@ -58,4 +63,9 @@ class Contacto extends CI_Model {
     return $this->db->query("insert into contactos(id_amigo1, id_amigo2)
                                             values($id_amigo1, $id_amigo2)");
   }
+  //cambios
+  function tiene_solicitud($id_solicitante) {
+		return $this->db->query("select id_solicitado from solicitudes 
+														 where id_solicitante = ?", array($id_solicitante));
+	}
 } 
