@@ -14,16 +14,17 @@ class Muro extends CI_Model  {
 	}
 
 
-  function hacer_envio($id_emisor, $id_receptor, $texto){
+  function hacer_envio($id_emisor, $id_receptor, $texto) {
     return $this->db->query("insert into envios (id_propietario, id_receptor, texto)
                               values (?,?,?)", array($id_emisor, $_receptor, $texto));
+  }
 
-  function recoger_envio($id){
+  function recoger_envio($id) {
     return $this->db->query("select id from envios where id_propietario = $id")->row_array();
   }
     
   
-  function borrar_envio($id_envio){
+  function borrar_envio($id_envio) {
     return $this->db->query("delete from envios where id = $id_envio");
   }
 

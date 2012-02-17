@@ -14,7 +14,7 @@
 	Escribe tu comentario:
   <?= form_open('muros/enviar') ?>
     <?= form_hidden('id_propietario', $id_propietario_muro); ?>
-    <?= form_hidden('id_emisor_mensaje', $emisor_mensaje); ?>
+    <?= form_hidden('id_emisor_mensaje', $id_emisor_mensaje); ?>
     <?= form_textarea(array('name' =>'texto', 'rows'=>'10', 'cols'=>'80'));?>   
     <br/><br/>
     <?= form_submit('enviar', 'Enviar') ?>    
