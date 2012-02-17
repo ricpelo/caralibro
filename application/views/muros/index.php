@@ -4,25 +4,27 @@
   
 </div>
 
-<div>
-  <p><?= $mensaje ?></p>
-</div>
+<?php if (isset($mensaje)): ?>
+  <div>
+    <p><?= $mensaje ?></p>
+  </div>
+<?php endif; ?>
 
 <div id="cuadro_texto">
 	Escribe tu comentario:
-  <form action="index.php" method="post">
-    <input type="hidden" name="id_propietario"/>
-    <input type="hidden" name="id_receptor"/>
-    <textarea name="texto" cols="50" rows="6" style="font-size: x-large"></textarea>
+  <?= form_open('muros/enviar') ?>
+    <?= form_hidden('id_propietario', $id_propietario_muro); ?>
+    <?= form_hidden('id_emisor_mensaje', $id_emisor_mensaje); ?>
+    <?= form_textarea(array('name' =>'texto', 'rows'=>'10', 'cols'=>'80'));?>   
     <br/><br/>
-    <input type="submit" value="Enviar"/>
-  </form>
+    <?= form_submit('enviar', 'Enviar') ?>    
+  <?= form_close() ?>
 </div>
 
 <br/><br/>
 
-<?php foreach ($contactos as $contacto): ?>
-	<?php extract($contacto); ?>
+<?php foreach ($envios as $envio): ?>
+	<?php extract($envio); ?>
 		<div class = "contenedor">
 			<span class = "propietario">  
 				<?= anchor("muros/index/$id_prop" , $nombre_prop . ' ' .  $apellidos_prop) ?> escribió:				               

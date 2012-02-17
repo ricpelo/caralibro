@@ -6,15 +6,7 @@ class Usuarios extends CI_Controller {
 		CI_Controller::__construct();
 		$this->load->model('Usuario');
   }
-  
-  function _comprobar() {
-    
-    if (!$this->session->userdata('usuario')) {
-      $this->session->set_flashdata('mensaje', 'Se requiere autorización');
-      redirect('usuarios/login');
-    }
-  }
-  
+
   function index() {
       $this->_comprobar();
 	  if ($this->input->post('editar')) {

@@ -17,14 +17,6 @@ class Contacto extends CI_Model {
                     c.id_amigo1 = u1.id and c.id_amigo2 = u2.id")->result_array();
   }
 
-  // Obtiene el id del usuario que ha iniciado sesion
-  function obtener_id() {
-    $email = $this->session->userdata('usuario');
-    return $this->db->query("select id 
-                               from usuarios 
-                              where email = '$email'")->row_array();
-  }
-  
   // Borramos un amigo
   function borrar($min, $max) {
     return $this->db->query("delete from contactos 
