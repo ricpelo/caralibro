@@ -4,9 +4,11 @@
   
 </div>
 
-<div>
-  <p><?= $mensaje ?></p>
-</div>
+<?php if (isset($mensaje)): ?>
+  <div>
+    <p><?= $mensaje ?></p>
+  </div>
+<?php endif; ?>
 
 <div id="cuadro_texto">
 	Escribe tu comentario:
@@ -21,8 +23,8 @@
 
 <br/><br/>
 
-<?php foreach ($contactos as $contacto): ?>
-	<?php extract($contacto); ?>
+<?php foreach ($envios as $envio): ?>
+	<?php extract($envio); ?>
 		<div class = "contenedor">
 			<span class = "propietario">  
 				<?= anchor("muros/index/$id_prop" , $nombre_prop . ' ' .  $apellidos_prop) ?> escribió:				               

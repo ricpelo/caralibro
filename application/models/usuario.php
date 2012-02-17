@@ -2,13 +2,17 @@
 
 class Usuario extends CI_Model {
   
-  function comprobarUsuario($email, $password){
+  function obtener_id() {
+    return $this->session->userdata('id');
+  }
+  
+  function comprobar_usuario($email, $password){
   	
   		return $this->db->query("Select * from usuarios where email = ? and password = md5(?)", array($email, $password));	
   }
   
   function crear($email, $password, $nombre, $apellidos) {
-    $res = $this->_nombreUtilizado($email);
+    $res = $this->_nombre_utilizado($email);
   	if($email != '' && $password != '' && $nombre != '' && $apellidos != '' && empty($res)) {
 	  return $this->db->query("insert into usuarios (email, password, nombre, apellidos) 
 		                                   values (?,md5(?),?,?)",array($email, $password, $nombre, $apellidos));
@@ -22,7 +26,7 @@ class Usuario extends CI_Model {
   }
   
   function actualizar($datos) {
-    $res = $this->_nombreEditado($datos['email'], $datos['id']);
+    $res = $this->_nombre_editado($datos['email'], $datos['id']);
     if (!empty($res)) {
       $this->db->where('id',$datos['id']);
 	  unset($datos['id']);
@@ -32,7 +36,7 @@ class Usuario extends CI_Model {
     }
   }
   
-  function obtenerDatos($email) {
+  function obtener_datos($email) {
   	if ($email != '') { # Comprueba que el email no este vacio.
   		return $this->db->query("Select * from usuarios where email = ?", array($email))->row_array();
   	} else {
@@ -44,11 +48,11 @@ class Usuario extends CI_Model {
     return $this->db->query("delete from usuarios where id = ?", array($id));
   }
   
-  function _nombreUtilizado($email) {
+  function _nombre_utilizado($email) {
     return $this->db->query("select email from usuarios where email = ?", array($email))->row_array();
   }
   
-  function _nombreEditado($email, $id) {
+  function _nombre_editado($email, $id) {
     return $this->db->query("select email from usuarios where email = ? and id = ?", array($email, $id))->row_array();
   }
 }

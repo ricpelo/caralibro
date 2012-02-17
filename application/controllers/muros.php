@@ -2,44 +2,30 @@
 
 class Muros extends CI_Controller {
 
-  
   function __construct() {
     CI_Controller::__construct();
     
-     if (!$this->session->userdata('usuario')) {
-     $this->session->set_flashdata('mensaje', 'Se requiere autorización');
-      redirect('usuarios/login');
-    } 
+    $this->load->library('Utilidades');
+    $this->utilidades->comprobar_logueo();
   }
 
   function index($id = null) {     
     $this->load->model('Usuario');
     $this->load->model('Muro');
 		$data = $this->utilidades->obtener_datos_plantilla();
-    if ($this->session->flashdata('mensaje')) {
-      $data['mensaje'] = $this->session->flashdata('mensaje');
-    } else {
-      $data['mensaje'] = '';
-    }
+    $data['mensaje'] = $this->session->flashdata('mensaje');
     $email = $this->session->userdata('usuario');     
-    $data['filas'] = $this->Usuario->obtenerDatos($email);
-    if ($id == null) {
-      $id = $this->session->userdata('id');
-    }
-    $data['contactos'] = $this->Muro->obtener_datos_contenedor($id);
+    $data['filas'] = $this->Usuario->obtener_datos($email);
+    if ($id == null) $id = $this->session->userdata('id');
+    $data['envios'] = $this->Muro->obtener_datos_contenedor($id);
 
 		/* Se recogen nombre y apellidos del propietario del muro */
 		$propietario_muro = $this->Usuario->obtener($id);
-		$nombre = $propietario_muro['nombre'];
-		$apellidos = $propietario_muro['apellidos'];
-		$data['propietario_muro'] = $nombre . ' ' . $apellidos;
+		$data['propietario_muro'] = $propietario_muro['nombre'] . ' ' . $propietario_muro['apellidos'];
     $this->template->load('template','muros/index', $data);
-   
-    }
+  }
 
- 	}
-
-  function borrar_envio(){
+  function borrar_envio() {
       
     $res = $this->Muro->recoger_envio($id);
     if ($res && $this->db->affected_rows() == 1){ 
@@ -55,8 +41,7 @@ class Muros extends CI_Controller {
           
   }
 
-
-
+}
 
 
 

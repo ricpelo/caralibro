@@ -1,6 +1,8 @@
-<div>
-  <p><?= $mensaje ?></p>
-</div>
+<?php if (isset($mensaje)): ?>
+  <div>
+    <p><?= $mensaje ?></p>
+  </div>
+<?php endif; ?>
 
 <table style="margin: auto">
   <thead>

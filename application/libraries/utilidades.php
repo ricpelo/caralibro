@@ -7,17 +7,24 @@ class Utilidades {
   }
 
 	function obtener_datos_plantilla() {
-	  $this->CI =& get_instance();
-		$nombre = $this->CI->session->userdata('nombre');
-		$apellidos = $this->CI->session->userdata('apellidos');
+	  $CI =& get_instance();
+		$nombre = $CI->session->userdata('nombre');
+		$apellidos = $CI->session->userdata('apellidos');
 		$data['nombre_completo'] = $nombre . ' ' . $apellidos;
-		$data['usuario'] = $this->CI->session->userdata('id');
+		$data['usuario'] = $CI->session->userdata('id');
 		return $data;
 	}
 
 	function _obtener_nombre_usuario($id) {
-		$this->CI =& get_instance();
-		return $this->CI->db->query("select nombre || ' ' || apellidos from usuarios where id = ?", array($id));
+		$CI =& get_instance();
+		return $CI->db->query("select nombre || ' ' || apellidos from usuarios where id = ?", array($id));
 	}
 
+  function comprobar_logueo() {
+    $CI =& get_instance();
+    if (!$CI->session->userdata('usuario')) {
+      $CI->session->set_flashdata('mensaje', 'Se requiere autorización');
+      redirect('usuarios/login');
+    }
+  }
 }
