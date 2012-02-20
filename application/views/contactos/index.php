@@ -6,7 +6,7 @@
 
   <table style="margin: auto">
     <thead>
-      <th>Amigos</th>
+      <th><?= $cartel ?> </th>
       <th></th>
     </thead>
     <tbody>
