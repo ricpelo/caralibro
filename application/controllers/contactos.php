@@ -5,10 +5,9 @@ class Contactos extends CI_Controller {
   function __construct() {
     CI_Controller::__construct();
     
-    if (!$this->session->userdata('usuario')) {
-      $this->session->set_flashdata('mensaje', 'Se requiere autorización');
-      redirect('usuarios/login');
-    } 
+    $this->load->library('Utilidades');
+    $this->utilidades->comprobar_logueo();
+
     $this->load->model('Contacto');
     $this->load->model('Solicitud');
     $this->load->model('Usuario');
