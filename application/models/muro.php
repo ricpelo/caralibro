@@ -21,7 +21,7 @@ class Muro extends CI_Model  {
   }
 
   function recoger_envio($id) {
-    return $this->db->query("select id from envios where id_propietario = $id")->row_array();
+    return $this->db->query("select id from envios where id_propietario = $id");
   }
     
   
