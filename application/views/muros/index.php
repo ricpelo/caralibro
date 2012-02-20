@@ -42,6 +42,14 @@
 		</div>
 		<div class="me_gusta">
 			A nadie le gusta esto
+		</div> 
+		<div id="cuadro_texto">
+		  <?= form_open('muros/comentar'); ?>
+		  <?= form_hidden('id_envio', $id_envio); ?>
+		  <?= form_textarea(array('name' => 'texto', 'rows' => '3', 'col' =>'30')); ?>
+		  <br/>
+		  <?= form_submit('comentar', 'Comentar', 'class="boton"') ?>
+		  <?= form_close() ?>
 		</div>
 		<br/>
 <?php endforeach; ?>
