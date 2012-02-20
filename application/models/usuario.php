@@ -27,7 +27,7 @@ class Usuario extends CI_Model {
   
   function actualizar($datos) {
     $res = $this->_nombre_editado($datos['email'], $datos['id']);
-    if (!empty($res)) {
+    if ($res) {
       $this->db->where('id',$datos['id']);
 	  unset($datos['id']);
 	  return $this->db->update('usuarios',$datos);
@@ -53,8 +53,22 @@ class Usuario extends CI_Model {
   }
   
   function _nombre_editado($email, $id) {
-    return $this->db->query("select email from usuarios where email = ? and id = ?", array($email, $id))->row_array();
+    /* Comprueba primero si el nombre esta disponible, si este esta, devolvera true, por tanto se hara el cambio.
+     * Si por el contrario no tiene esta disponible se comprobara si el nombre corresponde con la id enviada, si es así lo permite.
+     * Si no se cumple ninguna de las dos retorna false.*/
+    $res = $this->db->query("select email from usuarios where email = ?", array($email))->row_array();
+    if (!$res) {
+      return true;
+    } else {
+      $res = $this->db->query("select email from usuarios where email = ? and id = ?", array($email, $id))->row_array();
+      if($res) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
+
 
 	/* Métodos de "Me gusta" para los envíos del muro */
 	
