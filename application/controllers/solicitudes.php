@@ -5,10 +5,7 @@ class Solicitudes extends CI_Controller {
 	function __construct() {		
 		CI_Controller::__construct();
 
-		if (!$this->session->userdata('id')) {
-			$this->session->set_flashdata('mensaje', 'Se requiere login');			
-			redirect("usuarios/login");
-		} 
+		$this->utilidades->comprobar_logueo();
 		$this->load->model('Solicitud');
     $this->load->model('Contacto');
 	}
