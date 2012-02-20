@@ -55,4 +55,6 @@ class Usuario extends CI_Model {
   function _nombre_editado($email, $id) {
     return $this->db->query("select email from usuarios where email = ? and id = ?", array($email, $id))->row_array();
   }
+
+
 }
