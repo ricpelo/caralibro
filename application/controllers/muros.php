@@ -43,7 +43,7 @@ class Muros extends CI_Controller {
     
     if ($this->input->post('comentar')) {
       $this->Muro->hacer_comentario($id_envio, $id_propietario, $texto);
-      redirect('muros/index')
+      redirect('muros/index');
     }
   }
 
