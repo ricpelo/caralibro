@@ -29,7 +29,7 @@ class Contacto extends CI_Model {
                                from usuarios
                               where id in (select id from usuarios where id != $id
                                        except
-                                      (select id_amigo2 from contantos 
+                                      (select id_amigo2 from contactos 
                                         where id_amigo1 = $id
                                         union
                                        select id_amigo1 from contactos 

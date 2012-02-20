@@ -18,6 +18,12 @@ class Contactos extends CI_Controller {
     $data['mensaje'] = $this->session->flashdata('mensaje');
     $id = $this->Usuario->obtener_id();
     $data['filas'] = $this->Contacto->obtener_mis_amigos($id);
+    $data['cartel'] = 'Amigos';
+    
+    if (empty($data['filas'])){
+      $data['mensaje'] = 'No tienes ningun amigo';
+      $data['cartel'] = '';
+    }
     $this->template->load('template', 'contactos/index', $data);
   }
 
@@ -39,6 +45,9 @@ class Contactos extends CI_Controller {
     $id = $this->Usuario->obtener_id();
     $data = $this->utilidades->obtener_datos_plantilla();
     $data['filas'] = $this->Contacto->obtener_todos($id);
+    if (empty($data['filas'])){
+      $data['mensaje'] = 'Todos los contactos son amigos tuyos';
+    }
     $this->template->load('template', 'contactos/buscar', $data);
   }
 
