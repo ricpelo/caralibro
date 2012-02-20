@@ -125,7 +125,7 @@ drop table comentarios cascade;
 
 create table comentarios (
   id             bigserial constraint pk_comentarios primary key,
-  id_envio       bigint    contraint fk_comentarios_envios references envios(id),
+  id_envio       bigint    constraint fk_comentarios_envios references envios(id),
   id_propietario bigint    constraint fk_comentarios_usuarios references usuarios(id),
   texto          text
 );
@@ -133,7 +133,7 @@ create table comentarios (
 insert into comentarios (id_envio, id_propietario, texto)
 values (1, 1, '¡Que comentario mas molon');
 
-insert into comentarios (id, envio, id_propietario, texto)
+insert into comentarios (id_envio, id_propietario, texto)
 values (1, 2, 'Si, es cierto');
 
 
