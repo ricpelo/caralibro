@@ -15,7 +15,7 @@
 					<td>&nbsp -- &nbsp</td>
 	 	      <td> 
 						<?= form_hidden('id_solicitado', $fila['id']) ?>
-			      <?= form_submit ('agregar', 'Agregar contacto') ?> 
+			      <?= form_submit ('agregar', 'Agregar contacto', 'class="boton"') ?> 
 					</td>
 	      <?= form_close() ?>
       </tr>

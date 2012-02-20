@@ -75,6 +75,21 @@ create table solicitudes (
   constraint pk_solicitudes primary key (id_solicitante, id_solicitado)
 );
 
+drop table gustos cascade;
+
+create table gustos (
+	id_usuario bigint constraint fk_gustos_usuarios references usuarios(id),
+	id_envio   bigint constraint fk_gustos_envios references envios(id),
+	constraint pk_gustos primary key (id_usuario, id_envio)
+);
+
+insert into gustos (id_usuario, id_envio)
+values (1,1);
+insert into gustos (id_usuario, id_envio)
+values (2,1);
+insert into gustos (id_usuario, id_envio)
+values (1,2);
+
 insert into solicitudes (id_solicitante, id_solicitado)
 values (2,1);
 insert into solicitudes (id_solicitante, id_solicitado)
