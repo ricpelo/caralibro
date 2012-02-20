@@ -8,7 +8,7 @@ class Usuarios extends CI_Controller {
   }
 
   function index() {
-    $this->_comprobar();
+    $this->utilidades->comprobar_logueo();
 	  if ($this->input->post('editar')) {
 	  		redirect('usuarios/editar');
 	  } elseif ($this->input->post('borrar')) {
