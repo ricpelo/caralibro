@@ -80,7 +80,7 @@ class Usuarios extends CI_Controller {
   }
   
   function editar() {
-	 $this->_comprobar();
+	 $this->utilidades->comprobar_logueo();
 	  if ($this->input->post('editar')) {
 	  	$password = $this->input->post('password');
 		$email = $this->input->post('email');
@@ -112,7 +112,7 @@ class Usuarios extends CI_Controller {
 			    $this->template->load('template','usuarios/editar', $data); 
 			} else {
 				$this->session->set_flashdata('mensaje', 'El usuario se modifico correctamente.');
-				$this->_actualizar_variable_s1ession($nombre, $apellidos, $email);
+				$this->_actualizar_variable_session($nombre, $apellidos, $email);
 		 	    redirect('muros/index');	
 			}
 			
@@ -134,6 +134,7 @@ class Usuarios extends CI_Controller {
     }
     
     function borrar() {
+      $this->utilidades->comprobar_logueo();
       if ($this->input->post('si')) {
       		$id = $this->session->userdata('id');
             $res = $this->Usuario->borrar($id);
