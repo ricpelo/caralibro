@@ -29,12 +29,12 @@
 			<span class = "propietario">  
 				<?= anchor("muros/index/$id_prop" , $nombre_prop . ' ' .  $apellidos_prop) ?> escribió:				               
 			</span>
-			<form action="index.php" method="post">
-				<div class = "borrar">				
-				  <input type="hidden" name="id_envio" value="<?= $id_envio ?>"/>
-				  <input type="submit" value="X"/>
+			<?= form_open('muros/borrar_envio/'); ?>
+				<div class = "borrar">
+				  <?= form_hidden('id_envio', $id_envio) ?>
+				  <?= form_submit('borrar', 'X') ?>
 				</div>
-			</form>  
+			<?= form_close() ?>
 		</div>
 		<div class="envio">
 			 <div class="cuerpo"><?= $texto ?></div>

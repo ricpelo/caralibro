@@ -1,6 +1,9 @@
-<div>
-  <p><?= isset($mensaje) ? $mensaje : ''?></p>
-</div>
+<?php if (isset($mensaje)): ?>
+  <div>
+    <p><?= $mensaje ?></p>
+  </div>
+<?php endif; ?>
+
 <div>
 	<table>
 		<tbody>

@@ -3,12 +3,12 @@
 class Usuarios extends CI_Controller {
   
   function __construct() {		
-		CI_Controller::__construct();
-		$this->load->model('Usuario');
+    CI_Controller::__construct();
+    $this->load->model('Usuario');
   }
 
   function index() {
-      $this->_comprobar();
+    $this->utilidades->comprobar_logueo();
 	  if ($this->input->post('editar')) {
 	  		redirect('usuarios/editar');
 	  } elseif ($this->input->post('borrar')) {
@@ -22,11 +22,10 @@ class Usuarios extends CI_Controller {
   }		
 
   function login() {
-  	
   	if ($this->input->post('login')) {
       $email = $this->input->post('email');
       $password = $this->input->post('password');
-      $res = $this->Usuario->comprobarUsuario($email, $password);
+      $res = $this->Usuario->comprobar_usuario($email, $password);
       if ($res->num_rows() == 1) {
         $datos = $res->row_array();
         $this->session->set_userdata('id', $datos['id']);
@@ -113,7 +112,7 @@ class Usuarios extends CI_Controller {
 			    $this->template->load('template','usuarios/editar', $data); 
 			} else {
 				$this->session->set_flashdata('mensaje', 'El usuario se modifico correctamente.');
-				$this->_actualizarVariableSession($nombre, $apellidos, $email);
+				$this->_actualizar_variable_s1ession($nombre, $apellidos, $email);
 		 	    redirect('muros/index');	
 			}
 			
@@ -127,7 +126,7 @@ class Usuarios extends CI_Controller {
 	  } elseif ($this->input->post('cancelar')) {
 		  redirect('usuarios/index');
 	  } else {
-	  	$data = $this->Usuario->obtenerDatos($this->session->userdata('usuario'));
+	  	$data = $this->Usuario->obtener_datos($this->session->userdata('usuario'));
 		$data['confirmpassword'] = '';
 		$data['password'] = '';
 		$this->template->load('template','usuarios/editar', $data); 
@@ -157,7 +156,7 @@ class Usuarios extends CI_Controller {
 		$this->form_validation->set_rules('email', 'usuario','required|is_unique[usuarios.email]');
 	}
 
-  function _actualizarVariableSession($nombre, $apellidos, $email) {
+  function _actualizar_variable_session($nombre, $apellidos, $email) {
   	$this->session->set_userdata('usuario', $email);
 		$this->session->set_userdata('nombre', $nombre);
 		$this->session->set_userdata('apellidos', $apellidos);
