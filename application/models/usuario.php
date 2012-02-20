@@ -14,7 +14,7 @@ class Usuario extends CI_Model {
   function crear($email, $password, $nombre, $apellidos) {
     $res = $this->_nombre_utilizado($email);
   	if($email != '' && $password != '' && $nombre != '' && $apellidos != '' && empty($res)) {
-	  return $this->db->query("insert into usuarios (email, password, nombre, apellidos) 
+	  	return $this->db->query("insert into usuarios (email, password, nombre, apellidos) 
 		                                   values (?,md5(?),?,?)",array($email, $password, $nombre, $apellidos));
 	  } else {
 		  return FALSE;
@@ -70,4 +70,40 @@ class Usuario extends CI_Model {
   }
 
 
+	/* Métodos de "Me gusta" para los envíos del muro */
+	
+	function me_gusta($id, $envio) {
+		return $this->db->query("select * from gustos 
+													   where id_usuario = ? and id_envio = ?", 
+												     array($id, $envio))->num_rows() > 0;
+	}
+
+	function a_cuantos_les_gusta($envio) {
+		return $this->db->query("select * from gustos 
+													   where id_envio = ?", 
+												     array($id, $envio))->num_rows();
+	}
+
+	function ahora_me_gusta($id, $envio) {
+		if ($this->db->query("select * from gustos 
+													where id_usuario = ? and id_envio = ?", 
+													array($id, $envio))->num_rows() == 0) {		
+			return $this->db->query("insert into gustos (id_usuario, id_envio)
+														   values (?, ?)", array($id, $envio));
+		} else {
+			return false;
+		}
+	}
+
+	function ahora_no_me_gusta($id, $envio) {
+		if ($this->db->query("select * from gustos 
+													where id_usuario = ? and id_envio = ?", 
+													array($id, $envio))->num_rows() > 0) {		
+			return $this->db->query("delete from gustos 
+															 where id_usuario = ? and id_envio = ?", 
+													     array($id, $envio));
+		} else {
+			return false;
+		}
+	}
 }

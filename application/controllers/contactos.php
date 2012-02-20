@@ -46,7 +46,7 @@ class Contactos extends CI_Controller {
     $data = $this->utilidades->obtener_datos_plantilla();
     $data['filas'] = $this->Contacto->obtener_todos($id);
     if (empty($data['filas'])){
-      $data['mensaje'] = 'Todos los contactos son amigos tuyos';
+      $data['mensaje'] = 'Todos los contactos son amigos tuyos o no puedes enviar más solicitudes';
     }
     $this->template->load('template', 'contactos/buscar', $data);
   }

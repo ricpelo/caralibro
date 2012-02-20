@@ -17,7 +17,7 @@
     <?= form_hidden('id_emisor_mensaje', $id_emisor_mensaje); ?>
     <?= form_textarea(array('name' =>'texto', 'rows'=>'10', 'cols'=>'80'));?>   
     <br/><br/>
-    <?= form_submit('enviar', 'Enviar') ?>    
+    <?= form_submit('enviar', 'Enviar', 'class="boton"') ?>
   <?= form_close() ?>
 </div>
 
@@ -39,6 +39,9 @@
 		<div class="envio">
 			 <div class="cuerpo"><?= $texto ?></div>
 			 <div class="fechahora"><?= $fechahora ?></div>
+		</div>
+		<div class="me_gusta">
+			A nadie le gusta esto
 		</div>
 		<br/>
 <?php endforeach; ?>

@@ -170,8 +170,25 @@ body {
 	border-style: solid;
 	border-width: 2px;
 	margin: auto;
-	margin-bottom: 20px;
 	padding-top: 10px;
+}
+
+.boton {
+	font-family: "Comic Sans MS";
+  color: white;
+	font-size: 14px;
+	font-weight: bold;
+	background: midnightblue;
+	border-color: midnightblue;
+}
+
+.me_gusta {
+	width: 400px;
+	margin: auto;
+	margin-bottom: 20px;
+	text-align: left;
+	font-family: "Arial";
+	color: green;
 }
 
 .fechahora{

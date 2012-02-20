@@ -23,19 +23,19 @@
 		<table style="padding-left: 10px;">
 			<tbody>				
 				<tr>
-					<td class="boton">
+					<td>
 						<?= anchor("muros/index", "Ir a tu muro") ?>
 					</td>
 					<td style="color: white;">&nbsp --&nbsp</td>
-					<td class="boton">
+					<td>
 						<?= anchor("contactos/index", "Contactos") ?>
 					</td>
 					<td style="color: white;">&nbsp --&nbsp</td>
-					<td class="boton">
+					<td>
 						<?= anchor("solicitudes/index", "Solicitudes") ?>
 					</td>
 					<td style="color: white;">&nbsp --&nbsp</td>
-					<td class="boton">
+					<td>
 						<?= anchor("usuarios/index", "Perfil") ?>
 					</td>
 				</tr>				
