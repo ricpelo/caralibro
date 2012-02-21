@@ -3,17 +3,11 @@
 class Muro extends CI_Model  {
 
 	function obtener_datos_contenedor($id) {
-		return $this->db->query("select texto, id_propietario as id_prop, e.id as id_envio,
-		                                      to_char(fechahora, 'DD-MM-YYYY\" a las \"HH24:MI:SS')
-		                                      as fechahora,
-		                                      nombre as nombre_prop, apellidos as apellidos_prop
-		                                 from envios e join usuarios u
-		                                   on e.id_propietario = u.id
-		                                where id_receptor = $id
-		                                order by fechahora desc")->result_array();
-
+		return $this->db->query("select *,
+														 (select count(*) != 0 from gustos g where g.id_envio = d.id_envio and g.id_usuario = ?) as me_gusta
+														 from datos_cantidad d
+														 order by fechahora desc;", array($id))->result_array();		  
 	}
-
 
   function hacer_envio($id_emisor, $id_receptor, $texto) {
     return $this->db->query("insert into envios (id_propietario, id_receptor, texto)
@@ -23,7 +17,10 @@ class Muro extends CI_Model  {
   function recoger_envio($id) {
     return $this->db->query("select id from envios where id_propietario = $id");
   }
-    
+   
+  function cual_puedo_borrar($id_envio) {
+    return $this->db->query("select id_propietario from envios where id = $id_envio");
+  }
   
   function borrar_envio($id_envio) {
     return $this->db->query("delete from envios where id = $id_envio");

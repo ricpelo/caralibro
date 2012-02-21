@@ -30,10 +30,12 @@
 				<?= anchor("muros/index/$id_prop" , $nombre_prop . ' ' .  $apellidos_prop) ?> escribió:				               
 			</span>
 			<?= form_open('muros/borrar_envio/'); ?>
+            <?php if ($propietario_envio = $this->session->userdata('id')): ?>
 				<div class = "borrar">
 				  <?= form_hidden('id_envio', $id_envio) ?>
 				  <?= form_submit('borrar', 'X') ?>
 				</div>
+            <?php endif; ?>
 			<?= form_close() ?>
 		</div>
 		<div class="envio">
@@ -41,7 +43,28 @@
 			 <div class="fechahora"><?= $fechahora ?></div>
 		</div>
 		<div class="me_gusta">
-			A nadie le gusta esto
+			<?php if ($total_gustos == 1 && $me_gusta == "t"): ?>
+				Te gusta esto
+			<?php elseif ($total_gustos == 2 && $me_gusta == "t"): ?>
+				A ti y a otra persona os gusta esto
+			<?php elseif ($total_gustos > 1 && $me_gusta == "t"): ?>
+				A <?= $total_gustos - 1 ?> personas y a tí os gusta esto 
+			<?php elseif ($total_gustos > 1 && $me_gusta == "f"): ?>
+				A <?= $total_gustos ?> personas les gusta esto
+			<?php elseif ($total_gustos == 1 && $me_gusta == "f"): ?>
+				A una persona le gusta esto
+			<?php else: ?>
+				A nadie le gusta esto
+			<?php endif; ?>
+			<?php if ($me_gusta == 'f'): ?>
+				<?= form_open("muros/agregar_me_gusta/$id_envio") ?>
+					<?= form_submit('me_gusta', 'Me gusta', 'class="boton"') ?>
+				<?= form_close() ?>
+			<?php else: ?>
+				<?= form_open("muros/quitar_me_gusta/$id_envio") ?>
+					<?= form_submit('no_me_gusta', "$me_gusta", 'class="boton"') ?>
+				<?= form_close() ?>
+			<?php endif; ?>
 		</div> 
 		
 		  <?php foreach ($envio['comentarios'] as $comentario): ?>
@@ -54,11 +77,11 @@
 			<?php endforeach; ?>
 		
 		<div id="cuadro_texto">
-		  <?= form_open('muros/comentar'); ?>
-		  <?= form_hidden('id_envio', $id_envio); ?>
-		  <?= form_textarea(array('name' => 'texto', 'rows' => '3', 'col' =>'30')); ?>
-		  <br/>
-		  <?= form_submit('comentar', 'Comentar', 'class="boton"') ?>
+		  <?= form_open('muros/comentar') ?>
+				<?= form_hidden('id_envio', $id_envio) ?>
+				<?= form_textarea(array('name' => 'texto', 'rows' => '3', 'col' =>'30')) ?>
+				<br/>
+				<?= form_submit('comentar', 'Comentar', 'class="boton"') ?>
 		  <?= form_close() ?>
 		</div>
 		<br/>
