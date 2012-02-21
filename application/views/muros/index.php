@@ -29,15 +29,20 @@
 			<span class = "propietario">  
 				<?= anchor("muros/index/$id_prop" , $nombre_prop . ' ' .  $apellidos_prop) ?> escribió:				               
 			</span>
+      <?php if ($id_prop == $id_emisor_mensaje): ?>
 			<?= form_open('muros/borrar_envio/'); ?>
-            <?php if ($propietario_envio = $this->session->userdata('id')): ?>
+            
+            
 				<div class = "borrar">
 				  <?= form_hidden('id_envio', $id_envio) ?>
 				  <?= form_submit('borrar', 'X') ?>
 				</div>
-            <?php endif; ?>
+            
+        
 			<?= form_close() ?>
+      <?php endif; ?>
 		</div>
+
 		<div class="envio">
 			 <div class="cuerpo"><?= $texto ?></div>
 			 <div class="fechahora"><?= $fechahora ?></div>
