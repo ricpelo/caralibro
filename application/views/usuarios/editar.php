@@ -1,7 +1,9 @@
-<p><?= validation_errors() ?></p>
-<div>
-  <p><?= isset($mensaje) ? $mensaje : '' ?></p> 
-</div>
+<?php if (isset($mensaje)): ?>
+  <div>
+    <p><?= $mensaje ?></p>
+  </div>
+<?php endif; ?>
+
 <div>
 <?= form_open('usuarios/editar') ?>
   <p>

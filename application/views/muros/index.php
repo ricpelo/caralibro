@@ -58,11 +58,11 @@
 			<?php endif; ?>
 			<?php if ($me_gusta == 'f'): ?>
 				<?= form_open("muros/agregar_me_gusta/$id_envio") ?>
-					<?= form_submit('me_gusta', 'Me gusta', 'class="boton"') ?>
+					<?= form_submit('me_gusta', '', 'class="boton_me_gusta"') ?>
 				<?= form_close() ?>
 			<?php else: ?>
 				<?= form_open("muros/quitar_me_gusta/$id_envio") ?>
-					<?= form_submit('no_me_gusta', "$me_gusta", 'class="boton"') ?>
+					<?= form_submit('no_me_gusta', '', 'class="boton_no_me_gusta"') ?>
 				<?= form_close() ?>
 			<?php endif; ?>
 		</div> 

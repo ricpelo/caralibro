@@ -182,6 +182,20 @@ body {
 	border-color: midnightblue;
 }
 
+.boton_me_gusta {
+	background-color: white;
+	background-image: url("http://localhost/web/caralibro/images/me_gusta.jpg");
+	width: 35px;
+	height: 25px;
+}
+
+.boton_no_me_gusta {
+	background-color: white;
+	background-image: url("http://localhost/web/caralibro/images/no_me_gusta.png");
+	width: 35px;
+	height: 25px;
+}
+
 .me_gusta {
 	width: 400px;
 	margin: auto;
