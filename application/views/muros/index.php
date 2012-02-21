@@ -14,7 +14,7 @@
 	Escribe tu comentario:
   <?= form_open('muros/enviar') ?>
     <?= form_hidden('id_propietario', $id_propietario_muro); ?>
-    <?= form_hidden('id_emisor_mensaje', $id_emisor_mensaje); ?>
+    <?= form_hidden('id_usuario_logueado', $id_usuario_logueado); ?>
     <?= form_textarea(array('name' =>'texto', 'rows'=>'10', 'cols'=>'80'));?>   
     <br/><br/>
     <?= form_submit('enviar', 'Enviar', 'class="boton"') ?>
@@ -29,7 +29,7 @@
 			<span class = "propietario">  
 				<?= anchor("muros/index/$id_prop" , $nombre_prop . ' ' .  $apellidos_prop) ?> escribió:				               
 			</span>
-      <?php if ($id_prop == $id_emisor_mensaje): ?>
+      <?php if ($id_prop == $id_usuario_logueado || $id_propietario_muro == $id_usuario_logueado): ?>
 			<?= form_open('muros/borrar_envio/'); ?>
             
             

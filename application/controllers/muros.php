@@ -25,7 +25,7 @@ class Muros extends CI_Controller {
 		/* Se recogen nombre y apellidos del propietario del muro */
 		$propietario_muro = $this->Usuario->obtener($id);
     $data['id_propietario_muro'] = $id;
-    $data['id_emisor_mensaje'] = $this->Usuario->obtener_id();
+    $data['id_usuario_logueado'] = $this->Usuario->obtener_id();
 		$data['propietario_muro'] = $propietario_muro['nombre'] . ' ' . $propietario_muro['apellidos'];
     $this->template->load('template','muros/index', $data);
   }
