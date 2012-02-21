@@ -43,6 +43,16 @@
 		<div class="me_gusta">
 			A nadie le gusta esto
 		</div> 
+		
+		  <?php foreach ($envio['comentarios'] as $comentario): ?>
+		    <div class="envio">
+		      <div class="propietario_comentario"><?= $comentario['nombre'] ?></div>
+				  <div class="cuerpo"><?= $comentario['texto'] ?></div>
+          <div class="fechahora"><?= $comentario['fechahora'] ?></div>
+        </div>
+        <br/>
+			<?php endforeach; ?>
+		
 		<div id="cuadro_texto">
 		  <?= form_open('muros/comentar'); ?>
 		  <?= form_hidden('id_envio', $id_envio); ?>

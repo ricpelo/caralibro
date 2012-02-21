@@ -33,7 +33,12 @@ class Muro extends CI_Model  {
     return $this->db->query("insert into comentarios (id_envio, id_propietario, texto)
                              values (?, ?, ?)", array($id_envio, $id_propietario, $texto));
   }
-
+  
+  function obtener_comentarios($id_envio) {
+    return $this->db->query("select texto, fechahora, nombre || ' ' || apellidos  as nombre
+                               from comentarios c, usuarios u 
+                             where u.id = id_propietario and id_envio = ? order by fechahora desc", array($id_envio))->result_array();
+  }       
 }
 
 
