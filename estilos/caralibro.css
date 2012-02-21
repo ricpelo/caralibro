@@ -184,16 +184,22 @@ body {
 
 .boton_me_gusta {
 	background-color: white;
-	background-image: url("http://localhost/web/caralibro/images/me_gusta.jpg");
+	background-image: url("../images/me_gusta.jpg");
 	width: 35px;
 	height: 25px;
+	float: right;
+	position: relative;
+	bottom: 18px;
 }
 
 .boton_no_me_gusta {
 	background-color: white;
-	background-image: url("http://localhost/web/caralibro/images/no_me_gusta.png");
+	background-image: url("../images/no_me_gusta.png");
 	width: 35px;
 	height: 25px;
+	float: right;
+	position: relative;
+	bottom: 18px;
 }
 
 .me_gusta {

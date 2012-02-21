@@ -35,7 +35,7 @@
             
 				<div class = "borrar">
 				  <?= form_hidden('id_envio', $id_envio) ?>
-				  <?= form_submit('borrar', 'X') ?>
+				  <?= form_submit('borrar', 'X', 'class="boton"') ?>
 				</div>
             
         
