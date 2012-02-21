@@ -142,7 +142,8 @@ create table comentarios (
   id             bigserial constraint pk_comentarios primary key,
   id_envio       bigint    constraint fk_comentarios_envios references envios(id),
   id_propietario bigint    constraint fk_comentarios_usuarios references usuarios(id),
-  texto          text
+  texto          text,
+  fechahora      timestamptz default current_timestamp
 );
 
 insert into comentarios (id_envio, id_propietario, texto)
