@@ -5,7 +5,8 @@ class Muro extends CI_Model  {
 	function obtener_datos_contenedor($id) {
 		return $this->db->query("select *,
 														 (select count(*) != 0 from gustos g where g.id_envio = d.id_envio and g.id_usuario = ?) as me_gusta
-														 from datos_cantidad d;", array($id))->result_array();		  
+														 from datos_cantidad d
+														 order by fechahora desc;", array($id))->result_array();		  
 	}
 
   function hacer_envio($id_emisor, $id_receptor, $texto) {
@@ -29,7 +30,12 @@ class Muro extends CI_Model  {
     return $this->db->query("insert into comentarios (id_envio, id_propietario, texto)
                              values (?, ?, ?)", array($id_envio, $id_propietario, $texto));
   }
-
+  
+  function obtener_comentarios($id_envio) {
+    return $this->db->query("select texto, fechahora, nombre || ' ' || apellidos  as nombre
+                               from comentarios c, usuarios u 
+                             where u.id = id_propietario and id_envio = ? order by fechahora desc", array($id_envio))->result_array();
+  }       
 }
 
 
