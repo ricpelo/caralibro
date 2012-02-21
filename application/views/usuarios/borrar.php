@@ -7,7 +7,7 @@
   <p>
     <strong>¿Está seguro que desea borrar su cuenta de usuario?</strong>
   </p>
-  <p><?= form_submit('si', 'Si') ?>
-     <?= form_submit('no', 'No') ?></p>
+  <p><?= form_submit('si', 'Si', 'class="boton"') ?>
+     <?= form_submit('no', 'No', 'class="boton"') ?></p>
 <?= form_close() ?>
 </div>

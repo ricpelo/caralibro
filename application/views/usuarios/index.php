@@ -8,8 +8,8 @@
     <?= form_label('Apellidos:') ?>
     <?=  $apellidos ?> <br/>
   </p>
-  <p><?= form_submit('editar', 'Editar') ?>
-     <?= form_submit('borrar', 'Borrar') ?>
-     <?= form_submit('muro', 'Mi muro') ?></p>
+  <p><?= form_submit('editar', 'Editar', 'class="boton"') ?>
+     <?= form_submit('borrar', 'Borrar', 'class="boton"') ?>
+     <?= form_submit('muro', 'Mi muro', 'class="boton"') ?></p>
 <?= form_close() ?>
 </div>
