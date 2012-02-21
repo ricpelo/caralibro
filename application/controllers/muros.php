@@ -36,6 +36,19 @@ class Muros extends CI_Controller {
     $this->Muro->hacer_envio($id_emisor_mensaje, $id_propietario, $texto);
     redirect("muros/index/$id_propietario");
   }
+  
+  function comentar() {
+    $this->load->model('Muro');
+    $this->load->model('Usuario');
+    
+    if ($this->input->post('comentar')) {
+      $id_envio = $this->input->post('id_envio');
+      $id_propietario = $this->Usuario->obtener_id();
+      $texto = $this->input->post('texto');
+      $this->Muro->hacer_comentario($id_envio, $id_propietario, $texto);
+      redirect('muros/index');
+    }
+  }
 
   function borrar_envio() {
     $this->load->model('Muro');
