@@ -65,5 +65,28 @@ class Muros extends CI_Controller {
       $this->session->set_flashdata('mensaje', 'No se ha encontrado ningún envio');
     }
   }
+
+
+  function agregar_me_gusta($id_envio){
+    $this->load->model('Usuario');
+    $id = $this->session->userdata('id');
+    $res = $this->Usuario->ahora_me_gusta($id, $id_envio);
+    if ($res) {
+      redirect('muros/index');
+    }else{
+      $this->session->set_flashdata('mensaje', 'No se ha podido agregar a tus "Me Gusta"');
+    }
+  }
+
+  function quitar_me_gusta($id_envio){
+    $this->load->model('Usuario');
+    $id = $this->session->userdata('id');
+    $res = $this->Usuario->ahora_no_me_gusta($id, $id_envio);
+    if ($res) {
+      redirect('muros/index');
+    }else{
+      $this->session->set_flashdata('mensaje', 'No se ha podido quitar de tus "Me Gusta"');
+    }
+  }
 }
 
