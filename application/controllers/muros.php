@@ -54,6 +54,8 @@ class Muros extends CI_Controller {
     $this->load->model('Muro');
     $id_envio = $this->input->post('id_envio');
     $envio = $this->Muro->recoger_envio($id_envio);
+    $data['propietario_envio'] = $this->Muro->cual_puedo_borrar($id_envio);
+    $this->template->load('template','muros/index', $data);
     if (!empty($envio)) {
       $res = $this->Muro->borrar_envio($id_envio);  
       if ($res && $this->db->affected_rows() == 1) {
