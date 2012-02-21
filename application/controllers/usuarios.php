@@ -143,11 +143,11 @@ class Usuarios extends CI_Controller {
 				redirect('usuarios/login');
 	        } else {
               $this->session->set_flashdata('mensaje', 'No se ha podido borrar el usuario');
-			  redirect('muros/index');
+			  redirect('usuarios/editar');
 	        }
       } elseif ($this->input->post('no')) {
           $this->session->set_flashdata('mensaje', 'La operación fue cancelada.');
-			  redirect('muros/index');
+			  redirect('usuarios/editar');
       } else {
 		$this->template->load('template', 'usuarios/borrar');
       }

@@ -1,3 +1,9 @@
+<?php if (isset($mensaje)): ?>
+  <div>
+    <p><?= $mensaje ?></p>
+  </div>
+<?php endif; ?>
+
 <div>
 <?= form_open('usuarios/index') ?>
   <p>
