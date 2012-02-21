@@ -16,7 +16,10 @@ class Muro extends CI_Model  {
   function recoger_envio($id) {
     return $this->db->query("select id from envios where id_propietario = $id");
   }
-    
+   
+  function cual_puedo_borrar($id_envio) {
+    return $this->db->query("select id_propietario from envios where id = $id_envio");
+  }
   
   function borrar_envio($id_envio) {
     return $this->db->query("delete from envios where id = $id_envio");
