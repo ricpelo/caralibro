@@ -161,8 +161,8 @@ select texto, id_propietario as id_prop, e.id as id_envio,
 		                                   on e.id_propietario = u.id;
 
 create view datos_cantidad as
-select d.text, d.id_prop, d.id_envio, d.fechahora, d.nombre_prop, d.apellidos_prop, count(g.id_envio) as total_gustos
+select d.texto, d.id_prop, d.id_envio, d.fechahora, d.nombre_prop, d.apellidos_prop, count(g.id_envio) as total_gustos
 from datos_envios d left join gustos g on d.id_envio = g.id_envio
-group by d.text, d.id_prop, d.id_envio, d.fechahora, d.nombre_prop, d.apellidos_prop;
+group by d.texto, d.id_prop, d.id_envio, d.fechahora, d.nombre_prop, d.apellidos_prop;
 
 
