@@ -53,8 +53,22 @@ class Muros extends CI_Controller {
   function borrar_envio() {
     $id_envio = $this->input->post('id_envio');
     $envio = $this->Muro->recoger_envio($id_envio);
-    $data['propietario_envio'] = (int) $this->Muro->cual_puedo_borrar($id_envio);
-    $data['id'] = $this->session->userdata('id');
+
+    if (!empty($envio)) {
+      $res = $this->Muro->borrar_envio($id_envio);  
+      if ($res && $this->db->affected_rows() == 1) {
+        redirect('muros/index');
+      } else { 
+        $this->session->set_flashdata('mensaje', 'No se ha podido borrar el envío');
+      }
+    } else {
+      $this->session->set_flashdata('mensaje', 'No se ha encontrado ningún envio');
+    }
+  }
+
+  function borrar_comentario() {
+    $id_envio = $this->input->post('id_envio');
+    $envio = $this->Muro->recoger_envio($id_envio);
 
     if (!empty($envio)) {
       $res = $this->Muro->borrar_envio($id_envio);  

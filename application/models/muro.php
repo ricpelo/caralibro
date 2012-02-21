@@ -17,6 +17,10 @@ class Muro extends CI_Model  {
   function recoger_envio($id) {
     return $this->db->query("select id from envios where id_propietario = $id");
   }
+
+  function recoger_comentario($id) {
+    return $this->db->query("select id from comentarios when id_propietario = $id");
+  }
    
   function cual_puedo_borrar($id_envio) {
     return $this->db->query("select id_propietario from envios where id = $id_envio");
@@ -26,6 +30,10 @@ class Muro extends CI_Model  {
     return $this->db->query("delete from envios where id = $id_envio");
   }
   
+  function borrar_comentario($id_envio) {
+    return $this->db->query("delete from comentarios where id = $id_envio");
+  }
+
   function hacer_comentario($id_envio, $id_propietario, $texto) {
     return $this->db->query("insert into comentarios (id_envio, id_propietario, texto)
                              values (?, ?, ?)", array($id_envio, $id_propietario, $texto));
