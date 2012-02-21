@@ -15,9 +15,10 @@
 	        <td> <?= anchor("/muros/index/{$fila['id_amigo']}", $fila['nombre_amigo']) ?> 
           </td>
 	             <?= form_open ('contactos/borrar_amigo') ?> </td>
+					<td>&nbsp -- &nbsp</td>
    	      <td>
                <?= form_hidden('id_amigo', $fila['id_amigo']) ?>
-	             <?= form_submit ('borrar', '         Borrar       ') ?> </td>
+	             <?= form_submit ('borrar', 'Borrar', 'class="boton"') ?> </td>
 	             <?= form_close() ?>
          </tr>
       <?php endforeach; ?>
