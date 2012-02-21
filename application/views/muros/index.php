@@ -14,7 +14,7 @@
 	Escribe tu comentario:
   <?= form_open('muros/enviar') ?>
     <?= form_hidden('id_propietario', $id_propietario_muro); ?>
-    <?= form_hidden('id_emisor_mensaje', $id_emisor_mensaje); ?>
+    <?= form_hidden('id_usuario_logueado', $id_usuario_logueado); ?>
     <?= form_textarea(array('name' =>'texto', 'rows'=>'10', 'cols'=>'80'));?>   
     <br/><br/>
     <?= form_submit('enviar', 'Enviar', 'class="boton"') ?>
@@ -29,15 +29,20 @@
 			<span class = "propietario">  
 				<?= anchor("muros/index/$id_prop" , $nombre_prop . ' ' .  $apellidos_prop) ?> escribió:				               
 			</span>
+      <?php if ($id_prop == $id_usuario_logueado || $id_propietario_muro == $id_usuario_logueado): ?>
 			<?= form_open('muros/borrar_envio/'); ?>
-            <?php if ($propietario_envio = $this->session->userdata('id')): ?>
+            
+            
 				<div class = "borrar">
 				  <?= form_hidden('id_envio', $id_envio) ?>
 				  <?= form_submit('borrar', 'X') ?>
 				</div>
-            <?php endif; ?>
+            
+        
 			<?= form_close() ?>
+      <?php endif; ?>
 		</div>
+
 		<div class="envio">
 			 <div class="cuerpo"><?= $texto ?></div>
 			 <div class="fechahora"><?= $fechahora ?></div>
@@ -66,6 +71,16 @@
 				<?= form_close() ?>
 			<?php endif; ?>
 		</div> 
+		
+		  <?php foreach ($envio['comentarios'] as $comentario): ?>
+		    <div class="envio">
+		      <div class="propietario_comentario"><?= $comentario['nombre'] ?></div>
+				  <div class="cuerpo"><?= $comentario['texto'] ?></div>
+          <div class="fechahora"><?= $comentario['fechahora'] ?></div>
+        </div>
+        <br/>
+			<?php endforeach; ?>
+		
 		<div id="cuadro_texto">
 		  <?= form_open('muros/comentar') ?>
 				<?= form_hidden('id_envio', $id_envio) ?>
