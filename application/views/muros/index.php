@@ -9,7 +9,6 @@
     <p><?= $mensaje ?></p>
   </div>
 <?php endif; ?>
-
 <div>
 	Escribe tu comentario:
   <?= form_open('muros/enviar') ?>
