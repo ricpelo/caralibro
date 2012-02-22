@@ -87,6 +87,7 @@
 		<div class="cuadro_texto">
 		  <?= form_open('muros/comentar') ?>
 				<?= form_hidden('id_envio', $id_envio) ?>
+				<?= form_hidden('id_propietario', $id_propietario_muro) ?>
 				<?= form_textarea(array('name' => 'texto', 'rows' => '3', 'col' =>'30', 'class="coment"')) ?>
 				<br/>
 				<?= form_submit('comentar', 'Comentar', 'class="boton"') ?>
