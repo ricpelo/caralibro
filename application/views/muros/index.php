@@ -34,6 +34,7 @@
             
 				<div class = "borrar">
 				  <?= form_hidden('id_envio', $id_envio) ?>
+					<?= form_hidden('id_propietario_muro', $id_propietario_muro) ?>
 				  <?= form_submit('borrar', 'X', 'class="boton_borrar"') ?>
 				</div>
             

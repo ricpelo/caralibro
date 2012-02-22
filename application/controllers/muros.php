@@ -50,10 +50,11 @@ class Muros extends CI_Controller {
 
   function borrar_envio() {
     $id_envio = $this->input->post('id_envio');
+		$id_propietario_muro = $this->input->post('id_propietario_muro');
     if (!empty($id_envio)) {
       $res = $this->Muro->borrar_envio($id_envio);  
       if ($res && $this->db->affected_rows() == 1) {
-        redirect('muros/index');
+        redirect("muros/index/$id_propietario_muro");
       } else { 
         $this->session->set_flashdata('mensaje', 'No se ha podido borrar el envío');
       }
