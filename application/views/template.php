@@ -1,10 +1,21 @@
+<?php if (isset($contador)): ?>
+  <script type="text/javascript">
+         //Función que busca el DIV, coge su valor y lo guarda en el HiddenField
+         function ir_posicion() {
+            window.location = window.location + "#<?=$contador?>";
+         }
+       </script>
+<?php endif; ?>
 <html>
   <head>
     <title></title>
     <?= link_tag('estilos/caralibro.css') ?>
   </head>
-<body>
-
+<?php if (isset($contador)): ?>
+  <body onload="ir_posicion()">
+<?php else: ?>
+  <body>
+<?php endif; ?>
 	<div id="header">
 		<div id="logo"></div>
 		<p id="titulo">araLibro</p>		
