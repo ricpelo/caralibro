@@ -41,7 +41,7 @@ class Muro extends CI_Model  {
   
   function obtener_comentarios($id_envio) {
     return $this->db->query("select texto, to_char(fechahora, 'DD-MM-YYYY\" a las \"HH24:MI:SS')
-                                        as fechahora, nombre || ' ' || apellidos  as nombre
+                                        as fechahora, nombre || ' ' || apellidos  as nombre, id_propietario
                                from comentarios c, usuarios u 
                              where u.id = id_propietario and id_envio = ? order by fechahora asc", array($id_envio))->result_array();
   }       

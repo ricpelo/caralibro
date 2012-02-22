@@ -35,7 +35,7 @@
             
 				<div class = "borrar">
 				  <?= form_hidden('id_envio', $id_envio) ?>
-				  <?= form_submit('borrar', 'X') ?>
+				  <?= form_submit('borrar', 'X', 'class="boton_borrar"') ?>
 				</div>
             
         
@@ -73,6 +73,7 @@
 		</div> 
 		
 		  <?php foreach ($envio['comentarios'] as $comentario): ?>
+<<<<<<< HEAD
 		  
         <div class="envio">
          <?php if ($id_prop == $id_usuario_logueado || $id_propietario_muro == $id_usuario_logueado): ?>
@@ -89,6 +90,11 @@
          <?php endif; ?> 
 		      <div class="propietario_comentario"><?= $comentario['nombre'] ?></div>
 				  <div class="cuerpo"><?= $comentario['texto'] ?></div>
+=======
+		    <div class="propietario_comentario"><?= anchor("muros/index/{$comentario['id_propietario']}", $comentario['nombre']); ?>  comentó:</div>
+		    <div class="comentario">
+				  <div class="cuerpo_comentario"><?= $comentario['texto'] ?></div>
+>>>>>>> b2d97da4b57046546964fef74f04fe749b5270cd
           <div class="fechahora"><?= $comentario['fechahora'] ?></div>
         </div>
         <br/>

@@ -6,7 +6,7 @@
 <body>
 
 	<div id="header">
-		<img src= "http://localhost/web/caralibro/images/logo.jpg" border= "4" align="left"/>
+		<img src= "../images/logo.jpg" border= "4" align="left"/>
 		<p id="titulo">araLibro</p>		
 		<?php if (isset($usuario)): ?>
 			<span id="capa_cerrar_sesion">
