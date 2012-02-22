@@ -73,8 +73,6 @@
 		</div> 
 		
 		  <?php foreach ($envio['comentarios'] as $comentario): ?>
-		  
-       
 		    <div class="propietario_comentario"><?= anchor("muros/index/{$comentario['id_propietario']}", $comentario['nombre']); ?>  comentó:</div>
 		    <div class="comentario">
 				  <div class="cuerpo_comentario"><?= $comentario['texto'] ?></div>
