@@ -27,6 +27,10 @@ class Muros extends CI_Controller {
     $data['id_propietario_muro'] = $id;
     $data['id_usuario_logueado'] = $this->Usuario->obtener_id();
 		$data['propietario_muro'] = $propietario_muro['nombre'] . ' ' . $propietario_muro['apellidos'];
+    if ($this->session->userdata('contador')) {
+      $data['contador'] = $this->session->userdata('contador');
+      $this->session->unset_userdata('contador');
+    }
     $this->template->load('template','muros/index', $data);
   }
 
@@ -42,10 +46,12 @@ class Muros extends CI_Controller {
   function comentar() {
     
     if ($this->input->post('comentar')) {
+      $contador = $this->input->post('contador');
       $id_envio = $this->input->post('id_envio');
       $id_propietario = $this->Usuario->obtener_id();
       $texto = $this->input->post('texto');
       $this->Muro->hacer_comentario($id_envio, $id_propietario, $texto);
+      $this->session->set_userdata('contador', $contador);
       redirect('muros/index');
     }
   }
