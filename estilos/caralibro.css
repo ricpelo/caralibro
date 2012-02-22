@@ -120,7 +120,7 @@ body {
 	color: blue;
 }
 
-#comentario {
+.comentario {
 	border-style: solid;
 	border-width: 4px;
 	background: #CCC;
@@ -209,8 +209,8 @@ body {
   color: white;
 	font-size: 14px;
 	font-weight: bold;
-	background: red;
-	border-color: red;
+	background: #8A0808;
+	border-color: #8A0808;
 }
 
 .boton_me_gusta {
@@ -256,3 +256,10 @@ body {
   top: -35px;
   height: 70px;
 }
+
+.cuadro_texto{
+  width: 300px;
+  margin: auto;
+  padding-top: 10px;
+ 
+  }
