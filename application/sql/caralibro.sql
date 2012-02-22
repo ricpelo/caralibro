@@ -78,8 +78,10 @@ create table solicitudes (
 drop table gustos cascade;
 
 create table gustos (
-	id_usuario bigint constraint fk_gustos_usuarios references usuarios(id),
-	id_envio   bigint constraint fk_gustos_envios references envios(id),
+	id_usuario bigint constraint fk_gustos_usuarios references usuarios(id)
+             on delete cascade on update cascade,
+	id_envio   bigint constraint fk_gustos_envios references envios(id)
+             on delete cascade on update cascade,
 	constraint pk_gustos primary key (id_usuario, id_envio)
 );
 
@@ -140,8 +142,10 @@ drop table comentarios cascade;
 
 create table comentarios (
   id             bigserial constraint pk_comentarios primary key,
-  id_envio       bigint    constraint fk_comentarios_envios references envios(id),
-  id_propietario bigint    constraint fk_comentarios_usuarios references usuarios(id),
+  id_envio       bigint    constraint fk_comentarios_envios references envios(id)
+                           on delete cascade on update cascade,
+  id_propietario bigint    constraint fk_comentarios_usuarios references usuarios(id)
+                           on delete cascade on update cascade,
   texto          text,
   fechahora      timestamptz default current_timestamp
 );
