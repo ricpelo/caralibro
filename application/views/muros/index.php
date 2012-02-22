@@ -10,7 +10,7 @@
   </div>
 <?php endif; ?>
 
-<div id="cuadro_texto">
+<div>
 	Escribe tu comentario:
   <?= form_open('muros/enviar') ?>
     <?= form_hidden('id_propietario', $id_propietario_muro); ?>
@@ -73,6 +73,8 @@
 		</div> 
 		
 		  <?php foreach ($envio['comentarios'] as $comentario): ?>
+		  
+       
 		    <div class="propietario_comentario"><?= anchor("muros/index/{$comentario['id_propietario']}", $comentario['nombre']); ?>  comentó:</div>
 		    <div class="comentario">
 				  <div class="cuerpo_comentario"><?= $comentario['texto'] ?></div>

@@ -171,6 +171,9 @@ body {
   border-width: 2px;
   margin: auto;
   padding-top: 10px;
+  position: relative;
+  right: -50px;
+  background: #F2F2F2;
 }
 
 .propietario_comentario {
@@ -257,9 +260,9 @@ body {
   height: 70px;
 }
 
+
 .cuadro_texto{
   width: 300px;
   margin: auto;
   padding-top: 10px;
- 
-  }
+}
