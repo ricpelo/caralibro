@@ -11,14 +11,13 @@ class Muros extends CI_Controller {
     $this->utilidades->comprobar_logueo();
   }
 
-  function index($id = null) {     
-    
+  function index($id = null) {    
 		$data = $this->utilidades->obtener_datos_plantilla();
     $data['mensaje'] = $this->session->flashdata('mensaje');
     $email = $this->session->userdata('usuario');     
     $data['filas'] = $this->Usuario->obtener_datos($email);
     if ($id == null) $id = $this->Usuario->obtener_id();
-    $data['envios'] = $this->Muro->obtener_datos_contenedor($id);
+    $data['envios'] = $this->Muro->obtener_datos_contenedor($id, $this->Usuario->obtener_id());
     foreach ($data['envios'] as $k => $v) {
       $data['envios'][$k]['comentarios'] = $this->Muro->obtener_comentarios($v['id_envio']);
     }
@@ -30,10 +29,9 @@ class Muros extends CI_Controller {
     $this->template->load('template','muros/index', $data);
   }
 
-  function enviar() {
-    
+  function enviar() {    
     $id_propietario = $this->input->post('id_propietario');
-    $id_emisor_mensaje = $this->input->post('id_emisor_mensaje');
+    $id_emisor_mensaje = $this->input->post('id_usuario_logueado');
     $texto = $this->input->post('texto');
     $this->Muro->hacer_envio($id_emisor_mensaje, $id_propietario, $texto);
     redirect("muros/index/$id_propietario");
@@ -52,9 +50,7 @@ class Muros extends CI_Controller {
 
   function borrar_envio() {
     $id_envio = $this->input->post('id_envio');
-    $envio = $this->Muro->recoger_envio($id_envio);
-
-    if (!empty($envio)) {
+    if (!empty($id_envio)) {
       $res = $this->Muro->borrar_envio($id_envio);  
       if ($res && $this->db->affected_rows() == 1) {
         redirect('muros/index');
@@ -68,9 +64,7 @@ class Muros extends CI_Controller {
 
   function borrar_comentario() {
     $id_envio = $this->input->post('id_envio');
-    $envio = $this->Muro->recoger_envio($id_envio);
-
-    if (!empty($envio)) {
+    if (!empty($id_envio)) {
       $res = $this->Muro->borrar_envio($id_envio);  
       if ($res && $this->db->affected_rows() == 1) {
         redirect('muros/index');

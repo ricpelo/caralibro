@@ -153,7 +153,7 @@ insert into comentarios (id_envio, id_propietario, texto)
 values (1, 2, 'Si, es cierto');
 
 create view datos_envios as 
-select texto, id_propietario as id_prop, e.id as id_envio,
+select texto, id_receptor, id_propietario as id_prop, e.id as id_envio,
 		                                      to_char(fechahora, 'DD-MM-YYYY" a las "HH24:MI:SS')
 		                                      as fechahora,
 		                                      nombre as nombre_prop, apellidos as apellidos_prop
@@ -161,8 +161,8 @@ select texto, id_propietario as id_prop, e.id as id_envio,
 		                                   on e.id_propietario = u.id;
 
 create view datos_cantidad as
-select d.texto, d.id_prop, d.id_envio, d.fechahora, d.nombre_prop, d.apellidos_prop, count(g.id_envio) as total_gustos
+select d.texto, d.id_receptor, d.id_prop, d.id_envio, d.fechahora, d.nombre_prop, d.apellidos_prop, count(g.id_envio) as total_gustos
 from datos_envios d left join gustos g on d.id_envio = g.id_envio
-group by d.texto, d.id_prop, d.id_envio, d.fechahora, d.nombre_prop, d.apellidos_prop;
+group by d.texto, d.id_receptor, d.id_prop, d.id_envio, d.fechahora, d.nombre_prop, d.apellidos_prop;
 
 

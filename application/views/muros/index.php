@@ -72,16 +72,17 @@
 			<?php endif; ?>
 		</div> 
 		
-		  <?php foreach ($envio['comentarios'] as $comentario): ?>
-		  
-       
-		    <div class="propietario_comentario"><?= anchor("muros/index/{$comentario['id_propietario']}", $comentario['nombre']); ?>  comentó:</div>
-		    <div class="comentario">
-				  <div class="cuerpo_comentario"><?= $comentario['texto'] ?></div>
-          <div class="fechahora"><?= $comentario['fechahora'] ?></div>
-        </div>
-        <br/>
-			<?php endforeach; ?>
+	  <?php foreach ($envio['comentarios'] as $comentario): ?>     
+	    <div class="propietario_comentario">
+				<?= anchor("muros/index/{$comentario['id_propietario']}", $comentario['nombre']); ?>  
+				comentó:									
+			</div>
+	    <div class="comentario">
+			  <div class="cuerpo_comentario"><?= $comentario['texto'] ?></div>
+        <div class="fechahora"><?= $comentario['fechahora'] ?></div>
+      </div>
+      <br/>
+		<?php endforeach; ?>
 		
 		<div class="cuadro_texto">
 		  <?= form_open('muros/comentar') ?>
