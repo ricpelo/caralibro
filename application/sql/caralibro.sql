@@ -142,8 +142,10 @@ drop table comentarios cascade;
 
 create table comentarios (
   id             bigserial constraint pk_comentarios primary key,
-  id_envio       bigint    constraint fk_comentarios_envios references envios(id),
-  id_propietario bigint    constraint fk_comentarios_usuarios references usuarios(id),
+  id_envio       bigint    constraint fk_comentarios_envios references envios(id)
+                           on delete cascade on update cascade,
+  id_propietario bigint    constraint fk_comentarios_usuarios references usuarios(id)
+                           on delete cascade on update cascade,
   texto          text,
   fechahora      timestamptz default current_timestamp
 );
