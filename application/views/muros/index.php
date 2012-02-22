@@ -74,21 +74,7 @@
 		
 		  <?php foreach ($envio['comentarios'] as $comentario): ?>
 		  
-        <div class="envio">
-         <?php if ($id_prop == $id_usuario_logueado || $id_propietario_muro == $id_usuario_logueado): ?>
-			   <?= form_open('muros/borrar_comentario/'); ?>
-            
-            
-				<div class = "borrar">
-				  <?= form_hidden('id_envio', $id_envio) ?>
-				  <?= form_submit('borrar', 'X') ?>
-				</div>
-            
-        
-			   <?= form_close() ?>
-         <?php endif; ?> 
-		      <div class="propietario_comentario"><?= $comentario['nombre'] ?></div>
-				  <div class="cuerpo"><?= $comentario['texto'] ?></div>
+       
 		    <div class="propietario_comentario"><?= anchor("muros/index/{$comentario['id_propietario']}", $comentario['nombre']); ?>  comentó:</div>
 		    <div class="comentario">
 				  <div class="cuerpo_comentario"><?= $comentario['texto'] ?></div>
