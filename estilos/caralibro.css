@@ -120,7 +120,7 @@ body {
 	color: blue;
 }
 
-#comentario {
+.comentario {
 	border-style: solid;
 	border-width: 4px;
 	background: #CCC;
@@ -260,6 +260,9 @@ body {
   height: 70px;
 }
 
-.cuadro_texto {
-	right: 40px;
+
+.cuadro_texto{
+  width: 300px;
+  margin: auto;
+  padding-top: 10px;
 }
