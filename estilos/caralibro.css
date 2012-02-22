@@ -55,18 +55,18 @@
 }
 
 a:hover {
-	color: #045FB4;
+	color: #819FF7;
 	font-weight: bold;
 	text-decoration:none;
 }
 
 a:link {
-	color: #045FB4;
+	color: #819FF7;
 	text-decoration:none;
 }
 
 a:visited {
-  color: #045FB4;
+  color: #819FF7;
 	text-decoration:none;
 }
 
@@ -162,7 +162,8 @@ body {
   margin-left: -180px;
   position: relative;
   top: 2px;
-  background: #ccc;
+  background: black;
+	color: white;  
 }
 
 .contenedor {
@@ -196,8 +197,8 @@ body {
   margin-left: 500px;
   position: relative;
   top: 2px;
-  background: #ccc;
-  
+  background: black;
+	color: white;  
 }
 
 .envio {

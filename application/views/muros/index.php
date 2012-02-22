@@ -90,7 +90,7 @@
 				<?= form_hidden('id_propietario', $id_propietario_muro) ?>
 				<?= form_textarea(array('name' => 'texto', 'rows' => '3', 'col' =>'30', 'class="coment"')) ?>
 				<br/>
-				<?= form_submit('comentar', 'Comentar', 'class="boton"') ?>
+				<?= form_submit('comentar', 'Comentar', 'class="boton"', 'onclick="return confirm(\'¿Está seguro?\')"') ?>
 		  <?= form_close() ?>
 		</div>
 		<br/>
