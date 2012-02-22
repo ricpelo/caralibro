@@ -10,7 +10,7 @@
   </div>
 <?php endif; ?>
 
-<div id="cuadro_texto">
+<div>
 	Escribe tu comentario:
   <?= form_open('muros/enviar') ?>
     <?= form_hidden('id_propietario', $id_propietario_muro); ?>
@@ -81,7 +81,7 @@
         <br/>
 			<?php endforeach; ?>
 		
-		<div id="cuadro_texto">
+		<div class="cuadro_texto">
 		  <?= form_open('muros/comentar') ?>
 				<?= form_hidden('id_envio', $id_envio) ?>
 				<?= form_textarea(array('name' => 'texto', 'rows' => '3', 'col' =>'30')) ?>
