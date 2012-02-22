@@ -44,7 +44,7 @@ class Muros extends CI_Controller {
       $id_propietario = $this->Usuario->obtener_id();
       $texto = $this->input->post('texto');
       $this->Muro->hacer_comentario($id_envio, $id_propietario, $texto);
-      redirect('muros/index');
+      redirect("muros/index/$id_propietario");
     }
   }
 
