@@ -78,8 +78,10 @@ create table solicitudes (
 drop table gustos cascade;
 
 create table gustos (
-	id_usuario bigint constraint fk_gustos_usuarios references usuarios(id),
-	id_envio   bigint constraint fk_gustos_envios references envios(id),
+	id_usuario bigint constraint fk_gustos_usuarios references usuarios(id)
+             on delete cascade on update cascade,
+	id_envio   bigint constraint fk_gustos_envios references envios(id)
+             on delete cascade on update cascade,
 	constraint pk_gustos primary key (id_usuario, id_envio)
 );
 

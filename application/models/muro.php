@@ -6,7 +6,7 @@ class Muro extends CI_Model  {
 		return $this->db->query("select *,
 														 (select count(*) != 0 from gustos g where g.id_envio = d.id_envio and g.id_usuario = ?) as me_gusta
 														 from datos_cantidad d
-														 order by fechahora desc;", array($id))->result_array();		  
+														 order by fechahora asc;", array($id))->result_array();		  
 	}
 
   function hacer_envio($id_emisor, $id_receptor, $texto) {
