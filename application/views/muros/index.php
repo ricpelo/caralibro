@@ -10,7 +10,6 @@
     <p><?= $mensaje ?></p>
   </div>
 <?php endif; ?>
-
 <div>
 	Escribe tu comentario:
   <?= form_open('muros/enviar') ?>
@@ -36,6 +35,7 @@
             
 				<div class = "borrar">
 				  <?= form_hidden('id_envio', $id_envio) ?>
+					<?= form_hidden('id_propietario_muro', $id_propietario_muro) ?>
 				  <?= form_submit('borrar', 'X', 'class="boton_borrar"') ?>
 				</div>
             

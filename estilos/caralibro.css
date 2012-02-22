@@ -13,6 +13,16 @@
 	border-width: 4px;
 }
 
+#logo {
+	background-image: url("../images/logo.jpg");
+	width: 83px;
+	height: 83px;
+	position: absolute;
+	border-style: solid;
+	border-width: 4px;
+	text-align: left;
+}
+
 #footer {
 	text-align: center;
 	border-style: solid;
@@ -120,7 +130,7 @@ body {
 	color: blue;
 }
 
-#comentario {
+.comentario {
 	border-style: solid;
 	border-width: 4px;
 	background: #CCC;
@@ -260,6 +270,9 @@ body {
   height: 70px;
 }
 
-.cuadro_texto {
-	right: 40px;
+
+.cuadro_texto{
+  width: 300px;
+  margin: auto;
+  padding-top: 10px;
 }

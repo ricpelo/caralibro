@@ -2,11 +2,12 @@
 
 class Muro extends CI_Model  {
 
-	function obtener_datos_contenedor($id) {
+	function obtener_datos_contenedor($id, $id_usuario_logueado) {
 		return $this->db->query("select *,
 														 (select count(*) != 0 from gustos g where g.id_envio = d.id_envio and g.id_usuario = ?) as me_gusta
 														 from datos_cantidad d
-														 order by fechahora desc;", array($id))->result_array();		  
+														 where id_receptor = ?
+														 order by fechahora desc", array($id_usuario_logueado, $id))->result_array();
 	}
 
   function hacer_envio($id_emisor, $id_receptor, $texto) {
@@ -14,24 +15,20 @@ class Muro extends CI_Model  {
                               values (?,?,?)", array($id_emisor, $id_receptor, $texto));
   }
 
-  function recoger_envio($id) {
-    return $this->db->query("select id from envios where id_propietario = $id");
-  }
-
   function recoger_comentario($id) {
-    return $this->db->query("select id from comentarios when id_propietario = $id");
+    return $this->db->query("select id from comentarios when id_propietario = ?", array($id));
   }
    
   function cual_puedo_borrar($id_envio) {
-    return $this->db->query("select id_propietario from envios where id = $id_envio");
+    return $this->db->query("select id_propietario from envios where id = ?", array($id_envio));
   }
   
   function borrar_envio($id_envio) {
-    return $this->db->query("delete from envios where id = $id_envio");
+    return $this->db->query("delete from envios where id = ?", array($id_envio));
   }
   
   function borrar_comentario($id_envio) {
-    return $this->db->query("delete from comentarios where id = $id_envio");
+    return $this->db->query("delete from comentarios where id = ?", array($id_envio));
   }
 
   function hacer_comentario($id_envio, $id_propietario, $texto) {
