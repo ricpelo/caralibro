@@ -63,10 +63,8 @@ class Usuarios extends CI_Controller {
 		  if ($this->form_validation->run() == false) {
 		  	$data['mensaje'] = 'Ese email ya ha sido registrado.';
 			  $this->template->load('template','usuarios/crear', $data); 
-		  }
-		  
-		  if(!$this->Usuario->crear($email, $password, $nombre, $apellidos)) {
-			  $data['mensaje'] = 'Debes rellenar todos los campos.';
+		  } else if (!$this->Usuario->crear($email, $password, $nombre, $apellidos)) {
+			    $data['mensaje'] = 'Debes rellenar todos los campos.';
 			  if ($password != $confirm_password) {
 		      $data['mensaje'] = 'La contraseña y la confirmación de contraseña no coinciden';
 		    }
