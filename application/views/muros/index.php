@@ -71,7 +71,9 @@
 					<?= form_submit('no_me_gusta', '', 'class="boton_no_me_gusta"') ?>
 				<?= form_close() ?>
 			<?php endif; ?>
-		</div> 
+		</div>
+		  <p onclick=conmutar_comentarios("c<?=$contador?>")>Mostrar comentarios</p>
+		  <div id="c<?= $contador ?>" class="visible_comentario">
       <?php $cc = 0; ?>		
 		  <?php foreach ($envio['comentarios'] as $comentario): ?>
 		   <?php $cc++; ?>
@@ -96,6 +98,7 @@
         <br/>
        
 			<?php endforeach; ?>
+		  </div>
 		<div class="cuadro_texto">
 		  <?= form_open('muros/comentar') ?>
 				<?= form_hidden('id_envio', $id_envio) ?>

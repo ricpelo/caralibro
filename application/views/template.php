@@ -1,18 +1,29 @@
 <?php if (isset($contador)): ?>
   <script type="text/javascript">
          //Función que busca el DIV, coge su valor y lo guarda en el HiddenField
-         function ir_posicion() {
+         function ir_posicion(com) {
             window.location = window.location + "#<?=$contador?>";
+            comutar_comentarios(com);
          }
+         
        </script>
 <?php endif; ?>
+<script type="text/javascript">
+function conmutar_comentarios(com) {
+           if (document.getElementById(com).style.display == "block")
+            document.getElementById(com).style.display = "none";
+           else
+            document.getElementById(com).style.display = "block";
+            
+         }
+</script>
 <html>
   <head>
     <title></title>
     <?= link_tag('estilos/caralibro.css') ?>
   </head>
 <?php if (isset($contador)): ?>
-  <body onload="ir_posicion()">
+  <body onload="ir_posicion("c<?=$contador?>")">
 <?php else: ?>
   <body>
 <?php endif; ?>

@@ -198,6 +198,10 @@ body {
   background: #F2F2F2;
 }
 
+.visible_comentario {
+  display: none;
+}
+
 .propietario_comentario {
   text-align: center;
   padding: 8px;
