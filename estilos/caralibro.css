@@ -205,7 +205,7 @@ body {
 }
 
 .visible_comentario {
-  display: none;
+  display: block;
 }
 
 .propietario_comentario {

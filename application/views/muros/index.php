@@ -74,7 +74,8 @@
 		</div>
 		  <p onclick=conmutar_comentarios("c<?=$contador?>")>Mostrar comentarios</p>
 		  <div id="c<?= $contador ?>" class="visible_comentario">
-      <?php $cc = 0; ?>		
+      <?php $cc = 0; ?>	
+      
 		  <?php foreach ($envio['comentarios'] as $comentario): ?>
 		   <?php $cc++; ?>
         <?php if ($cc == count($envio['comentarios'])): ?>
@@ -104,6 +105,7 @@
         <br/>
        
 			<?php endforeach; ?>
+			<a name="<?= $contador ?>"></a>  
 		  </div>
 		<div class="cuadro_texto">
 		  <?= form_open('muros/comentar') ?>
