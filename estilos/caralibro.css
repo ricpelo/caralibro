@@ -145,7 +145,7 @@ body {
   margin-right: 18px;
 	border-style: solid;
   border-width: 2px;
-	top: -14px;
+	bottom: 8;
   position: relative;
   font-weight: bold;
 }
@@ -153,11 +153,11 @@ body {
 .borrar_comentarios {
   float: right;
   padding: 1px;
-  margin-right: 235px;
+  margin-right: 283px;
 	border-style: solid;
   border-width: 2px;
-	top: -14px;
-  position: relative;
+	position: relative;
+	top: 20px;
   font-weight: bold;
 }
 
@@ -165,8 +165,7 @@ body {
 	text-align: left;
   padding: 10px;
   margin: auto;
-  margin-left: -180px;
-  position: relative;
+  margin-left: -140px;
   top: 4px;
   background: black;
 	color: white;  
@@ -176,9 +175,8 @@ body {
   text-align: left;
   padding: 8px;
   margin: auto;
-  margin-left: -13px;
-  position: relative;
-  top: 5px;
+  margin-left: 220px;
+  top: 7px;
   background: black;
 	color: white;  
 }
@@ -191,17 +189,8 @@ body {
 .cuerpo {
 	padding-top: 10px;
 	padding-bottom: 10px;
-}
-
-.comentario {
-  width: 300px;
-  border-style: solid;
-  border-width: 2px;
-  margin: auto;
-  padding-top: 10px;
-  position: relative;
-  right: -50px;
-  background: #F2F2F2;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .envio {
@@ -210,6 +199,16 @@ body {
 	border-width: 2px;
 	margin: auto;
 	padding-top: 10px;
+}
+
+.comentario {
+  width: 300px;
+  border-style: solid;
+  border-width: 2px;
+  margin: auto;
+  padding-top: 10px;
+	margin-right: 233px;
+  background: #F2F2F2;
 }
 
 .boton {
