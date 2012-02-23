@@ -1,3 +1,4 @@
+
 <div id="menu_muro">
 
 	<p>Muro de: <?= $propietario_muro ?></p>
@@ -9,7 +10,6 @@
     <p><?= $mensaje ?></p>
   </div>
 <?php endif; ?>
-
 <div>
 	Escribe tu comentario:
   <?= form_open('muros/enviar') ?>
@@ -22,7 +22,7 @@
 </div>
 
 <br/><br/>
-
+<?php $contador = 1; ?>
 <?php foreach ($envios as $envio): ?>
 	<?php extract($envio); ?>
 		<div class = "contenedor">
@@ -35,6 +35,7 @@
             
 				<div class = "borrar">
 				  <?= form_hidden('id_envio', $id_envio) ?>
+					<?= form_hidden('id_propietario_muro', $id_propietario_muro) ?>
 				  <?= form_submit('borrar', 'X', 'class="boton_borrar"') ?>
 				</div>
             
@@ -71,10 +72,12 @@
 				<?= form_close() ?>
 			<?php endif; ?>
 		</div> 
-		
+      <?php $cc = 0; ?>		
 		  <?php foreach ($envio['comentarios'] as $comentario): ?>
-		  
-       
+		   <?php $cc++; ?>
+        <?php if ($cc == count($envio['comentarios'])): ?>
+           <a name="<?= $contador ?>"></a>
+        <?php endif; ?>
 		    <div class="propietario_comentario"><?= anchor("muros/index/{$comentario['id_propietario']}", $comentario['nombre']); ?>  comentó:</div>
    
       <?php if ($id_prop == $id_usuario_logueado || $id_propietario_muro == $id_usuario_logueado): ?>
@@ -91,16 +94,20 @@
           <div class="fechahora"><?= $comentario['fechahora'] ?></div>
         </div>
         <br/>
+       
 			<?php endforeach; ?>
-		
 		<div class="cuadro_texto">
 		  <?= form_open('muros/comentar') ?>
 				<?= form_hidden('id_envio', $id_envio) ?>
+				<?= form_hidden('contador',$contador) ?>
+				<?= form_hidden('id_propietario', $id_propietario_muro) ?>
 				<?= form_textarea(array('name' => 'texto', 'rows' => '3', 'col' =>'30')) ?>
 				<br/>
-				<?= form_submit('comentar', 'Comentar', 'class="boton"') ?>
+				<?= form_submit('comentar', 'Comentar', 'class="boton"', 'onclick="return confirm(\'¿Está seguro?\')"') ?>
 		  <?= form_close() ?>
+		 
 		</div>
+		<?php $contador++; ?>
 		<br/>
 <?php endforeach; ?>
 
