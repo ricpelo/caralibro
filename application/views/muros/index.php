@@ -76,6 +76,16 @@
 		  
        
 		    <div class="propietario_comentario"><?= anchor("muros/index/{$comentario['id_propietario']}", $comentario['nombre']); ?>  comentó:</div>
+   
+      <?php if ($id_prop == $id_usuario_logueado || $id_propietario_muro == $id_usuario_logueado): ?>
+			<?= form_open('muros/borrar_envio/'); ?>
+          <div class = "borrar_comentarios">
+				  <?= form_hidden('id_envio', $id_envio) ?>
+				  <?= form_submit('borrar', 'X', 'class="boton_borrar"') ?>
+		    </div>
+         <?= form_close() ?>
+      <?php endif; ?>
+
 		    <div class="comentario">
 				  <div class="cuerpo_comentario"><?= $comentario['texto'] ?></div>
           <div class="fechahora"><?= $comentario['fechahora'] ?></div>
