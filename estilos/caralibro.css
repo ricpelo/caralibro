@@ -204,6 +204,22 @@ body {
   background: #F2F2F2;
 }
 
+.visible_comentario {
+  display: none;
+}
+
+.propietario_comentario {
+  text-align: center;
+  padding: 8px;
+  width: 170px;
+  margin: auto;
+  margin-left: 360px;
+  position: relative;
+  top: 2px;
+  background: black;
+	color: white;  
+}
+
 .envio {
 	width: 400px;
 	border-style: solid;
