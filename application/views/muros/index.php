@@ -72,13 +72,22 @@
 				<?= form_close() ?>
 			<?php endif; ?>
 		</div> 
+
+		<br/>
+
       <?php $cc = 0; ?>		
 		  <?php foreach ($envio['comentarios'] as $comentario): ?>
 		   <?php $cc++; ?>
         <?php if ($cc == count($envio['comentarios'])): ?>
            <a name="<?= $contador ?>"></a>
         <?php endif; ?>
-		    <div class="propietario_comentario"><?= anchor("muros/index/{$comentario['id_propietario']}", $comentario['nombre']); ?>  comentó:</div>
+
+				<div class = "contenedor">
+				  <span class="propietario_comentario">
+						<?= anchor("muros/index/{$comentario['id_propietario']}", $comentario['nombre']); ?>  
+						comentó:
+					</span>
+				</div>
    
       <?php if ($id_prop == $id_usuario_logueado || $id_propietario_muro == $id_usuario_logueado): ?>
 			<?= form_open('muros/borrar_envio/'); ?>
@@ -105,7 +114,7 @@
 				<br/>
 				<?= form_submit('comentar', 'Comentar', 'class="boton"', 'onclick="return confirm(\'¿Está seguro?\')"') ?>
 		  <?= form_close() ?>
-		 
+		 <br/><br/>
 		</div>
 		<?php $contador++; ?>
 		<br/>
