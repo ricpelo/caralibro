@@ -75,15 +75,6 @@ a:hover {
 			text-decoration: underline;
 		}
 
-/*Se aplica solo al link de mostrar comentarios */
-
-		a[class=mostrar_comentarios] {
-			color: midnightblue;
-		}
-
-		a:hover[class=mostrar_comentarios] {
-			text-decoration: underline;
-		}
 
 #capa_cerrar_sesion {
 	float: right;
@@ -249,6 +240,15 @@ body {
 	font-weight: bold;
 	background: #8A0808;
 	border-color: #8A0808;
+}
+
+.boton_comentarios {
+	font-family: "Arial";
+  color: white;
+	font-size: 14px;
+	font-weight: bold;
+	background: midnightblue;
+	border-color: midnightblue;
 }
 
 .boton_me_gusta {

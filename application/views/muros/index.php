@@ -32,7 +32,8 @@
 				  <?= form_submit('borrar', 'X', 'class="boton_borrar"') ?>
 			</span>
 			
-			<span class = "propietario">  
+			<span class = "propietario">  () ?>
+			<?php else: ?>
 				<?= anchor("muros/index/$id_prop" , $nombre_prop . ' ' .  $apellidos_prop) ?> escribió:				               
 			</span>
 		</div>
@@ -58,63 +59,66 @@
 			<?php if ($me_gusta == 'f'): ?>
 				<?= form_open("muros/agregar_me_gusta/$id_envio") ?>
 					<?= form_submit('me_gusta', '', 'class="boton_me_gusta"') ?>
-				<?= form_close() ?>
-			<?php else: ?>
+				<?= form_close
 				<?= form_open("muros/quitar_me_gusta/$id_envio") ?>
 					<?= form_submit('no_me_gusta', '', 'class="boton_no_me_gusta"') ?>
 				<?= form_close() ?>
 			<?php endif; ?>
 		</div>
-		  <input type="button" class="mostrar_comentarios" onclick=conmutar_comentarios("c<?=$contador?>")>
-				Mostrar comentarios (<?= count($envio['comentarios'])?>)
-			</input>
-		  <div id="c<?= $contador ?>" class="visible_comentario">
-      <?php $cc = 0; ?>
-		  <?php foreach ($envio['comentarios'] as $comentario): ?>
-		   <?php $cc++; ?>
-        <?php if ($cc == count($envio['comentarios'])): ?>
-           <a name="<?= $contador ?>"></a>
-        <?php endif; ?>
+		
+		<?php if (count($envio['comentarios']) > 0): ?>			
+	  	<input type="button" class="boton_comentarios" onclick=conmutar_comentarios("c<?=$contador?>")
+						 
+					 	 value="Mostrar comentarios (<?= count($envio['comentarios'])?>)" />
+		<?php endif; ?>		
 
-				<div class = "contenedor">
+	  <div id="c<?= $contador ?>" class="visible_comentario">
+    <?php $cc = 0; ?>
+	  <?php foreach ($envio['comentarios'] as $comentario): ?>
+	   <?php $cc++; ?>
+      <?php if ($cc == count($envio['comentarios'])): ?>
+         <a name="<?= $contador ?>"></a>
+      <?php endif; ?>
 
-					<?php if ($id_prop == $id_usuario_logueado || $id_propietario_muro == $id_usuario_logueado): ?>
-						<?= form_open('muros/borrar_envio/'); ?>
-							<span class = "borrar_comentarios">
-								<?= form_hidden('id_envio', $id_envio) ?>
-								<?= form_submit('borrar', 'X', 'class="boton_borrar"') ?>
-							</span>
-						<?= form_close() ?>
-					<?php endif; ?>
+			<div class = "contenedor">
 
-				  <span class="propietario_comentario">
-						<?= anchor("muros/index/{$comentario['id_propietario']}", $comentario['nombre']); ?>  
-						comentó:
-					</span>
-				</div> 
+				<?php if ($id_prop == $id_usuario_logueado || $id_propietario_muro == $id_usuario_logueado): ?>
+					<?= form_open('muros/borrar_envio/'); ?>
+						<span class = "borrar_comentarios">
+							<?= form_hidden('id_envio', $id_envio) ?>
+							<?= form_submit('borrar', 'X', 'class="boton_borrar"') ?>
+						</span>
+					<?= form_close() ?>
+				<?php endif; ?>
+
+			  <span class="propietario_comentario">
+					<?= anchor("muros/index/{$comentario['id_propietario']}", $comentario['nombre']); ?>  
+					comentó:
+				</span>
+			</div> 
 
 
-		    <div class="comentario">
-				  <div><?= $comentario['texto'] ?></div>
-          <div class="fechahora"><?= $comentario['fechahora'] ?></div>
-        </div>
-        <br/>
-       
-			<?php endforeach; ?>
-			<a name="<?= $contador ?>"></a>  
-		  </div>
-		<div class="cuadro_texto">
-		  <?= form_open('muros/comentar') ?>
-				<?= form_hidden('id_envio', $id_envio) ?>
-				<?= form_hidden('contador',$contador) ?>
-				<?= form_hidden('id_propietario', $id_propietario_muro) ?>
-				<?= form_textarea(array('name' => 'texto', 'rows' => '3', 'col' =>'30')) ?>
-				<br/>
-				<?= form_submit('comentar', 'Comentar', 'class="boton"', 'onclick="return confirm(\'¿Está seguro?\')"') ?>
-		  <?= form_close() ?>
-		 <br/><br/>
-		</div>
-		<?php $contador++; ?>
-		<br/>
+	    <div class="comentario">
+			  <div><?= $comentario['texto'] ?></div>
+        <div class="fechahora"><?= $comentario['fechahora'] ?></div>
+      </div>
+      <br/>
+     
+		<?php endforeach; ?>
+		<a name="<?= $contador ?>"></a>  
+	  </div>
+	<div class="cuadro_texto">
+	  <?= form_open('muros/comentar') ?>
+			<?= form_hidden('id_envio', $id_envio) ?>
+			<?= form_hidden('contador',$contador) ?>
+			<?= form_hidden('id_propietario', $id_propietario_muro) ?>
+			<?= form_textarea(array('name' => 'texto', 'rows' => '3', 'col' =>'30')) ?>
+			<br/>
+			<?= form_submit('comentar', 'Comentar', 'class="boton"', 'onclick="return confirm(\'¿Está seguro?\')"') ?>
+	  <?= form_close() ?>
+	 <br/><br/>
+	</div>
+	<?php $contador++; ?>
+	<br/>
 <?php endforeach; ?>
 

@@ -7,6 +7,9 @@
        </script>
 <?php endif; ?>
 <script type="text/javascript">
+
+
+
 function conmutar_comentarios(com) {
            if (document.getElementById(com).style.display == "none")
             document.getElementById(com).style.display = "block";
