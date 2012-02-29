@@ -70,7 +70,7 @@
 				<?= form_close() ?>
 			<?php endif; ?>
 		</div>
-		  <a class="mostrar_comentarios" onclick=conmutar_comentarios("c<?=$contador?>")>Mostrar comentarios</a>
+		  <a class="mostrar_comentarios" onclick=conmutar_comentarios("c<?=$contador?>")>Mostrar comentarios (<?= count($envio['comentarios'])?>)</a>
 		  <div id="c<?= $contador ?>" class="visible_comentario">
       <?php $cc = 0; ?>
 		  <?php foreach ($envio['comentarios'] as $comentario): ?>
