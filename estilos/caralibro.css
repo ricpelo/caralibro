@@ -54,53 +54,36 @@
 	border-width: 4px;
 }
 
+a {
+	color: #819FF7;
+	text-decoration: none;
+}
+
 a:hover {
-	color: #819FF7;
-	text-decoration:none;
+	text-decoration: underline;
 }
 
-a:link {
-	color: #819FF7;
-	text-decoration:none;
-}
-
-a:visited {
-  color: #819FF7;
-	text-decoration:none;
-}
 
 /*Se aplica solo al link de cerrar sesión */
 
+		a[id=cerrar_sesion] {
+			color: white;
+			text-decoration:none;
+		}
+
 		a:hover[id=cerrar_sesion] {
-			color: white;
-			text-decoration:none;
-		}
-
-		a:link[id=cerrar_sesion] {
-			color: white;
-			text-decoration:none;
-		}
-
-		a:visited[id=cerrar_sesion] {
-			color: white;
-			text-decoration:none;
+			text-decoration: underline;
 		}
 
 /*Se aplica solo al link de mostrar comentarios */
 
-		a:hover[class=mostrar_comentarios] {
+		a[class=mostrar_comentarios] {
 			color: midnightblue;
+		}
+
+		a:hover[class=mostrar_comentarios] {
 			text-decoration: underline;
 		}
-
-		a:link[class=mostrar_comentarios] {
-			color: midnightblue;
-		}
-
-		a:visited[class=mostrar_comentarios] {
-			color: midnightblue;
-		}
-
 
 #capa_cerrar_sesion {
 	float: right;
