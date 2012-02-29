@@ -63,11 +63,11 @@ class Usuarios extends CI_Controller {
 		  if ($this->form_validation->run() == false) {
 		  	$data['mensaje'] = 'Ese email ya ha sido registrado.';
 			  $this->template->load('template','usuarios/crear', $data); 
-		  } else if (!$this->Usuario->crear($email, $password, $nombre, $apellidos)) {
-			    $data['mensaje'] = 'Debes rellenar todos los campos.';
+			} else if (!$this->Usuario->crear($email, $password, $nombre, $apellidos)) {
+			  $data['mensaje'] = 'Debes rellenar todos los campos.';
 			  if ($password != $confirm_password) {
-		      $data['mensaje'] = 'La contraseña y la confirmación de contraseña no coinciden';
-		    }
+			    $data['mensaje'] = 'La contraseña y la confirmación de contraseña no coinciden.';
+			  }
 			  $this->template->load('template','usuarios/crear', $data); 
 		  } else {
 			  $this->session->set_flashdata('mensaje', 'El usuario se creo correctamente.');
@@ -78,8 +78,8 @@ class Usuarios extends CI_Controller {
   	  redirect('usuarios/login');
   	  
   	} else {
-  	    $data['mensaje'] = 'Introduce los datos para el registro.';
-  	    $this->template->load('template','usuarios/crear',$data); 
+      $data['mensaje'] = 'Introduce los datos para el registro.';
+      $this->template->load('template','usuarios/crear',$data); 
     }
   }
   
@@ -112,7 +112,7 @@ class Usuarios extends CI_Controller {
 			                          vuelva a intentarlo con otro nombre.";
 				    $data['confirmpassword'] = '';
 				    $data['password'] = '';
-			        $this->template->load('template','usuarios/editar', $data); 
+			      $this->template->load('template','usuarios/editar', $data); 
 			    } else {
 				    $this->session->set_flashdata('mensaje', 'El usuario se modifico correctamente.');
 				    $this->_actualizar_variable_session($nombre, $apellidos, $email);
