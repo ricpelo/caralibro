@@ -27,8 +27,8 @@ class Muro extends CI_Model  {
     return $this->db->query("delete from envios where id = ?", array($id_envio));
   }
   
-  function borrar_comentario($id_envio) {
-    return $this->db->query("delete from comentarios where id = ?", array($id_envio));
+  function borrar_comentario($id) {
+    return $this->db->query("delete from comentarios where id = ?", array($id));
   }
 
   function hacer_comentario($id_envio, $id_propietario, $texto) {
@@ -37,7 +37,7 @@ class Muro extends CI_Model  {
   }
   
   function obtener_comentarios($id_envio) {
-    return $this->db->query("select texto, to_char(fechahora, 'DD-MM-YYYY\" a las \"HH24:MI:SS')
+    return $this->db->query("select c.id as id, texto, to_char(fechahora, 'DD-MM-YYYY\" a las \"HH24:MI:SS')
                                         as fechahora, nombre || ' ' || apellidos  as nombre, id_propietario
                                from comentarios c, usuarios u 
                              where u.id = id_propietario and id_envio = ? order by fechahora asc", array($id_envio))->result_array();

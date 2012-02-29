@@ -25,16 +25,21 @@
 <?php $contador = 1; ?>
 <?php foreach ($envios as $envio): ?>
 	<?php extract($envio); ?>
+    
+    <?= form_open('muros/borrar_envio') ?>
 		<div class = "contenedor">
+<?php if ($id_prop == $id_usuario_logueado || $id_propietario_muro == $id_usuario_logueado): ?>
 			<span class = "borrar">
 				  <?= form_hidden('id_envio', $id_envio) ?>
 					<?= form_hidden('id_propietario_muro', $id_propietario_muro) ?>
 				  <?= form_submit('borrar', 'X', 'class="boton_borrar"') ?>
 			</span>
-			
+			<?php endif; ?>
 			<span class = "propietario">  
 				<?= anchor("muros/index/$id_prop" , $nombre_prop . ' ' .  $apellidos_prop) ?> escribió:				               
 			</span>
+    <?= form_close() ?>
+   
 		</div>
 
 		<div class="envio">
@@ -76,10 +81,11 @@
 
 				<div class = "contenedor">
 
-					<?php if ($id_prop == $id_usuario_logueado || $id_propietario_muro == $id_usuario_logueado): ?>
-						<?= form_open('muros/borrar_envio/'); ?>
+					<?php if ( $comentario['id_propietario'] == $id_usuario_logueado || $id_propietario_muro == $id_usuario_logueado): ?>
+						<?= form_open('muros/borrar_comentario/'); ?>
 							<span class = "borrar_comentarios">
-								<?= form_hidden('id_envio', $id_envio) ?>
+								<?= form_hidden('id', $comentario['id']) ?>
+                <?= form_hidden('id_propietario_muro', $id_propietario_muro) ?>
 								<?= form_submit('borrar', 'X', 'class="boton_borrar"') ?>
 							</span>
 						<?= form_close() ?>
