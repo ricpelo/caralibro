@@ -66,7 +66,7 @@
 			<?php endif; ?>
 		</div>
 		  <input type="button" class="mostrar_comentarios" onclick=conmutar_comentarios("c<?=$contador?>")>
-				Mostrar comentarios
+				Mostrar comentarios (<?= count($envio['comentarios'])?>)
 			</input>
 		  <div id="c<?= $contador ?>" class="visible_comentario">
       <?php $cc = 0; ?>
