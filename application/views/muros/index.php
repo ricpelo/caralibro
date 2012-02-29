@@ -26,22 +26,15 @@
 <?php foreach ($envios as $envio): ?>
 	<?php extract($envio); ?>
 		<div class = "contenedor">
-			<span class = "propietario">  
-				<?= anchor("muros/index/$id_prop" , $nombre_prop . ' ' .  $apellidos_prop) ?> escribió:				               
-			</span>
-      <?php if ($id_prop == $id_usuario_logueado || $id_propietario_muro == $id_usuario_logueado): ?>
-			<?= form_open('muros/borrar_envio/'); ?>
-            
-            
-				<div class = "borrar">
+			<span class = "borrar">
 				  <?= form_hidden('id_envio', $id_envio) ?>
 					<?= form_hidden('id_propietario_muro', $id_propietario_muro) ?>
 				  <?= form_submit('borrar', 'X', 'class="boton_borrar"') ?>
-				</div>
-            
-        
-			<?= form_close() ?>
-      <?php endif; ?>
+			</span>
+			
+			<span class = "propietario">  
+				<?= anchor("muros/index/$id_prop" , $nombre_prop . ' ' .  $apellidos_prop) ?> escribió:				               
+			</span>
 		</div>
 
 		<div class="envio">
@@ -72,10 +65,9 @@
 				<?= form_close() ?>
 			<?php endif; ?>
 		</div>
-		  <p onclick=conmutar_comentarios("c<?=$contador?>")>Mostrar comentarios</p>
+		  <a class="mostrar_comentarios" onclick=conmutar_comentarios("c<?=$contador?>")>Mostrar comentarios (<?= count($envio['comentarios'])?>)</a>
 		  <div id="c<?= $contador ?>" class="visible_comentario">
-      <?php $cc = 0; ?>	
-      
+      <?php $cc = 0; ?>
 		  <?php foreach ($envio['comentarios'] as $comentario): ?>
 		   <?php $cc++; ?>
         <?php if ($cc == count($envio['comentarios'])): ?>
@@ -83,23 +75,25 @@
         <?php endif; ?>
 
 				<div class = "contenedor">
+
+					<?php if ($id_prop == $id_usuario_logueado || $id_propietario_muro == $id_usuario_logueado): ?>
+						<?= form_open('muros/borrar_envio/'); ?>
+							<span class = "borrar_comentarios">
+								<?= form_hidden('id_envio', $id_envio) ?>
+								<?= form_submit('borrar', 'X', 'class="boton_borrar"') ?>
+							</span>
+						<?= form_close() ?>
+					<?php endif; ?>
+
 				  <span class="propietario_comentario">
 						<?= anchor("muros/index/{$comentario['id_propietario']}", $comentario['nombre']); ?>  
 						comentó:
 					</span>
-				</div>
-   
-      <?php if ($id_prop == $id_usuario_logueado || $id_propietario_muro == $id_usuario_logueado): ?>
-			<?= form_open('muros/borrar_envio/'); ?>
-          <div class = "borrar_comentarios">
-				  <?= form_hidden('id_envio', $id_envio) ?>
-				  <?= form_submit('borrar', 'X', 'class="boton_borrar"') ?>
-		    </div>
-         <?= form_close() ?>
-      <?php endif; ?>
+				</div> 
+
 
 		    <div class="comentario">
-				  <div class="cuerpo_comentario"><?= $comentario['texto'] ?></div>
+				  <div><?= $comentario['texto'] ?></div>
           <div class="fechahora"><?= $comentario['fechahora'] ?></div>
         </div>
         <br/>
