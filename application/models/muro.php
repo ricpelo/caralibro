@@ -40,7 +40,7 @@ class Muro extends CI_Model  {
     return $this->db->query("select c.id as id, texto, to_char(fechahora, 'DD-MM-YYYY\" a las \"HH24:MI:SS')
                                         as fechahora, nombre || ' ' || apellidos  as nombre, id_propietario
                                from comentarios c, usuarios u 
-                             where u.id = id_propietario and id_envio = ? order by fechahora asc", array($id_envio))->result_array();
+                             where u.id = id_propietario and id_envio = ? order by c.fechahora asc", array($id_envio))->result_array();
   }       
 }
 
