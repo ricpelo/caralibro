@@ -19,3 +19,15 @@
      <?= form_submit('muro', 'Mi muro', 'class="boton"') ?></p>
 <?= form_close() ?>
 </div>
+<div>
+  <p> Foto de perfil </p>
+  <?php echo form_open_multipart('upload/do_upload');?>
+
+  <input type="file" name="userfile" size="20" />
+
+  <br /><br />
+
+  <input type="submit" value="Subir foto" />
+
+  </form>
+</div>
