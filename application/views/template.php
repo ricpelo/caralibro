@@ -8,15 +8,18 @@
 <?php endif; ?>
 <script type="text/javascript">
 
-
-
-function conmutar_comentarios(com) {
-           if (document.getElementById(com).style.display == "none")
+function conmutar_comentarios(num, total) {
+					var com = "c" + num;
+          var boton = "b" + num;
+           if (document.getElementById(com).style.display == "none") {
             document.getElementById(com).style.display = "block";
-           else
+					  document.getElementById(boton).value = "Ocultar comentarios";
+           } else {
             document.getElementById(com).style.display = "none";
-            
+						document.getElementById(boton).value = "Mostrar comentarios (" + total + ")";
+           }
          }
+
 </script>
 <html>
   <head>

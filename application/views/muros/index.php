@@ -32,8 +32,7 @@
 				  <?= form_submit('borrar', 'X', 'class="boton_borrar"') ?>
 			</span>
 			
-			<span class = "propietario">  () ?>
-			<?php else: ?>
+			<span class = "propietario">
 				<?= anchor("muros/index/$id_prop" , $nombre_prop . ' ' .  $apellidos_prop) ?> escribió:				               
 			</span>
 		</div>
@@ -59,18 +58,19 @@
 			<?php if ($me_gusta == 'f'): ?>
 				<?= form_open("muros/agregar_me_gusta/$id_envio") ?>
 					<?= form_submit('me_gusta', '', 'class="boton_me_gusta"') ?>
-				<?= form_close
+				<?= form_close() ?>
+			<?php else: ?>
 				<?= form_open("muros/quitar_me_gusta/$id_envio") ?>
 					<?= form_submit('no_me_gusta', '', 'class="boton_no_me_gusta"') ?>
 				<?= form_close() ?>
 			<?php endif; ?>
 		</div>
 		
-		<?php if (count($envio['comentarios']) > 0): ?>			
-	  	<input type="button" class="boton_comentarios" onclick=conmutar_comentarios("c<?=$contador?>")
-						 
-					 	 value="Mostrar comentarios (<?= count($envio['comentarios'])?>)" />
-		<?php endif; ?>		
+		<?php if (count($envio['comentarios']) > 0): ?>
+	  	<input id="b<?= $contador ?>" type="button" class="boton_comentarios" 
+						 onclick="conmutar_comentarios(<?=$contador?>, <?= count($envio['comentarios']) ?>)"						 
+					 	 value="Ocultar comentarios" />
+		<?php endif; ?>
 
 	  <div id="c<?= $contador ?>" class="visible_comentario">
     <?php $cc = 0; ?>
